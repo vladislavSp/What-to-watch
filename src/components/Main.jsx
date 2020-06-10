@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const Main = (props) => {
   // eslint-disable-next-line react/prop-types
