@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import App from './components/app/App.jsx';
 
 const promoInfo = {
   promoTitle: `The Grand Budapest Hotel`,

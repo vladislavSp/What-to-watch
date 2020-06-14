@@ -1,6 +1,6 @@
 import React from 'react';
-import Main from './Main.jsx';
 import PropTypes from 'prop-types';
+import Main from '../main/Main.jsx';
 
 const App = (props) => {
   const {promoTitle, promoGenre, promoYear, filmsTitle} = props;
