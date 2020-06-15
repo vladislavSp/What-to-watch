@@ -28,11 +28,8 @@ describe(`MainComponent`, () => {
         />
     );
 
-    const titleButtons = mainScreen.find(`a.small-movie-card__link`);
-    titleButtons.forEach((node) => {
-      node.simulate(`click`);
-      expect(onTitleClick).toHaveBeenCalled();
-      // expect(onTitleClick).to.have.property(`callCount`, 1);
-    });
+    const titleButton = mainScreen.find(`a.small-movie-card__link`).first();
+    titleButton.simulate(`click`);
+    expect(onTitleClick).toHaveBeenCalledTimes(1);
   });
 });

@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Main from '../main/Main.jsx';
 
-const App = (props) => {
-  const {promoTitle, promoGenre, promoYear, filmsTitle} = props;
-
-  return <Main promoTitle={promoTitle} promoGenre={promoGenre} promoYear={promoYear} filmsTitle={filmsTitle} onTitleClick={() => {}}/>;
-};
+const App = ({promoTitle, promoGenre, promoYear, filmsTitle}) => <Main promoTitle={promoTitle} promoGenre={promoGenre} promoYear={promoYear} filmsTitle={filmsTitle} onTitleClick={() => {}}/>;
 
 App.propTypes = {
   promoTitle: PropTypes.string.isRequired,
