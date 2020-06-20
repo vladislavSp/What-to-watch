@@ -18,7 +18,7 @@ describe(`FilmCard`, () => {
           handleTitleFocus={onMouseEnter}>
         </FilmCard>);
 
-    const title = card.find(`h3.small-movie-card__title`).first();
+    const title = card.find(`h3.small-movie-card__title`);
     title.simulate(`mouseenter`);
     expect(onMouseEnter).toHaveBeenCalledTimes(1);
   });
