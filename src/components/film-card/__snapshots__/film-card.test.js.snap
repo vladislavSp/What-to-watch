@@ -21,7 +21,9 @@ exports[`renders correctly 1`] = `
     <a
       className="small-movie-card__link"
       href="movie-page.html"
-    />
+    >
+      Fantastic Beasts
+    </a>
   </h3>
 </article>
 `;
