@@ -21,7 +21,7 @@ class FilmList extends React.Component {
   render() {
     return (
       <div className="catalog__movies-list">
-        {this.props.films.map((film, index) => <FilmCard key={film.title + index} title={film.title} handleTitleFocus={this.handleTitleFocus}/>)}
+        {this.props.films.map((film, index) => <FilmCard key={film.title + index} title={film.title} handleTitleFocus={this.handleTitleFocus} />)}
       </div>
     );
   }
