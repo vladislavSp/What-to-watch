@@ -1,15 +1,44 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/Main.jsx';
+import Movie from '../movie-detail/Movie.jsx';
 
-const App = ({promoTitle, promoGenre, promoYear, films}) => (
-  <Main
-    promoTitle={promoTitle}
-    promoGenre={promoGenre}
-    promoYear={promoYear}
-    films={films}
-  />
-);
+const movieInfo = {
+  name: `The Grand Budapest Hotel`,
+  jenre: `Drama`,
+  year: 2014,
+  poster: `img/bg-the-grand-budapest-hotel.jpg`,
+  img: `img/the-grand-budapest-hotel-poster.jpg`
+};
+
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const {promoTitle, promoGenre, promoYear, films} = this.props;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {<Main
+              promoTitle={promoTitle}
+              promoGenre={promoGenre}
+              promoYear={promoYear}
+              films={films}
+            />}
+          </Route>
+          <Route exact path="/movie">
+            {<Movie info={movieInfo} />}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 App.propTypes = {
   promoTitle: PropTypes.string.isRequired,
