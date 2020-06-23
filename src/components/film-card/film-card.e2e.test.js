@@ -1,28 +1,25 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FilmCard from './film-card';
 
-Enzyme.configure({
-  adapter: new Adapter(),
-});
+configure({adapter: new Adapter()});
 
 const titleText = `Fantastic Beast`;
 
 describe(`FilmCard`, () => {
-  it(`Mouse enter on title`, () => {
-    const onMouseEnter = jest.fn();
+  it(`Mouse click on title`, () => {
+    const onTitleFocus = jest.fn((...args) => [...args]);
     const card = shallow(
         <FilmCard
           title={titleText}
-          handleTitleFocus={onMouseEnter}>
+          onTitleFocus={onTitleFocus}
+        >
         </FilmCard>);
 
     const title = card.find(`h3.small-movie-card__title`);
-    title.simulate(`mouseenter`);
-    expect(onMouseEnter).toHaveBeenCalledTimes(1);
-  });
-
-  it(`Data state update`, () => {
+    title.simulate(`mouseEnter`);
+    expect(onTitleFocus).toHaveBeenCalledTimes(1);
+    expect(onTitleFocus.mock.calls[0][0]).toBe(titleText);
   });
 });

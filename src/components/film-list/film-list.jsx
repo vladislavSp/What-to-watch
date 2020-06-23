@@ -12,16 +12,22 @@ class FilmList extends React.Component {
     this.handleTitleFocus = this.handleTitleFocus.bind(this);
   }
 
-  handleTitleFocus(title) {
+  handleTitleFocus(activeCardTitle) {
     this.setState({
-      activeCardTitle: `${title}`
+      activeCardTitle
     });
   }
 
   render() {
     return (
       <div className="catalog__movies-list">
-        {this.props.films.map((film, index) => <FilmCard key={film.title + index} title={film.title} handleTitleFocus={this.handleTitleFocus} />)}
+        {this.props.films.map((film, index) => (
+          <FilmCard
+            key={film.title + index}
+            title={film.title}
+            onTitleFocus={this.handleTitleFocus}
+          />)
+        )}
       </div>
     );
   }

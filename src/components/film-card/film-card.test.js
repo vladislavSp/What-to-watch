@@ -7,7 +7,7 @@ const title = `Fantastic Beasts`;
 it(`renders correctly`, () => {
   const tree = renderer.create(<FilmCard
     title={title}
-    handleTitleFocus={() => {}}>
+    onTitleFocus={() => {}}>
   </FilmCard>)
   .toJSON();
   expect(tree).toMatchSnapshot();
