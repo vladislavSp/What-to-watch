@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 
-const Main = ({promoTitle, promoGenre, promoYear, films}) => <React.Fragment>
+const Main = ({promoTitle, promoGenre, promoYear, films, onCardClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -41,9 +41,15 @@ const Main = ({promoTitle, promoGenre, promoYear, films}) => <React.Fragment>
 
           <div className="movie-card__buttons">
             <button className="btn btn--play movie-card__button" type="button">
+              <svg viewBox="0 0 19 19" width="19" height="19">
+                <use xlinkHref="#play-s"></use>
+              </svg>
               <span>Play</span>
             </button>
             <button className="btn btn--list movie-card__button" type="button">
+              <svg viewBox="0 0 19 20" width="19" height="20">
+                <use xlinkHref="#add"></use>
+              </svg>
               <span>My list</span>
             </button>
           </div>
@@ -89,7 +95,7 @@ const Main = ({promoTitle, promoGenre, promoYear, films}) => <React.Fragment>
         </li>
       </ul>
 
-      <FilmList films={films} />
+      <FilmList films={films} onCardClick={onCardClick} />
 
       <div className="catalog__more">
         <button className="catalog__button" type="button">Show more</button>
@@ -117,6 +123,7 @@ Main.propTypes = {
   promoGenre: PropTypes.string.isRequired,
   promoYear: PropTypes.number.isRequired,
   films: PropTypes.array.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 export default Main;

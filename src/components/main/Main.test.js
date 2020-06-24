@@ -14,7 +14,8 @@ it(`renders correctly`, () => {
     promoTitle={promoInfo.promoTitle}
     promoGenre={promoInfo.promoGenre}
     promoYear={promoInfo.promoYear}
-    films={films}>
+    films={films}
+    onCardClick={() => {}}>
   </Main>)
   .toJSON();
   expect(tree).toMatchSnapshot();
