@@ -15,21 +15,45 @@ const movieInfo = {
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      screen: `main`
+    };
+  }
+
+
+  renderMainScreen() {
+    const {promoTitle, promoGenre, promoYear, films} = this.props;
+
+    if (this.state.screen === `main`) {
+      return (
+        <Main
+          promoTitle={promoTitle}
+          promoGenre={promoGenre}
+          promoYear={promoYear}
+          films={films}
+          onCardClick={(screenNew) => {
+            this.setState({
+              screen: screenNew,
+            });
+          }}
+        />
+      );
+    }
+    if (this.state.screen !== `main`) {
+      return (
+        <Movie info={movieInfo} />
+      );
+    }
+    return null;
   }
 
   render() {
-    const {promoTitle, promoGenre, promoYear, films} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {<Main
-              promoTitle={promoTitle}
-              promoGenre={promoGenre}
-              promoYear={promoYear}
-              films={films}
-            />}
+            {this.renderMainScreen()}
           </Route>
           <Route exact path="/movie">
             {<Movie info={movieInfo} />}
@@ -45,6 +69,7 @@ App.propTypes = {
   promoGenre: PropTypes.string.isRequired,
   promoYear: PropTypes.number.isRequired,
   films: PropTypes.array.isRequired,
+  // screen: PropTypes.string.isRequired
 };
 
 export default App;

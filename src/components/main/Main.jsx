@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 
-const Main = ({promoTitle, promoGenre, promoYear, films}) => <React.Fragment>
+const Main = ({promoTitle, promoGenre, promoYear, films, onCardClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -95,7 +95,7 @@ const Main = ({promoTitle, promoGenre, promoYear, films}) => <React.Fragment>
         </li>
       </ul>
 
-      <FilmList films={films} />
+      <FilmList films={films} onCardClick={onCardClick} />
 
       <div className="catalog__more">
         <button className="catalog__button" type="button">Show more</button>
@@ -123,6 +123,7 @@ Main.propTypes = {
   promoGenre: PropTypes.string.isRequired,
   promoYear: PropTypes.number.isRequired,
   films: PropTypes.array.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 export default Main;

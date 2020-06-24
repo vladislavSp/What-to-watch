@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const FilmCard = ({title, onTitleFocus}) => (
-  <article className="small-movie-card catalog__movies-card">
+const FilmCard = ({title, onTitleFocus, onCardClick}) => (
+  <article className="small-movie-card catalog__movies-card" onClick={() =>onCardClick(title)}>
     <div className="small-movie-card__image">
       <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
     </div>
@@ -14,7 +14,8 @@ const FilmCard = ({title, onTitleFocus}) => (
 
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
-  onTitleFocus: PropTypes.func.isRequired
+  onTitleFocus: PropTypes.func.isRequired,
+  onCardClick: PropTypes.func.isRequired
 };
 
 export default FilmCard;

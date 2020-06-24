@@ -26,6 +26,7 @@ class FilmList extends React.Component {
             key={film.title + index}
             title={film.title}
             onTitleFocus={this.handleTitleFocus}
+            onCardClick={this.props.onCardClick}
           />)
         )}
       </div>
@@ -35,6 +36,7 @@ class FilmList extends React.Component {
 
 FilmList.propTypes = {
   films: PropTypes.array.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 export default FilmList;
