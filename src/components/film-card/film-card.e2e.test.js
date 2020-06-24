@@ -14,6 +14,7 @@ describe(`FilmCard`, () => {
         <FilmCard
           title={titleText}
           onTitleFocus={onTitleFocus}
+          onCardClick={() => {}}
         >
         </FilmCard>);
 
@@ -21,5 +22,18 @@ describe(`FilmCard`, () => {
     title.simulate(`mouseEnter`);
     expect(onTitleFocus).toHaveBeenCalledTimes(1);
     expect(onTitleFocus.mock.calls[0][0]).toBe(titleText);
+  });
+
+  it(`Mouse click on card`, () => {
+    const onCardClick = jest.fn();
+    const card = shallow(
+        <FilmCard
+          title={titleText}
+          onTitleFocus={() => {}}
+          onCardClick={onCardClick}
+        >
+        </FilmCard>);
+    card.simulate(`click`);
+    expect(onCardClick).toHaveBeenCalledTimes(1);
   });
 });

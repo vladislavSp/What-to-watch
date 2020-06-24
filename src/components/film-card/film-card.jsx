@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FilmCard = ({title, onTitleFocus, onCardClick}) => (
-  <article className="small-movie-card catalog__movies-card" onClick={() =>onCardClick(title)}>
+  <article className="small-movie-card catalog__movies-card" onClick={() => onCardClick(title)}>
     <div className="small-movie-card__image">
       <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
     </div>
