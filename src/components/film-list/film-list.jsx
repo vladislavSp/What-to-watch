@@ -6,16 +6,24 @@ class FilmList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeCardTitle: ``
+      activeCard: ``,
+      preview: false
     };
 
-    this.handleTitleFocus = this.handleTitleFocus.bind(this);
+    this.handleCardEnter = this.handleCardEnter.bind(this);
+    this.handleCardLeave = this.handleCardLeave.bind(this);
   }
 
-  handleTitleFocus(activeCardTitle) {
+  handleCardEnter(activeCard) {
     this.setState({
-      activeCardTitle
+      activeCard,
+      preview: true
     });
+    console.log(activeCard);
+  }
+
+  handleCardLeave() {
+    console.log(1);
   }
 
   render() {
@@ -25,8 +33,13 @@ class FilmList extends React.Component {
           <FilmCard
             key={film.title + index}
             title={film.title}
-            onTitleFocus={this.handleTitleFocus}
             onCardClick={this.props.onCardClick}
+            onCardEnter={this.handleCardEnter}
+            onCardLeave={this.handleCardLeave}
+            srcVideo = {film.videoPreview}
+            posterVideo = {film.src}
+            statePreview = {this.state.preview}
+            stateActiveCard = {this.state.activeCard}
           />)
         )}
       </div>
