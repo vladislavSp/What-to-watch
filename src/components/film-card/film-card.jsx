@@ -1,35 +1,54 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../player/VideoPlayer.jsx';
 
-const FilmCard = ({title, onCardClick, onCardEnter, onCardLeave, srcVideo, posterVideo, statePreview, stateActiveCard}) => {
-  return <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={() => onCardEnter(title)}
-    onMouseLeave={onCardLeave}
-    onClick={() => onCardClick(title)}>
-    {statePreview && stateActiveCard === title ?
-      <VideoPlayer scrVideo={ srcVideo } poster={ posterVideo } /> :
+class FilmCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeCard: ``,
+      isActive: false,
+    };
+
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  handleMouseEnter(activeCard) {
+    this.setState({isActive: true, activeCard});
+  }
+
+  handleMouseLeave() {
+    this.setState({isActive: false, activeCard: ``});
+  }
+
+  render() {
+    const {title, onCardClick, srcVideo, posterVideo} = this.props;
+
+    return (<article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={() => this.handleMouseEnter(title)}
+      onMouseLeave={this.handleMouseLeave}
+      onClick={() => onCardClick(title)}>
+
       <React.Fragment>
         <div className="small-movie-card__image">
-          <img src={posterVideo} alt={title} width="280" height="175" />
+          <VideoPlayer scrVideo={ srcVideo } poster={ posterVideo } isPlaying={ this.state.isActive } />
         </div>
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>
         </h3>
-      </React.Fragment>}
-  </article>;
-};
+      </React.Fragment>
+    </article>);
+  }
+}
 
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
   onCardClick: PropTypes.func.isRequired,
-  onCardEnter: PropTypes.func.isRequired,
-  onCardLeave: PropTypes.func.isRequired,
   srcVideo: PropTypes.string.isRequired,
-  posterVideo: PropTypes.string.isRequired,
-  statePreview: PropTypes.bool.isRequired,
-  stateActiveCard: PropTypes.string.isRequired
+  posterVideo: PropTypes.string.isRequired
 };
 
 export default FilmCard;
