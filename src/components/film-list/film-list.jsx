@@ -19,11 +19,13 @@ class FilmList extends React.Component {
       activeCard,
       preview: true
     });
-    console.log(activeCard);
   }
 
   handleCardLeave() {
-    console.log(1);
+    this.setState({
+      activeCard: ``,
+      preview: false
+    });
   }
 
   render() {

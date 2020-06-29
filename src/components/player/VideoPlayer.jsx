@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const VideoPlayer = ({scrVideo, poster}) => <React.Fragment>
-  <video poster={ poster } autoPlay loop muted width="100%" height="auto">
+  <video poster={ poster } autoPlay={`true`} loop muted width="100%" height="auto">
     <source src={ scrVideo } />
   </video>
 </React.Fragment>;
