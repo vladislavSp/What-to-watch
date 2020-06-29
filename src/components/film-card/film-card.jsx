@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import VideoPlayer from '../player/VideoPlayer.jsx';
 
 const FilmCard = ({title, onCardClick, onCardEnter, onCardLeave, srcVideo, posterVideo, statePreview, stateActiveCard}) => {
-  console.log(statePreview, stateActiveCard);
-
   return <article
     className="small-movie-card catalog__movies-card"
     onMouseEnter={() => onCardEnter(title)}
