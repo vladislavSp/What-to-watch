@@ -34,7 +34,7 @@ class FilmCard extends PureComponent {
 
       <React.Fragment>
         <div className="small-movie-card__image">
-          <VideoPlayer scrVideo={ srcVideo } poster={ posterVideo } isPlaying={ this.state.isActive } />
+          <VideoPlayer srcVideo={ srcVideo } poster={ posterVideo } isPlaying={ this.state.isActive } />
         </div>
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>

@@ -1,16 +1,16 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmCard from '../film-card/film-card';
+import FilmList from '../film-list/film-list';
 import films from '../../mocks/films.js';
 
-it(`renders correctly`, () => {
-  const tree = renderer.create(films.map((film, index) => <FilmCard
-    key={film.title + index}
-    title={film.title}
-    onCardClick={() => {}}
-    srcVideo = {film.videoPreview}
-    posterVideo = {film.src}>
-  </FilmCard>))
+it(`renders correctly film list`, () => {
+  const tree = renderer.create(<FilmList
+    films={films}
+    onCardClick={() => {}} />, {
+    createNodeMock: () => {
+      return {};
+    }
+  })
   .toJSON();
   expect(tree).toMatchSnapshot();
 });

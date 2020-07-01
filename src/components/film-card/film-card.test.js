@@ -11,8 +11,11 @@ it(`renders correctly`, () => {
     title={title}
     onCardClick={() => {}}
     srcVideo={scrVideo}
-    posterVideo={poster}>
-  </FilmCard>)
+    posterVideo={poster} />, {
+    createNodeMock: () => {
+      return {};
+    }
+  })
   .toJSON();
   expect(tree).toMatchSnapshot();
 });

@@ -15,8 +15,11 @@ it(`renders correctly`, () => {
     promoGenre={promoInfo.promoGenre}
     promoYear={promoInfo.promoYear}
     films={films}
-    onCardClick={() => {}}>
-  </Main>)
+    onCardClick={() => {}} />, {
+    createNodeMock: () => {
+      return {};
+    }
+  })
   .toJSON();
   expect(tree).toMatchSnapshot();
 });

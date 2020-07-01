@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-Array [
+exports[`renders correctly film list 1`] = `
+<div
+  className="catalog__movies-list"
+>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -28,7 +30,7 @@ Array [
         Fantastic Beasts
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -55,7 +57,7 @@ Array [
         Bohemian Rhapsody
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -82,7 +84,7 @@ Array [
         Macbeth
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -109,7 +111,7 @@ Array [
         Aviator
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -136,7 +138,7 @@ Array [
         We need to talk about Kevin
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -163,7 +165,7 @@ Array [
         Shutter Island
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -190,7 +192,7 @@ Array [
         No Country for Old Men
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
@@ -217,6 +219,6 @@ Array [
         Snatch
       </a>
     </h3>
-  </article>,
-]
+  </article>
+</div>
 `;

@@ -6,22 +6,27 @@ import FilmCard from './film-card';
 configure({adapter: new Adapter()});
 
 const titleText = `Fantastic Beast`;
+const srcVideo = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
+const posterVideo = `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`;
 
 describe(`FilmCard`, () => {
   it(`Mouse click on title`, () => {
-    const onTitleFocus = jest.fn((...args) => [...args]);
     const card = shallow(
         <FilmCard
           title={titleText}
-          onTitleFocus={onTitleFocus}
           onCardClick={() => {}}
+          srcVideo={srcVideo}
+          posterVideo={posterVideo}
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
         >
         </FilmCard>);
 
-    const title = card.find(`h3.small-movie-card__title`);
-    title.simulate(`mouseEnter`);
-    expect(onTitleFocus).toHaveBeenCalledTimes(1);
-    expect(onTitleFocus.mock.calls[0][0]).toBe(titleText);
+    card.simulate(`mouseenter`);
+    expect(card.state(`isActive`)).toBe(true);
+
+    card.simulate(`mouseleave`);
+    expect(card.state(`isActive`)).toBe(false);
   });
 
   it(`Mouse click on card`, () => {
@@ -29,10 +34,14 @@ describe(`FilmCard`, () => {
     const card = shallow(
         <FilmCard
           title={titleText}
-          onTitleFocus={() => {}}
           onCardClick={onCardClick}
+          srcVideo={srcVideo}
+          posterVideo={posterVideo}
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
         >
         </FilmCard>);
+
     card.simulate(`click`);
     expect(onCardClick).toHaveBeenCalledTimes(1);
   });
