@@ -7,7 +7,7 @@ class FilmCard extends PureComponent {
     super(props);
 
     this.state = {
-      activeCard: ``,
+      activeCard: null,
       isActive: false,
     };
 
@@ -20,7 +20,7 @@ class FilmCard extends PureComponent {
   }
 
   handleMouseLeave() {
-    this.setState({isActive: false, activeCard: ``});
+    this.setState({isActive: false, activeCard: null});
   }
 
   render() {
