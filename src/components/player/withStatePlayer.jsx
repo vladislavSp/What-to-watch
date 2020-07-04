@@ -9,7 +9,7 @@ export const withStatePlayer = (Component) => {
 
     componentDidMount() {
       const video = this.videoRef.current;
-      console.log(video);
+
       video.src = this.props.srcVideo;
       video.muted = true;
     }
@@ -40,7 +40,7 @@ export const withStatePlayer = (Component) => {
     render() {
       return (
         <Component
-          ref={this.videoRef}
+          videoRef = {this.videoRef}
           {...this.props}
         />
       );

@@ -40,6 +40,7 @@ class FilmCard extends PureComponent {
           <a className="small-movie-card__link" href="movie-page.html">{title}</a>
         </h3>
       </React.Fragment>
+
     </article>);
   }
 }

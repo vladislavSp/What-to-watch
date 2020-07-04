@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import {withStatePlayer} from './withStatePlayer.jsx';
 
 const VideoPlayer = (props) => {
-  const {poster} = props;
+  const {poster, videoRef} = props;
 
   return <video
+    ref={videoRef}
     poster={ poster }
     autoPlay={ false }
     width="280"
@@ -15,6 +16,7 @@ const VideoPlayer = (props) => {
 
 VideoPlayer.propTypes = {
   poster: PropTypes.string.isRequired,
+  videoRef: PropTypes.object.isRequired
 };
 
 export default withStatePlayer(VideoPlayer);
