@@ -1,7 +1,8 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 export const withStatePlayer = (Component) => {
-  return class withActivePlayer extends PureComponent {
+  class withActivePlayer extends PureComponent {
     constructor(props) {
       super(props);
       this.videoRef = React.createRef();
@@ -9,7 +10,6 @@ export const withStatePlayer = (Component) => {
 
     componentDidMount() {
       const video = this.videoRef.current;
-
       video.src = this.props.srcVideo;
       video.muted = true;
     }
@@ -45,5 +45,14 @@ export const withStatePlayer = (Component) => {
         />
       );
     }
+  }
+
+  withActivePlayer.propTypes = {
+    isPlaying: PropTypes.bool.isRequired,
+    srcVideo: PropTypes.string.isRequired
   };
+
+  return withActivePlayer;
 };
+
+
