@@ -8,7 +8,7 @@ const srcVideo = `https://download.blender.org/durian/trailer/sintel_trailer-480
 const posterVideo = `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`;
 
 describe(`VideoPlayer`, () => {
-  it(`VideoPlayer is play`, () => {
+  it(`VideoPlayer is pause state`, () => {
     const isPlaying = false;
 
     const player = mount(<VideoPlayer
@@ -20,7 +20,7 @@ describe(`VideoPlayer`, () => {
     expect(player.props().isPlaying).toBe(isPlaying);
   });
 
-  it(`VideoPlayer is play`, () => {
+  it(`VideoPlayer is play state`, () => {
     const isPlaying = true;
 
     const player = mount(<VideoPlayer
