@@ -1,21 +1,55 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import VideoPlayer from '../player/VideoPlayer.jsx';
 
-const FilmCard = ({title, onTitleFocus, onCardClick}) => (
-  <article className="small-movie-card catalog__movies-card" onClick={() => onCardClick(title)}>
-    <div className="small-movie-card__image">
-      <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-    </div>
-    <h3 className="small-movie-card__title" onMouseEnter={() => onTitleFocus(title)}>
-      <a className="small-movie-card__link" href="movie-page.html">{title}</a>
-    </h3>
-  </article>
-);
+class FilmCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeCard: null,
+      isActive: false,
+    };
+
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  handleMouseEnter(activeCard) {
+    this.setState({isActive: true, activeCard});
+  }
+
+  handleMouseLeave() {
+    this.setState({isActive: false, activeCard: null});
+  }
+
+  render() {
+    const {title, onCardClick, srcVideo, posterVideo} = this.props;
+
+    return (<article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={() => this.handleMouseEnter(title)}
+      onMouseLeave={this.handleMouseLeave}
+      onClick={() => onCardClick(title)}>
+
+      <React.Fragment>
+        <div className="small-movie-card__image">
+          <VideoPlayer srcVideo={ srcVideo } poster={ posterVideo } isPlaying={ this.state.isActive } />
+        </div>
+        <h3 className="small-movie-card__title">
+          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        </h3>
+      </React.Fragment>
+
+    </article>);
+  }
+}
 
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
-  onTitleFocus: PropTypes.func.isRequired,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  srcVideo: PropTypes.string.isRequired,
+  posterVideo: PropTypes.string.isRequired
 };
 
 export default FilmCard;

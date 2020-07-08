@@ -1,24 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
-Array [
+exports[`renders correctly film list 1`] = `
+<div
+  className="catalog__movies-list"
+>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -27,24 +30,25 @@ Array [
         Fantastic Beasts
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -53,24 +57,25 @@ Array [
         Bohemian Rhapsody
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -79,24 +84,25 @@ Array [
         Macbeth
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -105,24 +111,25 @@ Array [
         Aviator
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -131,24 +138,25 @@ Array [
         We need to talk about Kevin
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -157,24 +165,25 @@ Array [
         Shutter Island
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -183,24 +192,25 @@ Array [
         No Country for Old Men
       </a>
     </h3>
-  </article>,
+  </article>
   <article
     className="small-movie-card catalog__movies-card"
     onClick={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
     >
-      <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+      <video
+        autoPlay={false}
         height="175"
-        src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+        poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         width="280"
       />
     </div>
     <h3
       className="small-movie-card__title"
-      onMouseEnter={[Function]}
     >
       <a
         className="small-movie-card__link"
@@ -209,6 +219,6 @@ Array [
         Snatch
       </a>
     </h3>
-  </article>,
-]
+  </article>
+</div>
 `;

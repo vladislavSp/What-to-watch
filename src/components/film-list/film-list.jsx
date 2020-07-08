@@ -5,17 +5,6 @@ import FilmCard from '../film-card/film-card.jsx';
 class FilmList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      activeCardTitle: ``
-    };
-
-    this.handleTitleFocus = this.handleTitleFocus.bind(this);
-  }
-
-  handleTitleFocus(activeCardTitle) {
-    this.setState({
-      activeCardTitle
-    });
   }
 
   render() {
@@ -25,8 +14,9 @@ class FilmList extends React.Component {
           <FilmCard
             key={film.title + index}
             title={film.title}
-            onTitleFocus={this.handleTitleFocus}
             onCardClick={this.props.onCardClick}
+            srcVideo = {film.videoPreview}
+            posterVideo = {film.src}
           />)
         )}
       </div>
