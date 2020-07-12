@@ -1,12 +1,13 @@
-import films from './mocks/films.js';
+import {films, promoFilm} from './mocks/films.js';
 import {genreFilter} from './const/const.js';
 import {extend} from './utils/utils.js';
 import {getFilmsByFilter} from './utils/filter.js';
 
 const initialState = {
-  activeGenre: genreFilter.All,
+  activeGenre: genreFilter.ALL,
   allFilms: films,
-  showFilms: getFilmsByFilter(films, genreFilter.All),
+  promoFilm,
+  showFilms: getFilmsByFilter(films, genreFilter.ALL),
 };
 
 const ActionType = {
@@ -37,8 +38,9 @@ const reducer = (state = initialState, action) => {
 
       return extend(state, {showFilms: filteredMovies});
     default:
-
+      return state;
   }
+
   return state;
 };
 

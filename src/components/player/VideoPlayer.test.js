@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import VideoPlayer from "./VideoPlayer.jsx";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import VideoPlayer from './VideoPlayer.jsx';
 
 const isPlaying = false;
 const srcVideo = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;

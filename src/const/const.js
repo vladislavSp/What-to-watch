@@ -12,4 +12,6 @@ const genreFilter = {
   THRILLER: `Thrillers`,
 };
 
-export {genreFilter};
+const genreFilterArray = Object.values(genreFilter).filter((el, i, arr) => arr.indexOf(el) === i);
+
+export {genreFilter, genreFilterArray};

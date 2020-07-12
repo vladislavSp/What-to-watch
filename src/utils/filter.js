@@ -1,4 +1,4 @@
-import genreFilter from '../const/const.js';
+import {genreFilter} from '../const/const.js';
 
 const getFiltersFilms = (filterFilms, filter) => {
   return filterFilms.filter((film) => film.genre === filter);
@@ -27,8 +27,9 @@ const getFilmsByFilter = (films, filter) => {
     case genreFilter.THRILLER:
       return getFiltersFilms(films, `Thrillers`);
     default:
-      return Object.assign({}, films);
+      return films;
   }
 };
+
 
 export {getFilmsByFilter};
