@@ -12,8 +12,7 @@ const movieInfo = {
   poster: `img/bg-the-grand-budapest-hotel.jpg`,
   img: `img/the-grand-budapest-hotel-poster.jpg`
 };
-
-class App extends PureComponent {
+export class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,5 +76,4 @@ const mapStateToProps = (state) => ({
   films: state.showFilms,
 });
 
-export {App};
 export default connect(mapStateToProps, null)(App);

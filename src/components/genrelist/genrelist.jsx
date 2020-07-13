@@ -31,7 +31,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilterClick(genre) {
     dispatch(ActionCreator.setGenreType(genre));
-    dispatch(ActionCreator.getFilms());
+    dispatch(ActionCreator.getFilterFilms());
   }
 });
 

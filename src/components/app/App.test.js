@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import {App} from './app.jsx';
+import {App} from './App.jsx';
 import {genreFilter} from '../../const/const.js';
 import {Provider} from 'react-redux';
 import {films, promoFilm} from '../../mocks/films.js';
