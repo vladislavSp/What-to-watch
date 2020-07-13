@@ -5,7 +5,7 @@ const getFiltersFilms = (filterFilms, filter) => {
 };
 
 export const getFilmsByFilter = (films, filter) => {
-  if (filter === `All genres`) {
+  if (filter === genreFilter.ALL) {
     return films;
   } else {
     return getFiltersFilms(films, filter);

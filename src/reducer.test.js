@@ -5,7 +5,7 @@ const films = [
   {
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Fantastic Beasts`,
-    genre: `Comedy`,
+    genre: `Comedies`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
@@ -17,19 +17,19 @@ const films = [
   {
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Macbeth`,
-    genre: `Comedy`,
+    genre: `Comedies`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Aviator`,
-    genre: `Drama`,
+    genre: `Dramas`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `We need to talk about Kevin`,
-    genre: `Thriller`,
+    genre: `Thrillers`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
@@ -47,7 +47,7 @@ const films = [
   {
     src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Snatch`,
-    genre: `Sci-fi`,
+    genre: `Sci-Fi`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   }
 ];
@@ -81,10 +81,10 @@ describe(`Reducer work correctly`, () => {
     },
     {
       type: ActionType.SET_JENRE,
-      payload: `Comedy`,
+      payload: `Comedies`,
     }
     )).toEqual({
-      activeGenre: `Comedy`,
+      activeGenre: `Comedies`,
     });
   });
 
@@ -96,7 +96,7 @@ describe(`Reducer work correctly`, () => {
       showFilms: films,
     },
     {
-      type: ActionType.GET_FILMS,
+      type: ActionType.GET_FILTER_FILMS,
     })).toEqual({
       activeGenre: `Horror`,
       allFilms: films,
@@ -116,8 +116,8 @@ describe(`ActionCreators work correctly`, () => {
   });
 
   it(`Action creator - for getting films`, () => {
-    expect(ActionCreator.getFilms()).toEqual({
-      type: ActionType.GET_FILMS,
+    expect(ActionCreator.getFilterFilms()).toEqual({
+      type: ActionType.GET_FILTER_FILMS,
     });
   });
 });
