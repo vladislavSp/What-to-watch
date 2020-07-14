@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
+import {connect} from 'react-redux';
 
 const movieInfo = {
   name: `The Grand Budapest Hotel`,
@@ -11,8 +12,7 @@ const movieInfo = {
   poster: `img/bg-the-grand-budapest-hotel.jpg`,
   img: `img/the-grand-budapest-hotel-poster.jpg`
 };
-
-class App extends PureComponent {
+export class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,16 +20,15 @@ class App extends PureComponent {
     };
   }
 
-
   renderMainScreen() {
-    const {promoTitle, promoGenre, promoYear, films} = this.props;
+    const {promoFilm, films} = this.props;
 
     if (this.state.screen === `main`) {
       return (
         <Main
-          promoTitle={promoTitle}
-          promoGenre={promoGenre}
-          promoYear={promoYear}
+          promoTitle={promoFilm.promoTitle}
+          promoGenre={promoFilm.promoGenre}
+          promoYear={promoFilm.promoYear}
           films={films}
           onCardClick={(screenNew) => {
             this.setState({
@@ -48,7 +47,6 @@ class App extends PureComponent {
   }
 
   render() {
-
     return (
       <BrowserRouter>
         <Switch>
@@ -65,11 +63,17 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  promoTitle: PropTypes.string.isRequired,
-  promoGenre: PropTypes.string.isRequired,
-  promoYear: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
-  // screen: PropTypes.string.isRequired
+  promoFilm: PropTypes.shape({
+    promoTitle: PropTypes.string.isRequired,
+    promoGenre: PropTypes.string.isRequired,
+    promoYear: PropTypes.number.isRequired,
+  }),
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  promoFilm: state.promoFilm,
+  films: state.showFilms,
+});
+
+export default connect(mapStateToProps, null)(App);

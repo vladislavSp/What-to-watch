@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
+import GenreList from '../genrelist/genrelist.jsx';
+import {genreFilterArray} from '../../const/const.js';
 
 const Main = ({promoTitle, promoGenre, promoYear, films, onCardClick}) => <React.Fragment>
   <section className="movie-card">
@@ -62,38 +64,7 @@ const Main = ({promoTitle, promoGenre, promoYear, films, onCardClick}) => <React
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <ul className="catalog__genres-list">
-        <li className="catalog__genres-item catalog__genres-item--active">
-          <a href="#" className="catalog__genres-link">All genres</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Comedies</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Crime</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Documentary</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Dramas</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Horror</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Kids & Family</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Romance</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Sci-Fi</a>
-        </li>
-        <li className="catalog__genres-item">
-          <a href="#" className="catalog__genres-link">Thrillers</a>
-        </li>
-      </ul>
+      <GenreList genreFilterArray={genreFilterArray} />
 
       <FilmList films={films} onCardClick={onCardClick} />
 
@@ -122,7 +93,7 @@ Main.propTypes = {
   promoTitle: PropTypes.string.isRequired,
   promoGenre: PropTypes.string.isRequired,
   promoYear: PropTypes.number.isRequired,
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
 

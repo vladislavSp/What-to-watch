@@ -25,7 +25,7 @@ class FilmList extends React.Component {
 }
 
 FilmList.propTypes = {
-  films: PropTypes.array.isRequired,
+  films: PropTypes.arrayOf(PropTypes.object).isRequired,
   onCardClick: PropTypes.func.isRequired,
 };
 
