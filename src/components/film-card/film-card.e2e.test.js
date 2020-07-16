@@ -1,5 +1,5 @@
 import React from 'react';
-import {configure, shallow} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FilmCard from './film-card';
 
@@ -10,33 +10,49 @@ const srcVideo = `https://download.blender.org/durian/trailer/sintel_trailer-480
 const posterVideo = `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`;
 
 describe(`FilmCard`, () => {
-  it(`Mouse click on title`, () => {
-    const card = shallow(
+  it(`Mouse enter on card`, () => {
+    const card = mount(
         <FilmCard
           title={titleText}
           onCardClick={() => {}}
           srcVideo={srcVideo}
           posterVideo={posterVideo}
+          isActive={true}
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
         >
         </FilmCard>);
 
     card.simulate(`mouseenter`);
-    expect(card.state(`isActive`)).toBe(true);
+    expect(card.props().isActive).toBe(true);
+  });
+
+  it(`Mouse leave on card`, () => {
+    const card = mount(
+        <FilmCard
+          title={titleText}
+          onCardClick={() => {}}
+          srcVideo={srcVideo}
+          posterVideo={posterVideo}
+          isActive={false}
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        >
+        </FilmCard>);
 
     card.simulate(`mouseleave`);
-    expect(card.state(`isActive`)).toBe(false);
+    expect(card.props().isActive).toBe(false);
   });
 
   it(`Mouse click on card`, () => {
     const onCardClick = jest.fn();
-    const card = shallow(
+    const card = mount(
         <FilmCard
           title={titleText}
           onCardClick={onCardClick}
           srcVideo={srcVideo}
           posterVideo={posterVideo}
+          isActive={true}
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
         >
