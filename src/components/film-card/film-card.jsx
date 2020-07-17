@@ -1,55 +1,37 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import VideoPlayer from '../player/VideoPlayer.jsx';
+import {withActiveCard} from '../../hocs/withActiveItem.jsx';
 
-class FilmCard extends PureComponent {
-  constructor(props) {
-    super(props);
+const FilmCard = (props) => {
+  const {title, onCardClick, srcVideo, posterVideo, isActive, onMouseEnter, onMouseLeave} = props;
 
-    this.state = {
-      activeCard: null,
-      isActive: false,
-    };
+  return (<article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={() => onMouseEnter(title)}
+    onMouseLeave={onMouseLeave}
+    onClick={() => onCardClick(title)}>
 
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-  }
+    <React.Fragment>
+      <div className="small-movie-card__image">
+        <VideoPlayer srcVideo={ srcVideo } poster={ posterVideo } isPlaying={ isActive } />
+      </div>
+      <h3 className="small-movie-card__title">
+        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+      </h3>
+    </React.Fragment>
 
-  handleMouseEnter(activeCard) {
-    this.setState({isActive: true, activeCard});
-  }
-
-  handleMouseLeave() {
-    this.setState({isActive: false, activeCard: null});
-  }
-
-  render() {
-    const {title, onCardClick, srcVideo, posterVideo} = this.props;
-
-    return (<article
-      className="small-movie-card catalog__movies-card"
-      onMouseEnter={() => this.handleMouseEnter(title)}
-      onMouseLeave={this.handleMouseLeave}
-      onClick={() => onCardClick(title)}>
-
-      <React.Fragment>
-        <div className="small-movie-card__image">
-          <VideoPlayer srcVideo={ srcVideo } poster={ posterVideo } isPlaying={ this.state.isActive } />
-        </div>
-        <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{title}</a>
-        </h3>
-      </React.Fragment>
-
-    </article>);
-  }
-}
+  </article>);
+};
 
 FilmCard.propTypes = {
   title: PropTypes.string.isRequired,
   onCardClick: PropTypes.func.isRequired,
   srcVideo: PropTypes.string.isRequired,
-  posterVideo: PropTypes.string.isRequired
+  posterVideo: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
 };
 
-export default FilmCard;
+export default withActiveCard(FilmCard);

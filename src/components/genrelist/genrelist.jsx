@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer.js';
 
-const GenreList = ({genreFilterArray, activeFilter, onFilterClick}) => {
+export const GenreList = ({genreFilterArray, activeFilter, onFilterClick}) => {
   return <ul className="catalog__genres-list">
     {genreFilterArray.map((genre) => (<li key={genre} className={`catalog__genres-item ${activeFilter === genre ? `catalog__genres-item--active` : `` }`}>
       <a
@@ -35,5 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {GenreList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenreList);

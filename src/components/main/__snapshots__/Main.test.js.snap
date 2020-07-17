@@ -306,7 +306,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/bohemian-rhapsody.jpg"
               width="280"
             />
           </div>
@@ -333,7 +333,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/macbeth.jpg"
               width="280"
             />
           </div>
@@ -360,7 +360,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/aviator.jpg"
               width="280"
             />
           </div>
@@ -387,7 +387,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/we-need-to-talk-about-kevin.jpg"
               width="280"
             />
           </div>
@@ -414,7 +414,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/shutter-island.jpg"
               width="280"
             />
           </div>
@@ -441,7 +441,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/no-country-for-old-men.jpg"
               width="280"
             />
           </div>
@@ -468,7 +468,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="img/snatch.jpg"
               width="280"
             />
           </div>
