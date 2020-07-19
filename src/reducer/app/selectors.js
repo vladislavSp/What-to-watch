@@ -5,13 +5,13 @@ import {createSelector} from 'reselect';
 
 const NAME_SPACE = NameSpace.APP;
 
-export const getGenreFromState = (state) => {
-  return state[NAME_SPACE].genre;
+export const getActiveGenre = (state) => {
+  return state[NAME_SPACE].activeGenre;
 };
 
 export const getFilteredFilms = createSelector(
     getAllFilms,
-    getGenreFromState,
+    getActiveGenre,
     (allFilms, currentGenre) => {
       if (currentGenre === genreFilter.ALL) {
         return allFilms;
@@ -24,14 +24,11 @@ export const getGenres = createSelector(
     getAllFilms,
     (allFilms) => {
       const uniqueGenre = new Set();
-      const genres = Array.from(allFilms.forEach((film) => uniqueGenre.add(film.genre)));
+      allFilms.forEach((film) => uniqueGenre.add(film.genre));
+      const genres = Array.from(uniqueGenre);
       genres.sort().splice(MAX_GENRES_NUM);
       genres.unshift(genreFilter.ALL);
 
       return genres;
     }
 );
-
-export const getActiveGenre = (state) => {
-  return state[NAME_SPACE].genre;
-};

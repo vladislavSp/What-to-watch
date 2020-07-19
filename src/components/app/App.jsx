@@ -66,14 +66,12 @@ export class App extends PureComponent {
 const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
   films: getAllFilms(state),
-  filteredFilms: getFilteredFilms(state).slice(0, 7),
+  filteredFilms: getFilteredFilms(state).slice(0, 8),
 });
 
 App.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  loadFilms: PropTypes.func.isRequired,
-  loadPromo: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, null)(App);

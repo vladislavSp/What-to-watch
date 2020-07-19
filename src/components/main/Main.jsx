@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
-import {genreFilterArray} from '../../const/const.js';
+// import {genreFilterArray} from '../../const/const.js';
 
-const Main = ({films, onCardClick}) => <React.Fragment>
+const Main = ({promoFilm, films, onCardClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
-      <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+      <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
     </div>
 
     <h1 className="visually-hidden">WTW</h1>
@@ -31,14 +31,14 @@ const Main = ({films, onCardClick}) => <React.Fragment>
     <div className="movie-card__wrap">
       <div className="movie-card__info">
         <div className="movie-card__poster">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+          <img src={promoFilm.posterImage} alt={`${promoFilm.title} poster`} width="218" height="327" />
         </div>
 
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">Заголовок</h2>
+          <h2 className="movie-card__title">{promoFilm.title}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">Жанр</span>
-            <span className="movie-card__year">1920</span>
+            <span className="movie-card__genre">{promoFilm.genre}</span>
+            <span className="movie-card__year">{promoFilm.year}</span>
           </p>
           <div className="movie-card__buttons">
             <button className="btn btn--play movie-card__button" type="button">
@@ -63,7 +63,7 @@ const Main = ({films, onCardClick}) => <React.Fragment>
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenreList genreFilterArray={genreFilterArray} />
+      <GenreList />
 
       <FilmList films={films} onCardClick={onCardClick} />
 
@@ -89,11 +89,7 @@ const Main = ({films, onCardClick}) => <React.Fragment>
 </React.Fragment>;
 
 Main.propTypes = {
-  // promoFilm: PropTypes.objectOf({
-  //   title: PropTypes.string,
-  //   genre: PropTypes.string,
-  //   year: PropTypes.number,
-  // }).isRequired,
+  promoFilm: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
   onCardClick: PropTypes.func.isRequired,
 };

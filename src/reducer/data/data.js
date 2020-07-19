@@ -3,7 +3,7 @@ import {extend} from '../../utils/utils.js';
 
 const initialState = {
   allFilms: [],
-  promoFilm: null,
+  promoFilm: {},
 };
 
 const ActionType = {
