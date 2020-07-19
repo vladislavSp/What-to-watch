@@ -12,14 +12,14 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  loadFilms: (films) => ({
+  loadFilms: (allFilms) => ({
     type: ActionType.LOAD_FILMS,
-    payload: films,
+    payload: allFilms,
   }),
 
-  loadPromo: (promo) => ({
+  loadPromo: (promoFilm) => ({
     type: ActionType.LOAD_PROMO,
-    payload: promo,
+    payload: promoFilm,
   }),
 };
 
@@ -44,7 +44,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS:
       return extend(state, {allFilms: action.payload});
     case ActionType.LOAD_PROMO:
-      return extend(state, {promo: action.payload});
+      return extend(state, {promoFilm: action.payload});
   }
 
   return state;

@@ -4,7 +4,7 @@ import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import {genreFilterArray} from '../../const/const.js';
 
-const Main = ({promoFilm, films, onCardClick}) => <React.Fragment>
+const Main = ({films, onCardClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -35,12 +35,11 @@ const Main = ({promoFilm, films, onCardClick}) => <React.Fragment>
         </div>
 
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{promoFilm.title}</h2>
+          <h2 className="movie-card__title">Заголовок</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{promoFilm.genre}</span>
-            <span className="movie-card__year">{promoFilm.year}</span>
+            <span className="movie-card__genre">Жанр</span>
+            <span className="movie-card__year">1920</span>
           </p>
-
           <div className="movie-card__buttons">
             <button className="btn btn--play movie-card__button" type="button">
               <svg viewBox="0 0 19 19" width="19" height="19">
@@ -90,11 +89,11 @@ const Main = ({promoFilm, films, onCardClick}) => <React.Fragment>
 </React.Fragment>;
 
 Main.propTypes = {
-  promoFilm: PropTypes.objectOf({
-    title: PropTypes.string,
-    genre: PropTypes.string,
-    year: PropTypes.number,
-  }).isRequired,
+  // promoFilm: PropTypes.objectOf({
+  //   title: PropTypes.string,
+  //   genre: PropTypes.string,
+  //   year: PropTypes.number,
+  // }).isRequired,
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
   onCardClick: PropTypes.func.isRequired,
 };

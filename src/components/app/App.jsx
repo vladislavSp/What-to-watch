@@ -7,8 +7,6 @@ import {connect} from 'react-redux';
 import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
 import {getFilteredFilms} from '../../reducer/app/selectors';
 
-import {Operation as DataOperation} from '../../reducer/data/data';
-
 const movieInfo = {
   name: `The Grand Budapest Hotel`,
   jenre: `Drama`,
@@ -16,6 +14,7 @@ const movieInfo = {
   poster: `img/bg-the-grand-budapest-hotel.jpg`,
   img: `img/the-grand-budapest-hotel-poster.jpg`
 };
+
 export class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -24,20 +23,12 @@ export class App extends PureComponent {
     };
   }
 
-  componentDidMount() {
-    this.props.loadPromo();
-    this.props.loadFilms();
-  }
-
   renderMainScreen() {
     const {promoFilm, filteredFilms} = this.props;
 
     if (this.state.screen === `main`) {
       return (
         <Main
-          // promoTitle={promoFilm.promoTitle}
-          // promoGenre={promoFilm.promoGenre}
-          // promoYear={promoFilm.promoYear}
           promoFilm={promoFilm}
           films={filteredFilms}
           onCardClick={(screenNew) => {
@@ -78,24 +69,11 @@ const mapStateToProps = (state) => ({
   filteredFilms: getFilteredFilms(state).slice(0, 7),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  loadFilms() {
-    dispatch(DataOperation.loadFilms());
-  },
-  loadPromo() {
-    dispatch(DataOperation.loadPromo());
-  },
-});
-
 App.propTypes = {
-  promoFilm: PropTypes.shape({
-    promoTitle: PropTypes.string.isRequired,
-    promoGenre: PropTypes.string.isRequired,
-    promoYear: PropTypes.number.isRequired,
-  }),
+  promoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   loadFilms: PropTypes.func.isRequired,
   loadPromo: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

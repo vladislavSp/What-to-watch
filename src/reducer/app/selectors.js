@@ -5,13 +5,13 @@ import {createSelector} from 'reselect';
 
 const NAME_SPACE = NameSpace.APP;
 
-export const getGenre = (state) => {
+export const getGenreFromState = (state) => {
   return state[NAME_SPACE].genre;
 };
 
 export const getFilteredFilms = createSelector(
     getAllFilms,
-    getGenre,
+    getGenreFromState,
     (allFilms, currentGenre) => {
       if (currentGenre === genreFilter.ALL) {
         return allFilms;
