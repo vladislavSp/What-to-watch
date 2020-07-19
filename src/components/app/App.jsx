@@ -4,6 +4,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
 import {connect} from 'react-redux';
+import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors.js';
+
 
 const movieInfo = {
   name: `The Grand Budapest Hotel`,
@@ -72,8 +74,8 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  promoFilm: state.promoFilm,
-  films: state.showFilms,
+  promoFilm: getPromoFilm(state),
+  films: getAllFilms(state),
 });
 
 export default connect(mapStateToProps, null)(App);

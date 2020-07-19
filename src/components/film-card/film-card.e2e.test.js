@@ -9,8 +9,8 @@ const titleText = `Fantastic Beast`;
 const srcVideo = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
 const posterVideo = `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`;
 
-describe(`FilmCard`, () => {
-  it(`Mouse enter on card`, () => {
+describe(`FilmCard tests`, () => {
+  it(`FilmCard should be active on hover`, () => {
     const card = mount(
         <FilmCard
           title={titleText}
@@ -27,7 +27,7 @@ describe(`FilmCard`, () => {
     expect(card.props().isActive).toBe(true);
   });
 
-  it(`Mouse leave on card`, () => {
+  it(`FilmCard should be inactive on blur`, () => {
     const card = mount(
         <FilmCard
           title={titleText}
