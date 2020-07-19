@@ -4,8 +4,10 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
 import {connect} from 'react-redux';
-import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors.js';
+import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
+import {getFilteredFilms} from '../../reducer/app/selectors';
 
+import {Operation as DataOperation} from '../../reducer/data/data';
 
 const movieInfo = {
   name: `The Grand Budapest Hotel`,
@@ -22,16 +24,22 @@ export class App extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    this.props.loadPromo();
+    this.props.loadFilms();
+  }
+
   renderMainScreen() {
-    const {promoFilm, films} = this.props;
+    const {promoFilm, filteredFilms} = this.props;
 
     if (this.state.screen === `main`) {
       return (
         <Main
-          promoTitle={promoFilm.promoTitle}
-          promoGenre={promoFilm.promoGenre}
-          promoYear={promoFilm.promoYear}
-          films={films}
+          // promoTitle={promoFilm.promoTitle}
+          // promoGenre={promoFilm.promoGenre}
+          // promoYear={promoFilm.promoYear}
+          promoFilm={promoFilm}
+          films={filteredFilms}
           onCardClick={(screenNew) => {
             this.setState({
               screen: screenNew,
@@ -64,18 +72,30 @@ export class App extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  promoFilm: getPromoFilm(state),
+  films: getAllFilms(state),
+  filteredFilms: getFilteredFilms(state).slice(0, 7),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadFilms() {
+    dispatch(DataOperation.loadFilms());
+  },
+  loadPromo() {
+    dispatch(DataOperation.loadPromo());
+  },
+});
+
 App.propTypes = {
   promoFilm: PropTypes.shape({
     promoTitle: PropTypes.string.isRequired,
     promoGenre: PropTypes.string.isRequired,
     promoYear: PropTypes.number.isRequired,
   }),
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  loadFilms: PropTypes.func.isRequired,
+  loadPromo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  promoFilm: getPromoFilm(state),
-  films: getAllFilms(state),
-});
-
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

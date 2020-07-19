@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app/app';
 
 export const GenreList = ({genreFilterArray, activeFilter, onFilterClick}) => {
   return <ul className="catalog__genres-list">

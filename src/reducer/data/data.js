@@ -27,16 +27,14 @@ const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`)
     .then((response) => {
-      console.log(response);
-      // dispatch(ActionCreator.loadFilms(parseFilms(response.data)));
+      dispatch(ActionCreator.loadFilms(parseFilms(response.data)));
     });
   },
 
   loadPromo: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
       .then((response) => {
-        console.log(response);
-        // dispatch(ActionCreator.loadPromo(parseFilm(response.data)));
+        dispatch(ActionCreator.loadPromo(parseFilm(response.data)));
       });
   }
 };
