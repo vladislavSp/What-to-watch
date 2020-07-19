@@ -5,19 +5,27 @@ import {App} from './App.jsx';
 import {genreFilter} from '../../const/const.js';
 import {Provider} from 'react-redux';
 import {films, promoFilm} from '../../mocks/films.js';
+import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
+
+const filteredFilms = films;
 
 describe(`<App />`, () => {
   it(`Render App / snapshot`, () => {
     const store = mockStore({
-      activeGenre: genreFilter.ALL,
+      [NameSpace.DATA]: {
+        allFilms: films,
+      },
+      [NameSpace.APP]: {
+        activeGenre: genreFilter.ALL,
+      }
     });
 
     const tree = renderer
       .create((
         <Provider store={store}>
-          <App films={films} promoFilm={promoFilm} />
+          <App filteredFilms={filteredFilms} promoFilm={promoFilm} />
         </Provider>), {
         createNodeMock: () => {
           return {};
