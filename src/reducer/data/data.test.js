@@ -1,4 +1,4 @@
-import {reducer, ActionType} from './data';
+import {reducer, ActionType, ActionCreator} from './data';
 
 const films = [
   {
@@ -88,6 +88,20 @@ describe(`Reducer work correctly`, () => {
       payload: promoFilm,
     })).toEqual({
       promoFilm,
+    });
+  });
+
+  it(`Action creator - for getting films work correctly`, () => {
+    expect(ActionCreator.loadFilms(films)).toEqual({
+      type: ActionType.LOAD_FILMS,
+      payload: films,
+    });
+  });
+
+  it(`Action creator - for getting promo film work correctly`, () => {
+    expect(ActionCreator.loadPromo(promoFilm)).toEqual({
+      type: ActionType.LOAD_PROMO,
+      payload: promoFilm,
     });
   });
 });
