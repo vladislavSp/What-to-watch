@@ -4,6 +4,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
 import {connect} from 'react-redux';
+import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
+import {getFilteredFilms} from '../../reducer/app/selectors';
 
 const movieInfo = {
   name: `The Grand Budapest Hotel`,
@@ -12,6 +14,7 @@ const movieInfo = {
   poster: `img/bg-the-grand-budapest-hotel.jpg`,
   img: `img/the-grand-budapest-hotel-poster.jpg`
 };
+
 export class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -21,15 +24,13 @@ export class App extends PureComponent {
   }
 
   renderMainScreen() {
-    const {promoFilm, films} = this.props;
+    const {promoFilm, filteredFilms} = this.props;
 
     if (this.state.screen === `main`) {
       return (
         <Main
-          promoTitle={promoFilm.promoTitle}
-          promoGenre={promoFilm.promoGenre}
-          promoYear={promoFilm.promoYear}
-          films={films}
+          promoFilm={promoFilm}
+          films={filteredFilms}
           onCardClick={(screenNew) => {
             this.setState({
               screen: screenNew,
@@ -62,18 +63,15 @@ export class App extends PureComponent {
   }
 }
 
-App.propTypes = {
-  promoFilm: PropTypes.shape({
-    promoTitle: PropTypes.string.isRequired,
-    promoGenre: PropTypes.string.isRequired,
-    promoYear: PropTypes.number.isRequired,
-  }),
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
 const mapStateToProps = (state) => ({
-  promoFilm: state.promoFilm,
-  films: state.showFilms,
+  promoFilm: getPromoFilm(state),
+  films: getAllFilms(state),
+  filteredFilms: getFilteredFilms(state).slice(0, 8),
 });
+
+App.propTypes = {
+  promoFilm: PropTypes.object.isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default connect(mapStateToProps, null)(App);

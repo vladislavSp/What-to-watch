@@ -4,20 +4,20 @@ import VideoPlayer from '../player/VideoPlayer.jsx';
 import {withActiveCard} from '../../hocs/withActiveItem.jsx';
 
 const FilmCard = (props) => {
-  const {title, onCardClick, srcVideo, posterVideo, isActive, onMouseEnter, onMouseLeave} = props;
+  const {film, onCardClick, isActive, onMouseEnter, onMouseLeave} = props;
 
   return (<article
     className="small-movie-card catalog__movies-card"
-    onMouseEnter={() => onMouseEnter(title)}
+    onMouseEnter={() => onMouseEnter(film.title)}
     onMouseLeave={onMouseLeave}
-    onClick={() => onCardClick(title)}>
+    onClick={() => onCardClick(film.title)}>
 
     <React.Fragment>
       <div className="small-movie-card__image">
-        <VideoPlayer srcVideo={ srcVideo } poster={ posterVideo } isPlaying={ isActive } />
+        <VideoPlayer srcVideo={ film.videoPreview } poster={ film.previewImage } isPlaying={ isActive } />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
       </h3>
     </React.Fragment>
 
@@ -25,10 +25,8 @@ const FilmCard = (props) => {
 };
 
 FilmCard.propTypes = {
-  title: PropTypes.string.isRequired,
+  film: PropTypes.object.isRequired,
   onCardClick: PropTypes.func.isRequired,
-  srcVideo: PropTypes.string.isRequired,
-  posterVideo: PropTypes.string.isRequired,
   isActive: PropTypes.bool.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {ActionCreator} from '../../reducer/app/app';
+import {getGenres, getActiveGenre} from '../../reducer/app/selectors';
 
 export const GenreList = ({genreFilterArray, activeFilter, onFilterClick}) => {
   return <ul className="catalog__genres-list">
@@ -25,13 +26,13 @@ GenreList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeFilter: state.activeGenre,
+  genreFilterArray: getGenres(state),
+  activeFilter: getActiveGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onFilterClick(genre) {
     dispatch(ActionCreator.setGenreType(genre));
-    dispatch(ActionCreator.getFilterFilms());
   }
 });
 

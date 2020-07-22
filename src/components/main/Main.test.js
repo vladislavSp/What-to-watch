@@ -5,20 +5,24 @@ import {films, promoFilm} from '../../mocks/films.js';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {genreFilter} from '../../const/const.js';
+import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
 
 it(`Main renders correctly`, () => {
   const store = mockStore({
-    activeGenre: genreFilter.ALL,
+    [NameSpace.DATA]: {
+      allFilms: films,
+    },
+    [NameSpace.APP]: {
+      activeGenre: genreFilter.ALL,
+    }
   });
 
   const tree = renderer.create(
       <Provider store={store}>
         <Main
-          promoTitle={promoFilm.promoTitle}
-          promoGenre={promoFilm.promoGenre}
-          promoYear={promoFilm.promoYear}
+          promoFilm={promoFilm}
           films={films}
           onCardClick={() => {}}
         />

@@ -1,56 +1,56 @@
 const films = [
   {
     id: 0,
-    src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     title: `Fantastic Beasts`,
     genre: `Comedies`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 1,
-    src: `img/bohemian-rhapsody.jpg`,
+    previewImage: `img/bohemian-rhapsody.jpg`,
     title: `Bohemian Rhapsody`,
     genre: `Documentary`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 2,
-    src: `img/macbeth.jpg`,
+    previewImage: `img/macbeth.jpg`,
     title: `Macbeth`,
     genre: `Comedies`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 3,
-    src: `img/aviator.jpg`,
+    previewImage: `img/aviator.jpg`,
     title: `Aviator`,
     genre: `Dramas`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 4,
-    src: `img/we-need-to-talk-about-kevin.jpg`,
+    previewImage: `img/we-need-to-talk-about-kevin.jpg`,
     title: `We need to talk about Kevin`,
     genre: `Thrillers`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 5,
-    src: `img/shutter-island.jpg`,
+    previewImage: `img/shutter-island.jpg`,
     title: `Shutter Island`,
     genre: `Horror`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 6,
-    src: `img/no-country-for-old-men.jpg`,
+    previewImage: `img/no-country-for-old-men.jpg`,
     title: `No Country for Old Men`,
     genre: `Romance`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
   },
   {
     id: 7,
-    src: `img/snatch.jpg`,
+    previewImage: `img/snatch.jpg`,
     title: `Snatch`,
     genre: `Sci-Fi`,
     videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
@@ -58,9 +58,12 @@ const films = [
 ];
 
 const promoFilm = {
-  promoTitle: `The Grand Budapest Hotel`,
-  promoGenre: `Comedy/Drama`,
-  promoYear: 2014,
+  id: `1`,
+  title: `The Grand Budapest Hotel`,
+  genre: `Comedy/Drama`,
+  year: 2014,
+  posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Snatch.jpg`,
+  previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg`,
 };
 
 export {films, promoFilm};
