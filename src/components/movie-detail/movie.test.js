@@ -1,18 +1,32 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Movie from './Movie';
+import {Movie} from './Movie';
+import {films} from '../../mocks/films';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+import NameSpace from '../../reducer/name-space';
 
-const movieInfo = {
-  name: `The Grand Budapest Hotel`,
-  jenre: `Drama`,
-  year: 2014,
-  poster: `img/bg-the-grand-budapest-hotel.jpg`,
-  img: `img/the-grand-budapest-hotel-poster.jpg`
-};
+const mockStore = configureStore([]);
+
+const filteredFilms = films;
 
 it(`renders Movie correctly`, () => {
-  const tree = renderer.create(<Movie info={movieInfo}>
-  </Movie>)
+  const store = mockStore({
+    [NameSpace.DATA]: {
+      filteredFilms: films,
+    },
+  });
+
+  const tree = renderer.create(
+      <Provider store={store}>
+        <Movie
+          film={filteredFilms[0]}
+          isActive={`Overview`}
+          onTabClick={() => {}}
+          filteredGenreFilms={filteredFilms}
+          onCardClick={() => {}}>
+        </Movie>
+      </Provider>)
   .toJSON();
   expect(tree).toMatchSnapshot();
 });

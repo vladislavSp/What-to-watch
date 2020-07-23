@@ -34,7 +34,14 @@ export class App extends PureComponent {
     }
     if (this.state.screen !== `main`) {
       return (
-        <Movie film={filteredFilms[0]} />
+        <Movie
+          film={filteredFilms[0]}
+          onCardClick={(screenNew) => {
+            this.setState({
+              screen: screenNew,
+            });
+          }}
+        />
       );
     }
     return null;
@@ -49,7 +56,14 @@ export class App extends PureComponent {
             {this.renderMainScreen()}
           </Route>
           <Route exact path="/movie">
-            {<Movie film={filteredFilms[0]} />}
+            {<Movie
+              film={filteredFilms[0]}
+              onCardClick={(screenNew) => {
+                this.setState({
+                  screen: screenNew,
+                });
+              }}
+            />}
           </Route>
         </Switch>
       </BrowserRouter>

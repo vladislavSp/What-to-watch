@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../tabs/Tabs.jsx';
 import {withActiveTab} from '../../hocs/withActiveTab.jsx';
+import {connect} from 'react-redux';
+import {getFilteredFilms} from '../../reducer/app/selectors';
+import FilmCard from '../film-card/film-card.jsx';
 
 const film = {title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`};
 
@@ -21,8 +24,8 @@ const reviews = [{
 }];
 
 
-const Movie = (props) => {
-  const {isActive, onTabClick} = props;
+export const Movie = (props) => {
+  const {isActive, onTabClick, filteredGenreFilms, onCardClick} = props;
 
   const getComponentByFilter = (filter) => {
     switch (filter) {
@@ -80,7 +83,7 @@ const Movie = (props) => {
             <div className="movie-rating__score">{film.rating}</div>
             <p className="movie-rating__meta">
               <span className="movie-rating__level">-</span>
-              <span className="movie-rating__count">{0} ratings</span>
+              <span className="movie-rating__count">{10} ratings</span>
             </p>
           </div>
 
@@ -95,7 +98,7 @@ const Movie = (props) => {
     }
   };
 
-  return <section className="movie-card movie-card--full">
+  return <React.Fragment><section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
         <img src={film.background} alt={film.name} />
@@ -164,12 +167,49 @@ const Movie = (props) => {
         </div>
       </div>
     </div>
-  </section>;
+  </section>
+
+  <div className="page-content">
+    <section className="catalog catalog--like-this">
+      <h2 className="catalog__title">More like this</h2>
+
+      <div className="catalog__movies-list">
+        {filteredGenreFilms.map((el) => (
+          <FilmCard
+            key={el.id}
+            film={el}
+            onCardClick={onCardClick}
+          />)
+        )}
+      </div>
+    </section>
+
+    <footer className="page-footer">
+      <div className="logo">
+        <a href="main.html" className="logo__link logo__link--light">
+          <span className="logo__letter logo__letter--1">W</span>
+          <span className="logo__letter logo__letter--2">T</span>
+          <span className="logo__letter logo__letter--3">W</span>
+        </a>
+      </div>
+
+      <div className="copyright">
+        <p>© 2019 What to watch Ltd.</p>
+      </div>
+    </footer>
+  </div>
+  </React.Fragment>;
 };
+
+const mapStateToProps = (state) => ({
+  filteredGenreFilms: getFilteredFilms(state).slice(0, 4),
+});
 
 Movie.propTypes = {
   onTabClick: PropTypes.func.isRequired,
   isActive: PropTypes.string.isRequired,
+  filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
-export default withActiveTab(Movie);
+export default connect(mapStateToProps, null)(withActiveTab(Movie));

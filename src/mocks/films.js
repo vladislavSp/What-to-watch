@@ -1,60 +1,12 @@
 const films = [
-  {
-    id: 0,
-    previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-    title: `Fantastic Beasts`,
-    genre: `Comedies`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 1,
-    previewImage: `img/bohemian-rhapsody.jpg`,
-    title: `Bohemian Rhapsody`,
-    genre: `Documentary`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 2,
-    previewImage: `img/macbeth.jpg`,
-    title: `Macbeth`,
-    genre: `Comedies`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 3,
-    previewImage: `img/aviator.jpg`,
-    title: `Aviator`,
-    genre: `Dramas`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 4,
-    previewImage: `img/we-need-to-talk-about-kevin.jpg`,
-    title: `We need to talk about Kevin`,
-    genre: `Thrillers`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 5,
-    previewImage: `img/shutter-island.jpg`,
-    title: `Shutter Island`,
-    genre: `Horror`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 6,
-    previewImage: `img/no-country-for-old-men.jpg`,
-    title: `No Country for Old Men`,
-    genre: `Romance`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  },
-  {
-    id: 7,
-    previewImage: `img/snatch.jpg`,
-    title: `Snatch`,
-    genre: `Sci-Fi`,
-    videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`
-  }
+  {id: 0, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 1, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 2, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 3, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 4, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 5, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 6, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`},
+  {id: 7, title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`}
 ];
 
 const promoFilm = {

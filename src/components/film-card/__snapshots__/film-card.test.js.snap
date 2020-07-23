@@ -13,7 +13,7 @@ exports[`renders correctly 1`] = `
     <video
       autoPlay={false}
       height="175"
-      poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
       width="280"
     />
   </div>
@@ -24,7 +24,7 @@ exports[`renders correctly 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Fantastic Beasts
+      Gangs of new york
     </a>
   </h3>
 </article>

@@ -171,73 +171,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Comedies
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Documentary
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Horror
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Thrillers
+            Crime
           </a>
         </li>
       </ul>
@@ -256,7 +190,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -267,7 +201,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Fantastic Beasts
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -283,7 +217,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/bohemian-rhapsody.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -294,7 +228,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Bohemian Rhapsody
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -310,7 +244,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/macbeth.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -321,7 +255,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Macbeth
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -337,7 +271,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/aviator.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -348,7 +282,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Aviator
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -364,7 +298,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/we-need-to-talk-about-kevin.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -375,7 +309,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              We need to talk about Kevin
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -391,7 +325,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/shutter-island.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -402,7 +336,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Shutter Island
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -418,7 +352,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/no-country-for-old-men.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -429,7 +363,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              No Country for Old Men
+              Gangs of new york
             </a>
           </h3>
         </article>
@@ -445,7 +379,7 @@ Array [
             <video
               autoPlay={false}
               height="175"
-              poster="img/snatch.jpg"
+              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
               width="280"
             />
           </div>
@@ -456,7 +390,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Snatch
+              Gangs of new york
             </a>
           </h3>
         </article>
