@@ -17,7 +17,7 @@ export class App extends PureComponent {
   }
 
   renderMainScreen() {
-    const {promoFilm, filteredFilms, films} = this.props;
+    const {promoFilm, filteredFilms} = this.props;
 
     if (this.state.screen === `main`) {
       return (
@@ -34,14 +34,14 @@ export class App extends PureComponent {
     }
     if (this.state.screen !== `main`) {
       return (
-        <Movie film={films[0]} />
+        <Movie film={filteredFilms[0]} />
       );
     }
     return null;
   }
 
   render() {
-    const {films} = this.props;
+    const {filteredFilms} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -49,7 +49,7 @@ export class App extends PureComponent {
             {this.renderMainScreen()}
           </Route>
           <Route exact path="/movie">
-            {<Movie film={films[0]} />}
+            {<Movie film={filteredFilms[0]} />}
           </Route>
         </Switch>
       </BrowserRouter>
@@ -66,7 +66,6 @@ const mapStateToProps = (state) => ({
 App.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, null)(App);

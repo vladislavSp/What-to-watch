@@ -11,8 +11,7 @@ exports[`renders Movie correctly 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
       />
     </div>
     <h1
@@ -71,7 +70,7 @@ exports[`renders Movie correctly 1`] = `
         <h2
           className="movie-card__title"
         >
-          The Grand Budapest Hotel
+          Gangs of new york
         </h2>
         <p
           className="movie-card__meta"
@@ -79,12 +78,12 @@ exports[`renders Movie correctly 1`] = `
           <span
             className="movie-card__genre"
           >
-            Drama
+            Crime
           </span>
           <span
             className="movie-card__year"
           >
-            2014
+            2002
           </span>
         </p>
         <div
@@ -144,9 +143,9 @@ exports[`renders Movie correctly 1`] = `
         className="movie-card__poster movie-card__poster--big"
       >
         <img
-          alt="The Grand Budapest Hotel poster"
+          alt="Gangs of new york poster"
           height="327"
-          src="img/the-grand-budapest-hotel-poster.jpg"
+          src="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg"
           width="218"
         />
       </div>
@@ -161,6 +160,7 @@ exports[`renders Movie correctly 1`] = `
           >
             <li
               className="movie-nav__item movie-nav__item--active"
+              onClick={[Function]}
             >
               <a
                 className="movie-nav__link"
@@ -170,7 +170,8 @@ exports[`renders Movie correctly 1`] = `
               </a>
             </li>
             <li
-              className="movie-nav__item"
+              className="movie-nav__item "
+              onClick={[Function]}
             >
               <a
                 className="movie-nav__link"
@@ -180,7 +181,8 @@ exports[`renders Movie correctly 1`] = `
               </a>
             </li>
             <li
-              className="movie-nav__item"
+              className="movie-nav__item "
+              onClick={[Function]}
             >
               <a
                 className="movie-nav__link"
@@ -197,7 +199,7 @@ exports[`renders Movie correctly 1`] = `
           <div
             className="movie-rating__score"
           >
-            8,9
+            8.8
           </div>
           <p
             className="movie-rating__meta"
@@ -205,12 +207,13 @@ exports[`renders Movie correctly 1`] = `
             <span
               className="movie-rating__level"
             >
-              Very good
+              -
             </span>
             <span
               className="movie-rating__count"
             >
-              240 ratings
+              0
+               ratings
             </span>
           </p>
         </div>
@@ -218,23 +221,28 @@ exports[`renders Movie correctly 1`] = `
           className="movie-card__text"
         >
           <p>
-            In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege.
-          </p>
-          <p>
-            Gustave prides himself on providing first-class service to the hotels guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustaves lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+            In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.
           </p>
           <p
             className="movie-card__director"
           >
             <strong>
-              Director: Wes Andreson
+              Director: 
+              Martin Scorsese
             </strong>
           </p>
           <p
             className="movie-card__starring"
           >
             <strong>
-              Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other
+              Starring: 
+              Leonardo DiCaprio, 
+              Cameron Diaz, 
+              Daniel Day-Lewis, 
+              Jude Law, 
+              Willem Dafoe, 
+              Saoirse Ronan, 
+               and other
             </strong>
           </p>
         </div>
