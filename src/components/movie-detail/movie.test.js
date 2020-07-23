@@ -8,7 +8,7 @@ import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
 
-const filteredFilms = films;
+const filteredGenreFilms = films;
 
 it(`renders Movie correctly`, () => {
   const store = mockStore({
@@ -17,16 +17,20 @@ it(`renders Movie correctly`, () => {
     },
   });
 
-  const tree = renderer.create(
-      <Provider store={store}>
-        <Movie
-          film={filteredFilms[0]}
-          isActive={`Overview`}
-          onTabClick={() => {}}
-          filteredGenreFilms={filteredFilms}
-          onCardClick={() => {}}>
-        </Movie>
-      </Provider>)
+  const tree = renderer.create((
+    <Provider store={store}>
+      <Movie
+        film={films[0]}
+        isActive={`Overview`}
+        onTabClick={() => {}}
+        filteredGenreFilms={filteredGenreFilms}
+        onCardClick={() => {}}>
+      </Movie>
+    </Provider>), {
+    createNodeMock: () => {
+      return {};
+    }
+  })
   .toJSON();
   expect(tree).toMatchSnapshot();
 });
