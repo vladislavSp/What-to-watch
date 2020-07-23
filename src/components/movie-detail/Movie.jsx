@@ -1,13 +1,105 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Tabs from '../tabs/Tabs.jsx';
+import {withActiveTab} from '../../hocs/withActiveTab.jsx';
+
+const film = {title: `Gangs of new york`, producer: `Martin Scorsese`, genre: `Crime`, year: 2002, rating: `8.8`, actors: [`Leonardo DiCaprio`, `Cameron Diaz`, `Daniel Day-Lewis`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`], description: `In 1862, Amsterdam Vallon returns to the Five Points area of New York City seeking revenge against Bill the Butcher, his father's killer.`, posterImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg`, previewImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg`, background: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`, video: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`, videoPreview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`};
+const filterProp = 1;
+
+const reviews = [{
+  id: 0,
+  text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+  author: `Kate Muir`,
+  date: `December 24, 2016`,
+  rating: `8,9`
+},
+{
+  id: 1,
+  text: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+  author: `Kate Muir`,
+  date: `December 24, 2016`,
+  rating: `8,9`
+}];
+
 
 const Movie = (props) => {
-  const {name, jenre, year, poster, img} = props.info;
+  const {isActive, onTabClick} = props;
+
+  const getComponentByFilter = (filter) => {
+    switch (filter) {
+      case `Details`:
+        return <div className="movie-card__text movie-card__row">
+          <div className="movie-card__text-col">
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Director</strong>
+              <span className="movie-card__details-value">{film.producer}</span>
+            </p>
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Starring</strong>
+              <span className="movie-card__details-value"></span>
+            </p>
+          </div>
+
+          <div className="movie-card__text-col">
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Run Time</strong>
+              <span className="movie-card__details-value">{film.time}</span>
+            </p>
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Genre</strong>
+              <span className="movie-card__details-value">{film.genre}</span>
+            </p>
+            <p className="movie-card__details-item">
+              <strong className="movie-card__details-name">Released</strong>
+              <span className="movie-card__details-value">{film.year}</span>
+            </p>
+          </div>
+        </div>;
+      case `Reviews`:
+        return <div className="movie-card__reviews movie-card__row">
+          <div className="movie-card__reviews-col">
+            {reviews.map((el) => {
+              return (<div key={el.id} className="review">
+                <blockquote className="review__quote">
+                  <p className="review__text">{el.text}</p>
+
+                  <footer className="review__details">
+                    <cite className="review__author">{el.author}</cite>
+                    <time className="review__date" dateTime={el.date}>{el.date}</time>
+                  </footer>
+                </blockquote>
+
+                <div className="review__rating">{el.rating}</div>
+              </div>);
+            })}
+
+          </div>
+        </div>;
+      default:
+        return <React.Fragment>
+          <div className="movie-rating">
+            <div className="movie-rating__score">{film.rating}</div>
+            <p className="movie-rating__meta">
+              <span className="movie-rating__level">-</span>
+              <span className="movie-rating__count">{0} ratings</span>
+            </p>
+          </div>
+
+          <div className="movie-card__text">
+            <p>{film.description}</p>
+
+            <p className="movie-card__director"><strong>Director: {film.producer}</strong></p>
+
+            <p className="movie-card__starring"><strong>Starring: {film.actors.map((el) => `${el}, `) } and other</strong></p>
+          </div>
+        </React.Fragment>;
+    }
+  };
 
   return <section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
-        <img src={poster} alt={name} />
+        <img src={film.background} alt={film.name} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -30,10 +122,10 @@ const Movie = (props) => {
 
       <div className="movie-card__wrap">
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{name}</h2>
+          <h2 className="movie-card__title">{film.title}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{jenre}</span>
-            <span className="movie-card__year">{year}</span>
+            <span className="movie-card__genre">{film.genre}</span>
+            <span className="movie-card__year">{film.year}</span>
           </p>
 
           <div className="movie-card__buttons">
@@ -58,41 +150,18 @@ const Movie = (props) => {
     <div className="movie-card__wrap movie-card__translate-top">
       <div className="movie-card__info">
         <div className="movie-card__poster movie-card__poster--big">
-          <img src={img} alt={name + ` poster`} width="218" height="327" />
+          <img src={film.posterImage} alt={film.title + ` poster`} width="218" height="327" />
         </div>
 
         <div className="movie-card__desc">
           <nav className="movie-nav movie-card__nav">
-            <ul className="movie-nav__list">
-              <li className="movie-nav__item movie-nav__item--active">
-                <a href="#" className="movie-nav__link">Overview</a>
-              </li>
-              <li className="movie-nav__item">
-                <a href="#" className="movie-nav__link">Details</a>
-              </li>
-              <li className="movie-nav__item">
-                <a href="#" className="movie-nav__link">Reviews</a>
-              </li>
-            </ul>
+
+            <Tabs onTabClick={onTabClick} isActive={isActive}/>
+
           </nav>
 
-          <div className="movie-rating">
-            <div className="movie-rating__score">8,9</div>
-            <p className="movie-rating__meta">
-              <span className="movie-rating__level">Very good</span>
-              <span className="movie-rating__count">240 ratings</span>
-            </p>
-          </div>
+          {getComponentByFilter(isActive)}
 
-          <div className="movie-card__text">
-            <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege.</p>
-
-            <p>Gustave prides himself on providing first-class service to the hotels guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustaves lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-            <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-            <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
-          </div>
         </div>
       </div>
     </div>
@@ -100,14 +169,8 @@ const Movie = (props) => {
 };
 
 Movie.propTypes = {
-  info: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    jenre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-  }),
+  onTabClick: PropTypes.func.isRequired,
+  isActive: PropTypes.string.isRequired,
 };
 
-
-export default Movie;
+export default withActiveTab(Movie);
