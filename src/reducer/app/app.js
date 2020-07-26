@@ -26,13 +26,12 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CHANGE_CURRENT_APP_PAGE:
+      return extend(state, {currentAppPage: action.payload});
     case ActionType.SET_JENRE:
       if (state.activeGenre !== action.payload) {
         return extend(state, {activeGenre: action.payload});
       }
-      break;
-    case ActionType.CHANGE_CURRENT_APP_PAGE:
-      return extend(state, {currentAppPage: action.payload});
   }
   return state;
 };

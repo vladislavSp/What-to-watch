@@ -15,7 +15,7 @@ const SignHeader = ({status, onSignInClick}) => {
         return <div className="user-block">
           <a
             onClick={onSignInClick}
-            href=""
+            href="#"
             className="user-block__link">Sign in</a>
         </div>;
     }
