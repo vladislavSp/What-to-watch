@@ -9,6 +9,10 @@ export const getActiveGenre = (state) => {
   return state[NAME_SPACE].activeGenre;
 };
 
+export const getCurrentPage = (state) => {
+  return state[NameSpace.APP].currentAppPage;
+};
+
 export const getFilteredFilms = createSelector(
     getAllFilms,
     getActiveGenre,
