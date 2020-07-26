@@ -1,13 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Tabs from '../tabs/Tabs.jsx';
+import {withActiveTab} from '../../hocs/withActiveTab.jsx';
+import {connect} from 'react-redux';
+import {getFilteredFilms} from '../../reducer/app/selectors';
+import FilmCard from '../film-card/film-card.jsx';
+import {filmContent, reviews} from '../../mocks/films';
+import Details from './Details/Details.jsx';
+import Reviews from './Reviews/Reviews.jsx';
+import Overview from './Overview/Overview.jsx';
 
-const Movie = (props) => {
-  const {name, jenre, year, poster, img} = props.info;
+export const Movie = (props) => {
+  const {isActive, onTabClick, filteredGenreFilms, onCardClick} = props;
 
-  return <section className="movie-card movie-card--full">
+  const getComponentByFilter = (filter) => {
+    switch (filter) {
+      case `Details`:
+        return <Details filmContent={filmContent} />;
+      case `Reviews`:
+        return <Reviews reviews={reviews} />;
+      default:
+        return <Overview filmContent={filmContent} />;
+    }
+  };
+
+  return <React.Fragment><section className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
-        <img src={poster} alt={name} />
+        <img src={filmContent.background} alt={filmContent.name} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
@@ -30,10 +50,10 @@ const Movie = (props) => {
 
       <div className="movie-card__wrap">
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{name}</h2>
+          <h2 className="movie-card__title">{filmContent.title}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{jenre}</span>
-            <span className="movie-card__year">{year}</span>
+            <span className="movie-card__genre">{filmContent.genre}</span>
+            <span className="movie-card__year">{filmContent.year}</span>
           </p>
 
           <div className="movie-card__buttons">
@@ -58,56 +78,64 @@ const Movie = (props) => {
     <div className="movie-card__wrap movie-card__translate-top">
       <div className="movie-card__info">
         <div className="movie-card__poster movie-card__poster--big">
-          <img src={img} alt={name + ` poster`} width="218" height="327" />
+          <img src={filmContent.posterImage} alt={filmContent.title + ` poster`} width="218" height="327" />
         </div>
 
         <div className="movie-card__desc">
           <nav className="movie-nav movie-card__nav">
-            <ul className="movie-nav__list">
-              <li className="movie-nav__item movie-nav__item--active">
-                <a href="#" className="movie-nav__link">Overview</a>
-              </li>
-              <li className="movie-nav__item">
-                <a href="#" className="movie-nav__link">Details</a>
-              </li>
-              <li className="movie-nav__item">
-                <a href="#" className="movie-nav__link">Reviews</a>
-              </li>
-            </ul>
+
+            <Tabs onTabClick={onTabClick} isActive={isActive}/>
+
           </nav>
 
-          <div className="movie-rating">
-            <div className="movie-rating__score">8,9</div>
-            <p className="movie-rating__meta">
-              <span className="movie-rating__level">Very good</span>
-              <span className="movie-rating__count">240 ratings</span>
-            </p>
-          </div>
+          {getComponentByFilter(isActive)}
 
-          <div className="movie-card__text">
-            <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustaves friend and protege.</p>
-
-            <p>Gustave prides himself on providing first-class service to the hotels guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustaves lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-            <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-            <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
-          </div>
         </div>
       </div>
     </div>
-  </section>;
+  </section>
+
+  <div className="page-content">
+    <section className="catalog catalog--like-this">
+      <h2 className="catalog__title">More like this</h2>
+
+      <div className="catalog__movies-list">
+        {filteredGenreFilms.map((el) => (
+          <FilmCard
+            key={el.id}
+            film={el}
+            onCardClick={onCardClick}
+          />)
+        )}
+      </div>
+    </section>
+
+    <footer className="page-footer">
+      <div className="logo">
+        <a href="main.html" className="logo__link logo__link--light">
+          <span className="logo__letter logo__letter--1">W</span>
+          <span className="logo__letter logo__letter--2">T</span>
+          <span className="logo__letter logo__letter--3">W</span>
+        </a>
+      </div>
+
+      <div className="copyright">
+        <p>© 2019 What to watch Ltd.</p>
+      </div>
+    </footer>
+  </div>
+  </React.Fragment>;
 };
+
+const mapStateToProps = (state) => ({
+  filteredGenreFilms: getFilteredFilms(state).slice(0, 4),
+});
 
 Movie.propTypes = {
-  info: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    jenre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-  }),
+  onTabClick: PropTypes.func.isRequired,
+  isActive: PropTypes.string.isRequired,
+  filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
-
-export default Movie;
+export default connect(mapStateToProps, null)(withActiveTab(Movie));

@@ -7,13 +7,6 @@ import {connect} from 'react-redux';
 import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
 import {getFilteredFilms} from '../../reducer/app/selectors';
 
-const movieInfo = {
-  name: `The Grand Budapest Hotel`,
-  jenre: `Drama`,
-  year: 2014,
-  poster: `img/bg-the-grand-budapest-hotel.jpg`,
-  img: `img/the-grand-budapest-hotel-poster.jpg`
-};
 
 export class App extends PureComponent {
   constructor(props) {
@@ -41,13 +34,21 @@ export class App extends PureComponent {
     }
     if (this.state.screen !== `main`) {
       return (
-        <Movie info={movieInfo} />
+        <Movie
+          film={filteredFilms[0]}
+          onCardClick={(screenNew) => {
+            this.setState({
+              screen: screenNew,
+            });
+          }}
+        />
       );
     }
     return null;
   }
 
   render() {
+    const {filteredFilms} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -55,7 +56,14 @@ export class App extends PureComponent {
             {this.renderMainScreen()}
           </Route>
           <Route exact path="/movie">
-            {<Movie info={movieInfo} />}
+            {<Movie
+              film={filteredFilms[0]}
+              onCardClick={(screenNew) => {
+                this.setState({
+                  screen: screenNew,
+                });
+              }}
+            />}
           </Route>
         </Switch>
       </BrowserRouter>
