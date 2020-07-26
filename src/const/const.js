@@ -14,10 +14,10 @@ const genreFilter = {
 
 const MAX_GENRES_NUM = 8;
 
-const AppPage = {
+const APP_PAGE = {
   MAIN_PAGE: `MAIN_PAGE`,
   SIGN_IN: `SIGN_IN`,
   MOVIE: `MOVIE`,
 };
 
-export {genreFilter, MAX_GENRES_NUM, AppPage};
+export {genreFilter, MAX_GENRES_NUM, APP_PAGE};

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStateSingInScreen} from './withStateAuthScreen.jsx';
+import {withStateSignInScreen} from './withStateAuthScreen.jsx';
 import Error from './Error.jsx';
 
-const SingIn = ({onSubmitForm, authorizationError, loginRef, passwordRef}) => {
+const SignIn = ({onSubmitForm, authorizationError, loginRef, passwordRef}) => {
   const errorStatus = authorizationError ? <Error /> : ``;
 
   return <div className="user-page">
@@ -28,7 +28,7 @@ const SingIn = ({onSubmitForm, authorizationError, loginRef, passwordRef}) => {
         {errorStatus}
 
         <div className="sign-in__fields">
-          <div className={errorStatus ? `sign-in__field sign-in__field--error` : `sign-in__field`}>
+          <div className={ errorStatus ? `sign-in__field sign-in__field--error` : `sign-in__field` }>
             <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" ref={loginRef} />
             <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
           </div>
@@ -59,11 +59,11 @@ const SingIn = ({onSubmitForm, authorizationError, loginRef, passwordRef}) => {
   </div>;
 };
 
-SingIn.propTypes = {
+SignIn.propTypes = {
   authorizationError: PropTypes.bool.isRequired,
   onSubmitForm: PropTypes.func.isRequired,
   loginRef: PropTypes.object.isRequired,
   passwordRef: PropTypes.object.isRequired,
 };
 
-export default withStateSingInScreen(SingIn);
+export default withStateSignInScreen(SignIn);

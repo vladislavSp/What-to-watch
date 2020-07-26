@@ -1,10 +1,10 @@
-import {genreFilter, AppPage} from '../../const/const.js';
+import {genreFilter, APP_PAGE} from '../../const/const.js';
 import {extend} from '../../utils/utils.js';
 
 
 const initialState = {
   activeGenre: genreFilter.ALL,
-  currentAppPage: AppPage.MAIN_PAGE,
+  currentAppPage: APP_PAGE.MAIN_PAGE,
 };
 
 const ActionType = {

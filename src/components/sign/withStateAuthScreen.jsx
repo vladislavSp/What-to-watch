@@ -1,8 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-export const withStateSingInScreen = (Component) => {
-  class withSingInState extends PureComponent {
+export const withStateSignInScreen = (Component) => {
+  class withSignInState extends PureComponent {
     constructor(props) {
       super(props);
       this.loginRef = React.createRef();
@@ -33,9 +33,9 @@ export const withStateSingInScreen = (Component) => {
     }
   }
 
-  withSingInState.propTypes = {
+  withSignInState.propTypes = {
     onSubmit: PropTypes.func.isRequired,
   };
 
-  return withSingInState;
+  return withSignInState;
 };

@@ -1,6 +1,6 @@
 import {extend} from '../../utils/utils';
 import {ActionCreator as StateActionCreator} from "../app/app";
-import {AppPage} from '../../const/const';
+import {APP_PAGE} from '../../const/const';
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -59,9 +59,9 @@ const Operation = {
     .then(() => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.changeAuthorizationError(false));
-      dispatch(StateActionCreator.changeAppPage(AppPage.MAIN_PAGE));
+      dispatch(StateActionCreator.changeAppPage(APP_PAGE.MAIN_PAGE));
     })
-    .catch((err) =>{
+    .catch((err) => {
       dispatch(ActionCreator.changeAuthorizationError(true));
       throw err;
     });

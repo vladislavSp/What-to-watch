@@ -22,9 +22,9 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
+store.dispatch(UserOperation.checkAuth());
 store.dispatch(DataOperation.loadFilms());
 store.dispatch(DataOperation.loadPromo());
-// store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>

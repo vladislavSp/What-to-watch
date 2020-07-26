@@ -4,13 +4,13 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
-import SingIn from '../sign/SingIn.jsx';
+import SignIn from '../sign/SignIn.jsx';
 import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
 import {getFilteredFilms, getCurrentPage} from '../../reducer/app/selectors';
 import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
 import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
-import {AppPage} from '../../const/const';
+import {APP_PAGE} from '../../const/const';
 
 export const App = (props) => {
   const {promoFilm, filteredFilms, authorizationStatus, authorizationError, currentAppPage, login, onSignInClick} = props;
@@ -19,7 +19,7 @@ export const App = (props) => {
     let appPageRender;
 
     switch (currentAppPage) {
-      case AppPage.MAIN_PAGE:
+      case APP_PAGE.MAIN_PAGE:
         appPageRender = (<Main
           onSignInClick = {onSignInClick}
           authorizationStatus={authorizationStatus}
@@ -28,18 +28,19 @@ export const App = (props) => {
           onCardClick={() => {}}
         />);
         break;
-      case AppPage.MOVIE:
+      case APP_PAGE.MOVIE:
         appPageRender = (<Movie
           film={filteredFilms[0]}
           onCardClick={() => {}}
         />);
         break;
-      case AppPage.SIGN_IN:
-        appPageRender = (<SingIn
+      case APP_PAGE.SIGN_IN:
+        appPageRender = (<SignIn
           authorizationError={authorizationError}
           onSubmit={login}
         />);
     }
+
     return appPageRender;
   };
 
@@ -55,8 +56,8 @@ export const App = (props) => {
             onCardClick={() => {}}
           />}
         </Route>
-        <Route exact path="/auth">
-          {<SingIn
+        <Route exact path="/login">
+          {<SignIn
             authorizationError={authorizationError}
             onSubmit={login}
           />}
@@ -80,7 +81,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(UserOperation.login(authData));
   },
   onSignInClick() {
-    dispatch(AppActionCreator.changeAppPage(AppPage.SIGN_IN));
+    dispatch(AppActionCreator.changeAppPage(APP_PAGE.SIGN_IN));
   }
 });
 
