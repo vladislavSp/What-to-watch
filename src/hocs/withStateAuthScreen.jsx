@@ -24,7 +24,7 @@ export const withStateSignInScreen = (Component) => {
     render() {
       return (
         <Component
-          onSubmitForm = {this.handleSubmit}
+          onSubmitForm={this.handleSubmit}
           loginRef={this.loginRef}
           passwordRef={this.passwordRef}
           {...this.props}

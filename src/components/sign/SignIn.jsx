@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStateSignInScreen} from './withStateAuthScreen.jsx';
-import Error from './Error.jsx';
+import {withStateSignInScreen} from '../../hocs/withStateAuthScreen.jsx';
+import Error from './Error/Error.jsx';
 
 const SignIn = ({onSubmitForm, authorizationError, loginRef, passwordRef}) => {
   const errorStatus = authorizationError ? <Error /> : ``;

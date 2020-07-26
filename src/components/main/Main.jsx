@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
-import SignHeader from '../sign/SignHeader.jsx';
+import SignHeader from '../sign/Header/SignHeader.jsx';
 
 const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick}) => <React.Fragment>
   <section className="movie-card">

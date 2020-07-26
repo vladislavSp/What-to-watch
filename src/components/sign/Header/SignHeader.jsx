@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {AuthorizationStatus} from '../../reducer/user/user';
+import {AuthorizationStatus} from '../../../reducer/user/user';
 
 const SignHeader = ({status, onSignInClick}) => {
   const getHeaderByStatus = (authStatus) => {
