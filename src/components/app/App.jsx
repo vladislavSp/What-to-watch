@@ -6,7 +6,7 @@ import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
 import SignIn from '../sign/SignIn.jsx';
 import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
-import {getFilteredFilms, getCurrentPage} from '../../reducer/app/selectors';
+import {getFilteredFilms, getCurrentPage, getViewFilmCard} from '../../reducer/app/selectors';
 import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
 import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
@@ -18,7 +18,7 @@ export class App extends PureComponent {
   }
 
   render() {
-    const {promoFilm, filteredFilms, authorizationStatus, authorizationError, currentAppPage, login, onSignInClick} = this.props;
+    const {promoFilm, filteredFilms, authorizationStatus, authorizationError, currentAppPage, login, onSignInClick, filmLength} = this.props;
 
     const renderMainScreen = () => {
       let appPageRender;
@@ -26,10 +26,12 @@ export class App extends PureComponent {
       switch (currentAppPage) {
         case APP_PAGE.MAIN_PAGE:
           appPageRender = (<Main
+            countFilterFilmCard={filteredFilms.length}
+            countViewFilmCard={filmLength}
             onSignInClick = {onSignInClick}
             authorizationStatus={authorizationStatus}
             promoFilm={promoFilm}
-            films={filteredFilms}
+            films={filteredFilms.slice(0, filmLength)}
             onCardClick={() => {}}
           />);
           break;
@@ -79,7 +81,8 @@ const mapStateToProps = (state) => ({
   currentAppPage: getCurrentPage(state),
   promoFilm: getPromoFilm(state),
   films: getAllFilms(state),
-  filteredFilms: getFilteredFilms(state).slice(0, 8),
+  filteredFilms: getFilteredFilms(state),
+  filmLength: getViewFilmCard(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -99,6 +102,7 @@ App.propTypes = {
   login: PropTypes.func.isRequired,
   promoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filmLength: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
