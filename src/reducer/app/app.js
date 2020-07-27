@@ -1,11 +1,11 @@
-import {genreFilter, APP_PAGE, MAX_FILM_CARD} from '../../const/const.js';
+import {genreFilter, APP_PAGE, FILM_CARD} from '../../const/const.js';
 import {extend} from '../../utils/utils.js';
 
 
 const initialState = {
   activeGenre: genreFilter.ALL,
   currentAppPage: APP_PAGE.MAIN_PAGE,
-  filmLength: MAX_FILM_CARD,
+  filmLength: FILM_CARD.INIT_STATE,
 };
 
 const ActionType = {

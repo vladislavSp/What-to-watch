@@ -65,7 +65,7 @@ const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick
 
       <FilmList films={films} onCardClick={onCardClick} />
 
-      {countFilterFilmCard >= countViewFilmCard ? <ShowBtn /> : ``}
+      {countFilterFilmCard >= countViewFilmCard ? <ShowBtn filmLength={countViewFilmCard} onViewBtnClick={onViewBtnClick} /> : ``}
 
     </section>
 
@@ -93,7 +93,7 @@ Main.propTypes = {
   onSignInClick: PropTypes.func.isRequired,
   countFilterFilmCard: PropTypes.number.isRequired,
   countViewFilmCard: PropTypes.number.isRequired,
-  // onViewBtnClick: PropTypes.func.isRequired,
+  onViewBtnClick: PropTypes.func.isRequired,
 };
 
 export default Main;

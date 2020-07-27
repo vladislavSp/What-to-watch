@@ -6,11 +6,12 @@ import Main from '../main/Main.jsx';
 import Movie from '../movie-detail/Movie.jsx';
 import SignIn from '../sign/SignIn.jsx';
 import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
-import {getFilteredFilms, getCurrentPage, getViewFilmCard} from '../../reducer/app/selectors';
+import {getFilteredFilms, getCurrentPage, getCurrentViewFilmCard} from '../../reducer/app/selectors';
 import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
 import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
 import {APP_PAGE} from '../../const/const';
+
 
 export class App extends PureComponent {
   constructor(props) {
@@ -18,7 +19,7 @@ export class App extends PureComponent {
   }
 
   render() {
-    const {promoFilm, filteredFilms, authorizationStatus, authorizationError, currentAppPage, login, onSignInClick, filmLength} = this.props;
+    const {promoFilm, filteredFilms, authorizationStatus, authorizationError, currentAppPage, login, onSignInClick, filmLength, onViewBtnClick} = this.props;
 
     const renderMainScreen = () => {
       let appPageRender;
@@ -28,6 +29,7 @@ export class App extends PureComponent {
           appPageRender = (<Main
             countFilterFilmCard={filteredFilms.length}
             countViewFilmCard={filmLength}
+            onViewBtnClick={onViewBtnClick}
             onSignInClick = {onSignInClick}
             authorizationStatus={authorizationStatus}
             promoFilm={promoFilm}
@@ -82,7 +84,7 @@ const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
   films: getAllFilms(state),
   filteredFilms: getFilteredFilms(state),
-  filmLength: getViewFilmCard(state),
+  filmLength: getCurrentViewFilmCard(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -91,6 +93,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSignInClick() {
     dispatch(AppActionCreator.changeAppPage(APP_PAGE.SIGN_IN));
+  },
+  onViewBtnClick(length) {
+    dispatch(AppActionCreator.setViewFilmCard(length));
   }
 });
 
@@ -103,6 +108,7 @@ App.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   filmLength: PropTypes.number.isRequired,
+  onViewBtnClick: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

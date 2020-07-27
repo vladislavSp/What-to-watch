@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../reducer/app/app';
 import {getGenres, getActiveGenre} from '../../reducer/app/selectors';
-import {MAX_FILM_CARD} from '../../const/const';
+import {FILM_CARD} from '../../const/const';
 
 export const GenreList = ({genreFilterArray, activeFilter, onFilterClick}) => {
   return <ul className="catalog__genres-list">
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilterClick(genre) {
     dispatch(ActionCreator.setGenreType(genre));
-    dispatch(ActionCreator.setViewFilmCard(MAX_FILM_CARD));
+    dispatch(ActionCreator.setViewFilmCard(FILM_CARD.INIT_STATE));
   }
 });
 
