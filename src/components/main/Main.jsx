@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
+import {ShowBtn} from '../show-btn/ShowBtn.jsx';
 
-const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick}) => <React.Fragment>
+const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick, maxFilmLength, filmLength, onViewBtnClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -64,9 +65,8 @@ const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick
 
       <FilmList films={films} onCardClick={onCardClick} />
 
-      <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
-      </div>
+      {maxFilmLength >= filmLength ? <ShowBtn filmLength={filmLength} onViewBtnClick={onViewBtnClick} /> : ``}
+
     </section>
 
     <footer className="page-footer">
@@ -91,6 +91,9 @@ Main.propTypes = {
   onCardClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   onSignInClick: PropTypes.func.isRequired,
+  maxFilmLength: PropTypes.number.isRequired,
+  filmLength: PropTypes.number.isRequired,
+  onViewBtnClick: PropTypes.func.isRequired,
 };
 
 export default Main;

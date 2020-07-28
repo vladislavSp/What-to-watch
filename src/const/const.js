@@ -14,10 +14,15 @@ const genreFilter = {
 
 const MAX_GENRES_NUM = 8;
 
+const FILM_CARD = {
+  INIT_STATE: 0,
+  MAX_COUNT: 8,
+};
+
 const APP_PAGE = {
   MAIN_PAGE: `Main screen`,
   SIGN_IN: `Sign screen`,
   MOVIE: `Movie screen`,
 };
 
-export {genreFilter, MAX_GENRES_NUM, APP_PAGE};
+export {genreFilter, MAX_GENRES_NUM, APP_PAGE, FILM_CARD};
