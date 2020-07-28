@@ -5,7 +5,7 @@ import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {ShowBtn} from '../show-btn/ShowBtn.jsx';
 
-const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick, countFilterFilmCard, countViewFilmCard, onViewBtnClick}) => <React.Fragment>
+const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick, maxFilmLength, filmLength, onViewBtnClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -65,7 +65,7 @@ const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick
 
       <FilmList films={films} onCardClick={onCardClick} />
 
-      {countFilterFilmCard >= countViewFilmCard ? <ShowBtn filmLength={countViewFilmCard} onViewBtnClick={onViewBtnClick} /> : ``}
+      {maxFilmLength >= filmLength ? <ShowBtn filmLength={filmLength} onViewBtnClick={onViewBtnClick} /> : ``}
 
     </section>
 
@@ -91,8 +91,8 @@ Main.propTypes = {
   onCardClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   onSignInClick: PropTypes.func.isRequired,
-  countFilterFilmCard: PropTypes.number.isRequired,
-  countViewFilmCard: PropTypes.number.isRequired,
+  maxFilmLength: PropTypes.number.isRequired,
+  filmLength: PropTypes.number.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
 };
 

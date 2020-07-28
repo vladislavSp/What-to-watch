@@ -13,6 +13,7 @@ const genreFilter = {
 };
 
 const MAX_GENRES_NUM = 8;
+
 const FILM_CARD = {
   INIT_STATE: 0,
   MAX_COUNT: 8,

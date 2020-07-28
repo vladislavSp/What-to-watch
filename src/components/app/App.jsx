@@ -19,7 +19,17 @@ export class App extends PureComponent {
   }
 
   render() {
-    const {promoFilm, filteredFilms, authorizationStatus, authorizationError, currentAppPage, login, onSignInClick, filmLength, onViewBtnClick} = this.props;
+    const {
+      promoFilm,
+      filteredFilms,
+      authorizationStatus,
+      authorizationError,
+      currentAppPage,
+      login,
+      onSignInClick,
+      filmLength,
+      onViewBtnClick
+    } = this.props;
 
     const renderMainScreen = () => {
       let appPageRender;
@@ -27,8 +37,8 @@ export class App extends PureComponent {
       switch (currentAppPage) {
         case APP_PAGE.MAIN_PAGE:
           appPageRender = (<Main
-            countFilterFilmCard={filteredFilms.length}
-            countViewFilmCard={filmLength}
+            maxFilmLength={filteredFilms.length}
+            filmLength={filmLength}
             onViewBtnClick={onViewBtnClick}
             onSignInClick = {onSignInClick}
             authorizationStatus={authorizationStatus}
