@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
+import SignHeader from '../sign/Header/SignHeader.jsx';
 
-const Main = ({promoFilm, films, onCardClick}) => <React.Fragment>
+const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -20,11 +21,8 @@ const Main = ({promoFilm, films, onCardClick}) => <React.Fragment>
         </a>
       </div>
 
-      <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-        </div>
-      </div>
+      <SignHeader status={authorizationStatus} onSignInClick={onSignInClick}/>
+
     </header>
 
     <div className="movie-card__wrap">
@@ -91,6 +89,8 @@ Main.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
   onCardClick: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
 };
 
 export default Main;

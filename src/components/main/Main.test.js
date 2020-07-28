@@ -25,6 +25,8 @@ it(`Main renders correctly`, () => {
           promoFilm={promoFilm}
           films={films}
           onCardClick={() => {}}
+          authorizationStatus={`Main screen`}
+          onSignInClick={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {

@@ -25,7 +25,15 @@ describe(`<App />`, () => {
     const tree = renderer
       .create((
         <Provider store={store}>
-          <App filteredFilms={filteredFilms} promoFilm={promoFilm} />
+          <App
+            filteredFilms={filteredFilms}
+            promoFilm={promoFilm}
+            authorizationStatus={`NO_AUTH`}
+            authorizationError={false}
+            currentAppPage={`Main screen`}
+            onSignInClick={() => {}}
+            login={() => {}}
+          />
         </Provider>), {
         createNodeMock: () => {
           return {};
