@@ -25,4 +25,6 @@ const APP_PAGE = {
   MOVIE: `Movie screen`,
 };
 
-export {genreFilter, MAX_GENRES_NUM, APP_PAGE, FILM_CARD};
+const HUNDRED_PERCENT = 100;
+
+export {genreFilter, MAX_GENRES_NUM, APP_PAGE, FILM_CARD, HUNDRED_PERCENT};
