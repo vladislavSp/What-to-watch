@@ -23,6 +23,7 @@ const APP_PAGE = {
   MAIN_PAGE: `Main screen`,
   SIGN_IN: `Sign screen`,
   MOVIE: `Movie screen`,
+  PLAYER: `Player`,
 };
 
 const HUNDRED_PERCENT = 100;

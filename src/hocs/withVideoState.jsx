@@ -17,9 +17,9 @@ export const withVideoState = (Component) => {
     handlePlayPause() {
       const {isPlaying} = this.state;
       if (!isPlaying) {
-        this._video.current.play();
+        this.video.current.play();
       } else {
-        this._video.current.pause();
+        this.video.current.pause();
       }
       this.setState({isPlaying: !isPlaying});
     }
@@ -30,13 +30,14 @@ export const withVideoState = (Component) => {
 
     render() {
       const {isPlaying} = this.state;
+
       return (
         <Component
           {...this.props}
           videoRef={this.video}
           isPlaying={isPlaying}
-          onPlayPause={this._handlePlayPause}
-          onFullScreen={this._handleFullScreen}
+          onPlayPause={this.handlePlayPause}
+          onFullScreen={this.handleFullScreen}
         />
       );
     }

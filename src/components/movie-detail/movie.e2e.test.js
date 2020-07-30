@@ -15,6 +15,7 @@ describe(`Movie`, () => {
       onTabClick={() => {}}
       onCardClick={() => {}}
       filteredGenreFilms={films}
+      onPlayClick={() => {}}
     />);
 
     expect(movie.props().isActive).toBe(isActive);
@@ -29,6 +30,7 @@ describe(`Movie`, () => {
       onTabClick={onTabClick}
       onCardClick={() => {}}
       filteredGenreFilms={films}
+      onPlayClick={() => {}}
     />);
 
     const filterLink = movie.find(`.movie-nav__item`).at(0);

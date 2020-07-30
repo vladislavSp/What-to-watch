@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlayerControls from '../player-controls/player-controls.jsx';
-import withVideoState from '../../hocs/withVideoState.jsx';
+import {withVideoState} from '../../hocs/withVideoState.jsx';
 
 export const FullScreenPlayer = (props) => {
   const {videoRef, currentMovie, isPlaying, onPlayPause, onFullScreen, onExitClick} = props;
@@ -9,14 +9,15 @@ export const FullScreenPlayer = (props) => {
 
   const renderBtnState = (state) => {
     return (<React.Fragment><svg viewBox="0 0 19 19" width="19" height="19">
-      <use xlinkHref={state ? `#play-s` : `#pause`}></use>
+      <use xlinkHref={state ? `#pause` : `#play-s`}></use>
     </svg>
-    <span>{state ? `Play` : `Pause`}</span></React.Fragment>);
+    <span>{state ? `Pause` : `Play`}</span></React.Fragment>);
   };
 
   return (<div className="player">
     <video
       src={videoPreview}
+      ref={videoRef}
       className="player__video"
       poster={poster}>
     </video>

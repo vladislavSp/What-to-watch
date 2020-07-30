@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {ShowBtn} from '../show-btn/ShowBtn.jsx';
+import {ActionCreator} from '../../reducer/app/app';
+import {APP_PAGE} from '../../const/const';
 
-const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick, maxFilmLength, filmLength, onViewBtnClick}) => <React.Fragment>
+export const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick, maxFilmLength, filmLength, onViewBtnClick, onPlayClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -39,7 +42,11 @@ const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick
             <span className="movie-card__year">{promoFilm.year}</span>
           </p>
           <div className="movie-card__buttons">
-            <button className="btn btn--play movie-card__button" type="button">
+            <button
+              onClick={onPlayClick}
+              className="btn btn--play movie-card__button"
+              type="button"
+            >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
               </svg>
@@ -65,7 +72,7 @@ const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick
 
       <FilmList films={films} onCardClick={onCardClick} />
 
-      {maxFilmLength >= filmLength ? <ShowBtn filmLength={filmLength} onViewBtnClick={onViewBtnClick} /> : ``}
+      {maxFilmLength >= filmLength && <ShowBtn filmLength={filmLength} onViewBtnClick={onViewBtnClick} />}
 
     </section>
 
@@ -85,6 +92,12 @@ const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick
   </div>
 </React.Fragment>;
 
+const mapDispatchToProps = (dispatch) => ({
+  onPlayClick() {
+    dispatch(ActionCreator.changeAppPage(APP_PAGE.PLAYER));
+  },
+});
+
 Main.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   films: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -94,6 +107,7 @@ Main.propTypes = {
   maxFilmLength: PropTypes.number.isRequired,
   filmLength: PropTypes.number.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func,
 };
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);

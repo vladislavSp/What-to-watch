@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {HUNDRED_PERCENT} from '../../const';
+import {HUNDRED_PERCENT} from '../const/const';
+import {formatingTime} from '../utils/utils';
 
 export const withStateProgress = (Component) => {
   class WithStateProgress extends PureComponent {
@@ -18,7 +19,7 @@ export const withStateProgress = (Component) => {
     componentDidMount() {
       this.video = this.props.videoRef.current;
       this.video.onloadedmetadata = () => this.setState({timeLeft: this.video.duration});
-      this.video.ontimeupdate = () => this._handleTimeUpdate(this.video.currentTime, this.video.duration);
+      this.video.ontimeupdate = () => this.handleTimeUpdate(this.video.currentTime, this.video.duration);
     }
 
     componentWillUnmount() {
@@ -38,7 +39,7 @@ export const withStateProgress = (Component) => {
 
       return (<Component
         {...this.props}
-        remainingTime={remainingTime}
+        remainingTime={formatingTime(remainingTime)}
         progress={progress}
       />);
     }

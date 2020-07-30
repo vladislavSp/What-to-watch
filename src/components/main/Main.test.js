@@ -37,6 +37,7 @@ it(`Main renders correctly`, () => {
           maxFilmLength={FILM_CARD.MAX_COUNT}
           filmLength={FILM_CARD.INIT_STATE}
           onViewBtnClick={() => {}}
+          onPlayClick={() => {}}
         />
       </Provider>, {
         createNodeMock: () => {
