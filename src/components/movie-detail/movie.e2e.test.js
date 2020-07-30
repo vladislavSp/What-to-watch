@@ -38,4 +38,22 @@ describe(`Movie`, () => {
 
     expect(onTabClick).toHaveBeenCalledTimes(1);
   });
+
+  it(`On Movie page work correctly film start btn`, () => {
+    const isActive = `Overview`;
+    const onPlayClick = jest.fn();
+
+    const movie = mount(<Movie
+      isActive={isActive}
+      onTabClick={() => {}}
+      onCardClick={() => {}}
+      filteredGenreFilms={films}
+      onPlayClick={onPlayClick}
+    />);
+
+    const filmBtn = movie.find(`.movie-card__button`).at(0);
+    filmBtn.simulate(`click`);
+
+    expect(onPlayClick).toHaveBeenCalledTimes(1);
+  });
 });
