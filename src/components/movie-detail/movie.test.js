@@ -24,7 +24,9 @@ it(`renders Movie correctly`, () => {
         isActive={`Overview`}
         onTabClick={() => {}}
         filteredGenreFilms={filteredGenreFilms}
-        onCardClick={() => {}}>
+        onCardClick={() => {}}
+        onPlayClick={() => {}}
+      >
       </Movie>
     </Provider>), {
     createNodeMock: () => {

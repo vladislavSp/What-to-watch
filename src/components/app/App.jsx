@@ -11,7 +11,7 @@ import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/
 import {Operation as UserOperation} from '../../reducer/user/user';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
 import {APP_PAGE} from '../../const/const';
-
+import FullScreenPlayer from '../full-screen-player/full-screen-player.jsx';
 
 export class App extends PureComponent {
   constructor(props) {
@@ -28,7 +28,8 @@ export class App extends PureComponent {
       login,
       onSignInClick,
       filmLength,
-      onViewBtnClick
+      onViewBtnClick,
+      onExitClick
     } = this.props;
 
     const renderMainScreen = () => {
@@ -57,6 +58,12 @@ export class App extends PureComponent {
           appPageRender = (<SignIn
             authorizationError={authorizationError}
             onSubmit={login}
+          />);
+          break;
+        case APP_PAGE.PLAYER:
+          appPageRender = (<FullScreenPlayer
+            onExitClick={onExitClick}
+            currentMovie={promoFilm}
           />);
       }
 
@@ -106,6 +113,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onViewBtnClick(length) {
     dispatch(AppActionCreator.setViewFilmCard(length));
+  },
+  onExitClick() {
+    dispatch(AppActionCreator.changeAppPage(APP_PAGE.MAIN_PAGE));
   }
 });
 
@@ -119,6 +129,7 @@ App.propTypes = {
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   filmLength: PropTypes.number.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
+  onExitClick: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

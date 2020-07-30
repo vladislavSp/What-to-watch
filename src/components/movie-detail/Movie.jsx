@@ -9,9 +9,11 @@ import {filmContent, reviews} from '../../mocks/films';
 import Details from './Details/Details.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Overview from './Overview/Overview.jsx';
+import {ActionCreator} from '../../reducer/app/app';
+import {APP_PAGE} from '../../const/const';
 
 export const Movie = (props) => {
-  const {isActive, onTabClick, filteredGenreFilms, onCardClick} = props;
+  const {isActive, onTabClick, filteredGenreFilms, onCardClick, onPlayClick} = props;
 
   const getComponentByFilter = (filter) => {
     switch (filter) {
@@ -57,7 +59,11 @@ export const Movie = (props) => {
           </p>
 
           <div className="movie-card__buttons">
-            <button className="btn btn--play movie-card__button" type="button">
+            <button
+              onClick={onPlayClick}
+              className="btn btn--play movie-card__button"
+              type="button"
+            >
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
               </svg>
@@ -131,11 +137,18 @@ const mapStateToProps = (state) => ({
   filteredGenreFilms: getFilteredFilms(state).slice(0, 4),
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onPlayClick() {
+    dispatch(ActionCreator.changeAppPage(APP_PAGE.PLAYER));
+  }
+});
+
 Movie.propTypes = {
   onTabClick: PropTypes.func.isRequired,
   isActive: PropTypes.string.isRequired,
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   onCardClick: PropTypes.func.isRequired,
+  onPlayClick: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, null)(withActiveTab(Movie));
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(Movie));

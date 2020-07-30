@@ -42,6 +42,7 @@ describe(`<App />`, () => {
             onSignInClick={() => {}}
             filmLength={FILM_CARD.INIT_STATE}
             onViewBtnClick={() => {}}
+            onExitClick={() => {}}
           />
         </Provider>), {
         createNodeMock: () => {
