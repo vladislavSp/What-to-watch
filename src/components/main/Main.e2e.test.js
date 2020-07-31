@@ -3,13 +3,9 @@ import {configure, shallow} from 'enzyme';
 import {films, promoFilm} from '../../mocks/films.js';
 import Adapter from 'enzyme-adapter-react-16';
 import {Main} from '../main/Main.jsx';
-import {FILM_CARD} from '../../const/const.js'; // genreFilter
-// import {Provider} from 'react-redux';
-// import configureStore from 'redux-mock-store';
-// import NameSpace from '../../reducer/name-space';
+import {FILM_CARD} from '../../const/const.js';
 
 configure({adapter: new Adapter()});
-// const mockStore = configureStore([]);
 
 describe(`Main e2e tests`, () => {
   it(`Should call onPlayClick one time`, () => {
