@@ -1,15 +1,13 @@
-import {genreFilter, APP_PAGE, FILM_CARD} from '../../const/const.js';
+import {genreFilter, FILM_CARD} from '../../const/const.js';
 import {extend} from '../../utils/utils.js';
 
 const initialState = {
   activeGenre: genreFilter.ALL,
-  currentAppPage: APP_PAGE.MAIN_PAGE,
   filmLength: FILM_CARD.VIEW_ITEM,
 };
 
 const ActionType = {
   SET_JENRE: `SET_JENRE`,
-  CHANGE_CURRENT_APP_PAGE: `CHANGE_CURRENT_APP_PAGE`,
   SET_VIEW_FILM_CARD: `SET_VIEW_FILM_CARD`,
 };
 
@@ -17,11 +15,6 @@ const ActionCreator = {
   setGenreType: (genreType) => ({
     type: ActionType.SET_JENRE,
     payload: genreType,
-  }),
-
-  changeAppPage: (appPage) => ({
-    type: ActionType.CHANGE_CURRENT_APP_PAGE,
-    payload: appPage,
   }),
 
   setViewFilmCard: (num) => ({
@@ -34,8 +27,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_VIEW_FILM_CARD:
       return extend(state, {filmLength: action.payload + FILM_CARD.VIEW_ITEM});
-    case ActionType.CHANGE_CURRENT_APP_PAGE:
-      return extend(state, {currentAppPage: action.payload});
     case ActionType.SET_JENRE:
       if (state.activeGenre !== action.payload) {
         return extend(state, {activeGenre: action.payload});

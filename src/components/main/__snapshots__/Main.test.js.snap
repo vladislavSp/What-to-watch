@@ -10,6 +10,7 @@ Array [
     >
       <img
         alt="The Grand Budapest Hotel"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
       />
     </div>
     <h1
@@ -48,7 +49,7 @@ Array [
       >
         <a
           className="user-block__link"
-          href="#"
+          href="/login"
           onClick={[Function]}
         >
           Sign in
@@ -65,9 +66,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Gangs of new york poster"
             height="327"
-            src="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Snatch.jpg"
+            src="https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Gangs_of_New_York_Poster.jpg"
             width="218"
           />
         </div>
@@ -77,7 +78,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            Gangs of new york
           </h2>
           <p
             className="movie-card__meta"
@@ -85,35 +86,39 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Comedy/Drama
+              Crime
             </span>
             <span
               className="movie-card__year"
             >
-              2014
+              2002
             </span>
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
-              className="btn btn--play movie-card__button"
+            <a
+              href="/movies/0/player"
               onClick={[Function]}
-              type="button"
             >
-              <svg
-                height="19"
-                viewBox="0 0 19 19"
-                width="19"
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
               >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-            </button>
+                <svg
+                  height="19"
+                  viewBox="0 0 19 19"
+                  width="19"
+                >
+                  <use
+                    xlinkHref="#play-s"
+                  />
+                </svg>
+                <span>
+                  Play
+                </span>
+              </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
               type="button"
@@ -175,224 +180,7 @@ Array [
       </ul>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              autoPlay={false}
-              height="175"
-              poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/gangs_of_new_york.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Gangs of new york
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
       <div
         className="catalog__more"
       >
@@ -435,7 +223,7 @@ Array [
         className="copyright"
       >
         <p>
-          © 2019 What to watch Ltd.
+          © 2020 What to watch Ltd.
         </p>
       </div>
     </footer>

@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import FilmCard from '../film-card/film-card.jsx';
-import {reviews} from '../../mocks/films';
+import {reviews} from '../../mocks/mocks';
 import Details from './Details/Details.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Overview from './Overview/Overview.jsx';

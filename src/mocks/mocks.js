@@ -35,4 +35,11 @@ const reviews = [{
   rating: `8,9`
 }];
 
+export const userObj = {
+  'id': `1`,
+  'avatar_url': `avatar`,
+  'email': `email`,
+  'name': `name`
+};
+
 export {films, promoFilm, filmContent, reviews};
