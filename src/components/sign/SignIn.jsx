@@ -73,8 +73,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 SignIn.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
-  loginRef: PropTypes.object.isRequired,
-  passwordRef: PropTypes.object.isRequired,
+  loginRef: PropTypes.object,
+  passwordRef: PropTypes.object,
   onLoginChange: PropTypes.func.isRequired,
   onPasswordChange: PropTypes.func.isRequired,
   isValidLogin: PropTypes.bool,

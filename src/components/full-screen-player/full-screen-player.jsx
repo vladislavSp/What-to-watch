@@ -63,7 +63,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 FullScreenPlayer.propTypes = {
-  videoRef: PropTypes.object.isRequired,
+  videoRef: PropTypes.object,
   currentMovie: PropTypes.object.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onPlayPause: PropTypes.func.isRequired,

@@ -9,7 +9,6 @@ exports[`FullPlayer renders correctly 1`] = `
   />
   <button
     className="player__exit"
-    onClick={[Function]}
     type="button"
   >
     Exit
@@ -17,34 +16,7 @@ exports[`FullPlayer renders correctly 1`] = `
   <div
     className="player__controls"
   >
-    <div
-      className="player__controls-row"
-    >
-      <div
-        className="player__time"
-      >
-        <progress
-          className="player__progress"
-          max="100"
-          value={0}
-        />
-        <div
-          className="player__toggler"
-          style={
-            Object {
-              "left": "0%",
-            }
-          }
-        >
-          Toggler
-        </div>
-      </div>
-      <div
-        className="player__time-value"
-      >
-        00:00:00
-      </div>
-    </div>
+    <PlayerControls />
     <div
       className="player__controls-row"
     >
@@ -59,11 +31,11 @@ exports[`FullPlayer renders correctly 1`] = `
           width="19"
         >
           <use
-            xlinkHref="#play-s"
+            xlinkHref="#pause"
           />
         </svg>
         <span>
-          Play
+          Pause
         </span>
       </button>
       <div
