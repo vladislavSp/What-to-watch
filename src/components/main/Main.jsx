@@ -6,8 +6,6 @@ import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {ShowBtn} from '../show-btn/ShowBtn.jsx';
-// import {ActionCreator} from '../../reducer/app/app';
-// import {APP_PAGE} from '../../const/const';
 import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
 import {getPromoFilm} from '../../reducer/data/selectors';
 import {getFilteredFilms} from '../../reducer/app/selectors';
@@ -106,23 +104,7 @@ const mapStateToProps = (state) => ({
   authorizationError: getAuthorizationError(state),
 });
 
-
-// const mapDispatchToProps = (dispatch) => ({
-//   onSignInClick() {
-//     dispatch(AppActionCreator.changeAppPage(APP_PAGE.SIGN_IN));
-//   },
-//   onViewBtnClick(length) {
-//     dispatch(AppActionCreator.setViewFilmCard(length));
-//   },
-//   onExitClick() {
-//     dispatch(AppActionCreator.changeAppPage(APP_PAGE.MAIN_PAGE));
-//   }
-// });
-
 const mapDispatchToProps = (dispatch) => ({
-  // onPlayClick() {
-  //   dispatch(ActionCreator.changeAppPage(APP_PAGE.PLAYER));
-  // },
   onViewBtnClick(length) {
     dispatch(AppActionCreator.setViewFilmCard(length));
   },
@@ -135,7 +117,6 @@ Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   authorizationError: PropTypes.bool.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
-  // onPlayClick: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main); // mapDispatchToProps
