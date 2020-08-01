@@ -20,7 +20,11 @@ export const SignHeader = ({status, user}) => {
     }
   };
 
-  return (<div className="user-block">{getHeaderByStatus(status)}</div>);
+  return (
+    <div className="user-block">
+      { getHeaderByStatus(status) }
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({

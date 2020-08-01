@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Error = () => (<div className="sign-in__message">
+export const ErrorLogin = () => (<div className="sign-in__message">
   <p>Please enter a valid email address</p>
 </div>);
 
-export default Error;
+export const ErrorPass = () => (<div className="sign-in__message">
+  <p>We can’t recognize this email <br /> and password combination. Please try again.</p>
+</div>);

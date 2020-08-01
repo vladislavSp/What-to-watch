@@ -108,9 +108,6 @@ const mapStateToProps = (state) => ({
 
 
 // const mapDispatchToProps = (dispatch) => ({
-//   login(authData) {
-//     dispatch(UserOperation.login(authData));
-//   },
 //   onSignInClick() {
 //     dispatch(AppActionCreator.changeAppPage(APP_PAGE.SIGN_IN));
 //   },
