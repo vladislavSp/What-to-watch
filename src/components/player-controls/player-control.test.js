@@ -15,4 +15,3 @@ it(`Player controls renders correctly`, () => {
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
-

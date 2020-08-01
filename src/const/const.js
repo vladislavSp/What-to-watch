@@ -15,8 +15,8 @@ const genreFilter = {
 const MAX_GENRES_NUM = 8;
 
 const FILM_CARD = {
-  INIT_STATE: 0,
-  MAX_COUNT: 8,
+  INIT_STATE_VIEW: 0,
+  VIEW_ITEM: 8
 };
 
 const APP_PAGE = {
@@ -27,5 +27,6 @@ const APP_PAGE = {
 };
 
 const HUNDRED_PERCENT = 100;
+const AVATAR_BASE_PATH = `https://4.react.pages.academy`;
 
-export {genreFilter, MAX_GENRES_NUM, APP_PAGE, FILM_CARD, HUNDRED_PERCENT};
+export {genreFilter, MAX_GENRES_NUM, APP_PAGE, FILM_CARD, HUNDRED_PERCENT, AVATAR_BASE_PATH};

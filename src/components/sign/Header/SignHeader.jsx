@@ -1,32 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {AuthorizationStatus} from '../../../reducer/user/user';
+import {getUser} from '../../../reducer/user/selectors';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {AVATAR_BASE_PATH} from '../../../const/const';
 
-const SignHeader = ({status, onSignInClick}) => {
+export const SignHeader = ({status, user}) => {
   const getHeaderByStatus = (authStatus) => {
     switch (authStatus) {
       case AuthorizationStatus.AUTH:
-        return <div className="user-block">
+        return <Link to={`/mylist`}>
           <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+            <img src={`${AVATAR_BASE_PATH}${user.avatar}`} alt="User avatar" width="63" height="63" />
           </div>
-        </div>;
+        </Link>;
       default:
-        return <div className="user-block">
-          <a
-            onClick={onSignInClick}
-            href="#"
-            className="user-block__link">Sign in</a>
-        </div>;
+        return <Link to={`/login`} href="" className="user-block__link">Sign in</Link>;
     }
   };
 
-  return getHeaderByStatus(status);
+  return (<div className="user-block">{getHeaderByStatus(status)}</div>);
 };
+
+const mapStateToProps = (state) => ({
+  user: getUser(state),
+});
 
 SignHeader.propTypes = {
   status: PropTypes.string.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
+  user: PropTypes.object,
 };
 
-export default SignHeader;
+export default connect(mapStateToProps)(SignHeader);

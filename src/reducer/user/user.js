@@ -1,6 +1,5 @@
+import {adaptedUser} from '../../adapters/userAdapter';
 import {extend} from '../../utils/utils';
-import {ActionCreator as StateActionCreator} from "../app/app";
-import {APP_PAGE} from '../../const/const';
 
 const AuthorizationStatus = {
   AUTH: `AUTH`,
@@ -10,11 +9,13 @@ const AuthorizationStatus = {
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   authorizationError: false,
+  user: {},
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   CHANGE_AUTHORIZATION_ERROR: `CHANGE_AUTHORIZATION_ERROR`,
+  SET_USER: `SET_USER`,
 };
 
 const ActionCreator = {
@@ -27,6 +28,11 @@ const ActionCreator = {
     type: ActionType.CHANGE_AUTHORIZATION_ERROR,
     payload: status,
   }),
+
+  setUser: (user) => ({
+    type: ActionType.SET_USER,
+    payload: user,
+  }),
 };
 
 const reducer = (state = initialState, action) => {
@@ -35,6 +41,8 @@ const reducer = (state = initialState, action) => {
       return extend(state, {authorizationStatus: action.payload});
     case ActionType.CHANGE_AUTHORIZATION_ERROR:
       return extend(state, {authorizationError: action.payload});
+    case ActionType.SET_USER:
+      return extend(state, {user: adaptedUser(action.payload)});
   }
 
   return state;
@@ -43,8 +51,11 @@ const reducer = (state = initialState, action) => {
 const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
-    .then(() => {
+    .then((response) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      if (response.data) {
+        dispatch(ActionCreator.setUser(response.data));
+      }
     })
     .catch((err) => {
       throw err;
@@ -56,10 +67,10 @@ const Operation = {
       email: authData.login,
       password: authData.password,
     })
-    .then(() => {
+    .then((response) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.changeAuthorizationError(false));
-      dispatch(StateActionCreator.changeAppPage(APP_PAGE.MAIN_PAGE));
+      dispatch(ActionCreator.setUser(response.data));
     })
     .catch((err) => {
       dispatch(ActionCreator.changeAuthorizationError(true));

@@ -1,11 +1,10 @@
 import {genreFilter, APP_PAGE, FILM_CARD} from '../../const/const.js';
 import {extend} from '../../utils/utils.js';
 
-
 const initialState = {
   activeGenre: genreFilter.ALL,
   currentAppPage: APP_PAGE.MAIN_PAGE,
-  filmLength: FILM_CARD.INIT_STATE,
+  filmLength: FILM_CARD.VIEW_ITEM,
 };
 
 const ActionType = {
@@ -34,7 +33,7 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SET_VIEW_FILM_CARD:
-      return extend(state, {filmLength: action.payload});
+      return extend(state, {filmLength: action.payload + FILM_CARD.VIEW_ITEM});
     case ActionType.CHANGE_CURRENT_APP_PAGE:
       return extend(state, {currentAppPage: action.payload});
     case ActionType.SET_JENRE:

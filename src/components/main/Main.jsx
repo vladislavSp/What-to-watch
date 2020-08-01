@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Link} from "react-router-dom";
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {ShowBtn} from '../show-btn/ShowBtn.jsx';
-import {ActionCreator} from '../../reducer/app/app';
-import {APP_PAGE} from '../../const/const';
+// import {ActionCreator} from '../../reducer/app/app';
+// import {APP_PAGE} from '../../const/const';
+import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
+import {getPromoFilm} from '../../reducer/data/selectors';
+import {getFilteredFilms} from '../../reducer/app/selectors';
+import {getViewFilmCard} from '../../reducer/app/selectors';
+import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
 
-export const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSignInClick, maxFilmLength, filmLength, onViewBtnClick, onPlayClick}) => <React.Fragment>
+export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLength, onViewBtnClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -25,7 +31,7 @@ export const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSign
         </a>
       </div>
 
-      <SignHeader status={authorizationStatus} onSignInClick={onSignInClick}/>
+      <SignHeader status={authorizationStatus} />
 
     </header>
 
@@ -42,16 +48,16 @@ export const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSign
             <span className="movie-card__year">{promoFilm.year}</span>
           </p>
           <div className="movie-card__buttons">
-            <button
-              onClick={onPlayClick}
-              className="btn btn--play movie-card__button"
-              type="button"
-            >
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"></use>
-              </svg>
-              <span>Play</span>
-            </button>
+
+            <Link to={`/movies/${promoFilm.id}/player`}>
+              <button className="btn btn--play movie-card__button" type="button">
+                <svg viewBox="0 0 19 19" width="19" height="19">
+                  <use xlinkHref="#play-s"></use>
+                </svg>
+                <span>Play</span>
+              </button>
+            </Link>
+
             <button className="btn btn--list movie-card__button" type="button">
               <svg viewBox="0 0 19 20" width="19" height="20">
                 <use xlinkHref="#add"></use>
@@ -70,9 +76,9 @@ export const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSign
 
       <GenreList />
 
-      <FilmList films={films} onCardClick={onCardClick} />
+      <FilmList films={filteredFilms.slice(0, filmViewLength)} />
 
-      {maxFilmLength >= filmLength && <ShowBtn filmLength={filmLength} onViewBtnClick={onViewBtnClick} />}
+      {filteredFilms.length >= filmViewLength && <ShowBtn filmLength={filmViewLength} onViewBtnClick={onViewBtnClick} />}
 
     </section>
 
@@ -92,22 +98,47 @@ export const Main = ({promoFilm, films, onCardClick, authorizationStatus, onSign
   </div>
 </React.Fragment>;
 
+const mapStateToProps = (state) => ({
+  promoFilm: getPromoFilm(state),
+  filteredFilms: getFilteredFilms(state),
+  filmViewLength: getViewFilmCard(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  authorizationError: getAuthorizationError(state),
+});
+
+
+// const mapDispatchToProps = (dispatch) => ({
+//   login(authData) {
+//     dispatch(UserOperation.login(authData));
+//   },
+//   onSignInClick() {
+//     dispatch(AppActionCreator.changeAppPage(APP_PAGE.SIGN_IN));
+//   },
+//   onViewBtnClick(length) {
+//     dispatch(AppActionCreator.setViewFilmCard(length));
+//   },
+//   onExitClick() {
+//     dispatch(AppActionCreator.changeAppPage(APP_PAGE.MAIN_PAGE));
+//   }
+// });
+
 const mapDispatchToProps = (dispatch) => ({
-  onPlayClick() {
-    dispatch(ActionCreator.changeAppPage(APP_PAGE.PLAYER));
+  // onPlayClick() {
+  //   dispatch(ActionCreator.changeAppPage(APP_PAGE.PLAYER));
+  // },
+  onViewBtnClick(length) {
+    dispatch(AppActionCreator.setViewFilmCard(length));
   },
 });
 
 Main.propTypes = {
   promoFilm: PropTypes.object.isRequired,
-  films: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onCardClick: PropTypes.func.isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filmViewLength: PropTypes.number.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
-  maxFilmLength: PropTypes.number.isRequired,
-  filmLength: PropTypes.number.isRequired,
+  authorizationError: PropTypes.bool.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
-  onPlayClick: PropTypes.func,
+  // onPlayClick: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main); // mapDispatchToProps

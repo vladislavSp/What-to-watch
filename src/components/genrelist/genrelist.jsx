@@ -11,7 +11,8 @@ export const GenreList = ({genreFilterArray, activeFilter, onFilterClick}) => {
       <a
         href="#"
         className="catalog__genres-link"
-        onClick={() => {
+        onClick={(evt) => {
+          evt.preventDefault();
           onFilterClick(genre);
         }}>
         {genre}
@@ -34,7 +35,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onFilterClick(genre) {
     dispatch(ActionCreator.setGenreType(genre));
-    dispatch(ActionCreator.setViewFilmCard(FILM_CARD.INIT_STATE));
+    dispatch(ActionCreator.setViewFilmCard(FILM_CARD.INIT_STATE_VIEW));
   }
 });
 

@@ -12,7 +12,7 @@ import Overview from './Overview/Overview.jsx';
 import {ActionCreator} from '../../reducer/app/app';
 import {APP_PAGE} from '../../const/const';
 
-export const Movie = (props) => {
+export const MoviePage = (props) => {
   const {isActive, onTabClick, filteredGenreFilms, onCardClick, onPlayClick} = props;
 
   const getComponentByFilter = (filter) => {
@@ -143,7 +143,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-Movie.propTypes = {
+MoviePage.propTypes = {
   onTabClick: PropTypes.func.isRequired,
   isActive: PropTypes.string.isRequired,
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -151,4 +151,4 @@ Movie.propTypes = {
   onPlayClick: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(Movie));
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(MoviePage));

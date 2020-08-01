@@ -1,17 +1,10 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {Router, Route, Switch} from 'react-router-dom';
 import Main from '../main/Main.jsx';
-import Movie from '../movie-detail/Movie.jsx';
+import MoviePage from '../movie-detail/Movie.jsx';
 import SignIn from '../sign/SignIn.jsx';
-import {getPromoFilm, getAllFilms} from '../../reducer/data/selectors';
-import {getFilteredFilms, getCurrentPage, getCurrentViewFilmCard} from '../../reducer/app/selectors';
-import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
-import {Operation as UserOperation} from '../../reducer/user/user';
-import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
-import {APP_PAGE} from '../../const/const';
 import FullScreenPlayer from '../full-screen-player/full-screen-player.jsx';
+import history from '../../history';
 
 export class App extends PureComponent {
   constructor(props) {
@@ -19,117 +12,17 @@ export class App extends PureComponent {
   }
 
   render() {
-    const {
-      promoFilm,
-      filteredFilms,
-      authorizationStatus,
-      authorizationError,
-      currentAppPage,
-      login,
-      onSignInClick,
-      filmLength,
-      onViewBtnClick,
-      onExitClick
-    } = this.props;
-
-    const renderMainScreen = () => {
-      let appPageRender;
-
-      switch (currentAppPage) {
-        case APP_PAGE.MAIN_PAGE:
-          appPageRender = (<Main
-            maxFilmLength={filteredFilms.length}
-            filmLength={filmLength}
-            onViewBtnClick={onViewBtnClick}
-            onSignInClick = {onSignInClick}
-            authorizationStatus={authorizationStatus}
-            promoFilm={promoFilm}
-            films={filteredFilms.slice(0, filmLength)}
-            onCardClick={() => {}}
-          />);
-          break;
-        case APP_PAGE.MOVIE:
-          appPageRender = (<Movie
-            film={filteredFilms[0]}
-            onCardClick={() => {}}
-          />);
-          break;
-        case APP_PAGE.SIGN_IN:
-          appPageRender = (<SignIn
-            authorizationError={authorizationError}
-            onSubmit={login}
-          />);
-          break;
-        case APP_PAGE.PLAYER:
-          appPageRender = (<FullScreenPlayer
-            onExitClick={onExitClick}
-            currentMovie={promoFilm}
-          />);
-      }
-
-      return appPageRender;
-    };
-
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/">
-            {renderMainScreen()}
-          </Route>
-          <Route exact path="/movie">
-            {<Movie
-              film={filteredFilms[0]}
-              onCardClick={() => {}}
-            />}
-          </Route>
-          <Route exact path="/login">
-            {<SignIn
-              authorizationError={authorizationError}
-              onSubmit={login}
-            />}
-          </Route>
+          <Route exact path="/movies/:id" component={MoviePage} />
+          <Route exact path="/movies/:id/player" component={FullScreenPlayer} />
+          <Route exact path="/login" component={SignIn} />
+          <Route exact path='/' component={Main} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-  authorizationError: getAuthorizationError(state),
-  currentAppPage: getCurrentPage(state),
-  promoFilm: getPromoFilm(state),
-  films: getAllFilms(state),
-  filteredFilms: getFilteredFilms(state),
-  filmLength: getCurrentViewFilmCard(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(UserOperation.login(authData));
-  },
-  onSignInClick() {
-    dispatch(AppActionCreator.changeAppPage(APP_PAGE.SIGN_IN));
-  },
-  onViewBtnClick(length) {
-    dispatch(AppActionCreator.setViewFilmCard(length));
-  },
-  onExitClick() {
-    dispatch(AppActionCreator.changeAppPage(APP_PAGE.MAIN_PAGE));
-  }
-});
-
-App.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  authorizationError: PropTypes.bool.isRequired,
-  currentAppPage: PropTypes.string.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  promoFilm: PropTypes.object.isRequired,
-  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filmLength: PropTypes.number.isRequired,
-  onViewBtnClick: PropTypes.func.isRequired,
-  onExitClick: PropTypes.func.isRequired,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

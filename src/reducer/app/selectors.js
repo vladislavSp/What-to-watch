@@ -28,17 +28,6 @@ export const getFilteredFilms = createSelector(
     }
 );
 
-export const getCurrentViewFilmCard = createSelector(
-    getViewFilmCard,
-    getFilteredFilms,
-    (lengthState, lengthFilms) => {
-      if (lengthFilms.length > lengthState) {
-        return lengthState + FILM_CARD.MAX_COUNT;
-      }
-      return lengthState;
-    }
-);
-
 export const getGenres = createSelector(
     getAllFilms,
     (allFilms) => {

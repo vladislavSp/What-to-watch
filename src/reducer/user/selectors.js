@@ -9,3 +9,7 @@ export const getAuthorizationStatus = (state) => {
 export const getAuthorizationError = (state) => {
   return state[NameSpace.USER].authorizationError;
 };
+
+export const getUser = (state) => {
+  return state[NameSpace.USER].user;
+};
