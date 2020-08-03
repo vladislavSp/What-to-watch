@@ -46,7 +46,7 @@ export const withStateProgress = (Component) => {
   }
 
   WithStateProgress.propTypes = {
-    videoRef: PropTypes.object.isRequired,
+    videoRef: PropTypes.object,
   };
 
   return WithStateProgress;
