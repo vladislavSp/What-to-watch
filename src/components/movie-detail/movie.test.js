@@ -38,6 +38,7 @@ it(`renders Movie correctly`, () => {
             user = {{}}
             filteredGenreFilms={filteredGenreFilms}
             authorizationStatus={`NO_AUTH`}
+            onViewListClick={() => {}}
           />
         </Provider>
       </Router>, {

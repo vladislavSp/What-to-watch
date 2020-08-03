@@ -12,10 +12,12 @@ import Reviews from './Reviews/Reviews.jsx';
 import Overview from './Overview/Overview.jsx';
 import {Link} from 'react-router-dom';
 import SignHeader from '../sign/Header/SignHeader.jsx';
+import {Operation} from '../../reducer/data/data';
 
+const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
 export const MoviePage = (props) => {
-  const {currentMovie, isActive, onTabClick, filteredGenreFilms, authorizationStatus} = props;
+  const {currentMovie, isActive, onTabClick, filteredGenreFilms, authorizationStatus, onViewListClick} = props;
   const {title, genre, year, background, backgroundColor, posterImage} = currentMovie;
 
   const getComponentByFilter = (filter) => {
@@ -71,9 +73,11 @@ export const MoviePage = (props) => {
               </button>
             </Link>
 
-            <button className="btn btn--list movie-card__button" type="button">
+            <button
+              onClick={() => onViewListClick(currentMovie)}
+              className="btn btn--list movie-card__button" type="button">
               <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
+                <use xlinkHref={getIconForList(currentMovie.inFavorites)}></use>
               </svg>
               <span>My list</span>
             </button>
@@ -144,6 +148,11 @@ const mapStateToProps = (state, props) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onViewListClick(movie) {
+    dispatch(Operation.changeFavorStatus(movie));
+  }
+});
 
 MoviePage.propTypes = {
   onTabClick: PropTypes.func.isRequired,
@@ -151,6 +160,7 @@ MoviePage.propTypes = {
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentMovie: PropTypes.object.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
+  onViewListClick: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(withActiveTab(MoviePage));
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(MoviePage));

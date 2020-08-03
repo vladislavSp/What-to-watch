@@ -11,8 +11,11 @@ import {getPromoFilm} from '../../reducer/data/selectors';
 import {getFilteredFilms} from '../../reducer/app/selectors';
 import {getViewFilmCard} from '../../reducer/app/selectors';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
+import {Operation} from '../../reducer/data/data';
 
-export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLength, onViewBtnClick}) => <React.Fragment>
+const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
+
+export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLength, onViewBtnClick, onViewListClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -56,9 +59,11 @@ export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLen
               </button>
             </Link>
 
-            <button className="btn btn--list movie-card__button" type="button">
+            <button
+              onClick={() => onViewListClick(promoFilm)}
+              className="btn btn--list movie-card__button" type="button">
               <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
+                <use xlinkHref={getIconForList(promoFilm.inFavorites)}></use>
               </svg>
               <span>My list</span>
             </button>
@@ -108,6 +113,9 @@ const mapDispatchToProps = (dispatch) => ({
   onViewBtnClick(length) {
     dispatch(AppActionCreator.setViewFilmCard(length));
   },
+  onViewListClick(movie) {
+    dispatch(Operation.changeFavorStatus(movie));
+  }
 });
 
 Main.propTypes = {
@@ -117,6 +125,7 @@ Main.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   authorizationError: PropTypes.bool.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
+  onViewListClick: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main); // mapDispatchToProps
