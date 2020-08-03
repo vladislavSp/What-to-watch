@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import PlayerControls from '../player-controls/player-controls.jsx';
 import {withVideoState} from '../../hocs/withVideoState.jsx';
+import {getCurrentMovieById} from '../../reducer/data/selectors';
 
 export const FullScreenPlayer = (props) => {
-  const {videoRef, currentMovie, isPlaying, onPlayPause, onFullScreen, onExitClick} = props;
+  const {currentMovie, videoRef, isPlaying, onPlayPause, onFullScreen, history} = props;
   const {videoPreview, title, poster} = currentMovie;
 
   const renderBtnState = (state) => {
@@ -22,7 +24,10 @@ export const FullScreenPlayer = (props) => {
       poster={poster}>
     </video>
 
-    <button type="button" className="player__exit" onClick={onExitClick}>Exit</button>
+    <button
+      type="button"
+      className="player__exit"
+      onClick={history.goBack}>Exit</button>
 
     <div className="player__controls">
 
@@ -34,7 +39,7 @@ export const FullScreenPlayer = (props) => {
           type="button"
           className="player__play">
 
-          {renderBtnState(isPlaying)}
+          { renderBtnState(isPlaying) }
 
         </button>
         <div className="player__name">{title}</div>
@@ -53,13 +58,17 @@ export const FullScreenPlayer = (props) => {
   </div>);
 };
 
+const mapStateToProps = (state, props) => ({
+  currentMovie: getCurrentMovieById(state, props.match.params.id)
+});
+
 FullScreenPlayer.propTypes = {
-  videoRef: PropTypes.object.isRequired,
+  videoRef: PropTypes.object,
   currentMovie: PropTypes.object.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onPlayPause: PropTypes.func.isRequired,
   onFullScreen: PropTypes.func.isRequired,
-  onExitClick: PropTypes.func.isRequired,
+  history: PropTypes.object,
 };
 
-export default withVideoState(FullScreenPlayer);
+export default connect(mapStateToProps)(withVideoState(FullScreenPlayer));

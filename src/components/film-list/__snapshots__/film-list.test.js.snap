@@ -6,7 +6,6 @@ exports[`Film list renders correctly 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -25,7 +24,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/0"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -33,7 +33,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -52,7 +51,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/1"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -60,7 +60,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -79,7 +78,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/2"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -87,7 +87,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -106,7 +105,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/3"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -114,7 +114,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -133,7 +132,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/4"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -141,7 +141,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -160,7 +159,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/5"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -168,7 +168,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -187,7 +186,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/6"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>
@@ -195,7 +195,6 @@ exports[`Film list renders correctly 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -214,7 +213,8 @@ exports[`Film list renders correctly 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movies/7"
+        onClick={[Function]}
       >
         Gangs of new york
       </a>

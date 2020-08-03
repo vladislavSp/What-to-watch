@@ -82,13 +82,11 @@ describe(`Reducer work correctly`, () => {
 
   it(`Reducer should update data store - PromoFilm from net`, () => {
     expect(reducer({
-      promoFilm: [],
+      promoFilm: {}
     }, {
       type: ActionType.LOAD_PROMO,
       payload: promoFilm,
-    })).toEqual({
-      promoFilm,
-    });
+    })).toEqual({promoFilm});
   });
 
   it(`Action creator - for getting films work correctly`, () => {

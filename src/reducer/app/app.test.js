@@ -2,7 +2,7 @@ import {reducer, ActionType, ActionCreator} from './app';
 
 const genreAll = `All genres`;
 
-describe(`Reducers work correctly`, () => {
+describe(`App reducer work correctly`, () => {
   it(`Reducer should change filter`, () => {
     expect(reducer({
       activeGenre: genreAll,
@@ -16,29 +16,16 @@ describe(`Reducers work correctly`, () => {
     });
   });
 
-  it(`Reducer should change page`, () => {
-    expect(reducer({
-      currentAppPage: `Main screen`,
-    },
-    {
-      type: ActionType.CHANGE_CURRENT_APP_PAGE,
-      payload: `Movie screen`,
-    }
-    )).toEqual({
-      currentAppPage: `Movie screen`,
-    });
-  });
-
   it(`Reducer should change VIEW FILM CARD`, () => {
     expect(reducer({
-      filmLength: 0,
+      filmLength: 8,
     },
     {
       type: ActionType.SET_VIEW_FILM_CARD,
       payload: 8,
     }
     )).toEqual({
-      filmLength: 8,
+      filmLength: 16,
     });
   });
 });
@@ -48,13 +35,6 @@ describe(`Action Creators work correctly`, () => {
     expect(ActionCreator.setGenreType(`Horror`)).toEqual({
       type: ActionType.SET_JENRE,
       payload: `Horror`,
-    });
-  });
-
-  it(`Action creator - for setting current App Page work correctly`, () => {
-    expect(ActionCreator.changeAppPage(`Main screen`)).toEqual({
-      type: ActionType.CHANGE_CURRENT_APP_PAGE,
-      payload: `Main screen`,
     });
   });
 

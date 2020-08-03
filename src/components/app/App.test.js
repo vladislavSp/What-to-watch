@@ -1,17 +1,15 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
-import {App} from './App.jsx';
-import {genreFilter, FILM_CARD} from '../../const/const.js';
 import {Provider} from 'react-redux';
-import {films, promoFilm} from '../../mocks/films.js';
+import {App} from './App.jsx';
+import {genreFilter} from '../../const/const.js';
+import {films} from '../../mocks/mocks';
 import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
 
-const filteredFilms = films;
-
-describe(`<App />`, () => {
+describe(`App render component correctly`, () => {
   it(`Render App / snapshot`, () => {
     const store = mockStore({
       [NameSpace.DATA]: {
@@ -20,30 +18,19 @@ describe(`<App />`, () => {
       },
       [NameSpace.APP]: {
         activeGenre: genreFilter.ALL,
-        currentAppPage: `MAIN_PAGE`,
-        filmLength: 0
+        filmLength: 8
       },
       [NameSpace.USER]: {
         authorizationStatus: `NO_AUTH`,
         authorizationError: false,
+        user: {}
       }
     });
 
     const tree = renderer
       .create((
         <Provider store={store}>
-          <App
-            promoFilm={promoFilm}
-            filteredFilms={filteredFilms}
-            authorizationStatus={`NO_AUTH`}
-            authorizationError={false}
-            currentAppPage={`Main screen`}
-            login={() => {}}
-            onSignInClick={() => {}}
-            filmLength={FILM_CARD.INIT_STATE}
-            onViewBtnClick={() => {}}
-            onExitClick={() => {}}
-          />
+          <App />
         </Provider>), {
         createNodeMock: () => {
           return {};

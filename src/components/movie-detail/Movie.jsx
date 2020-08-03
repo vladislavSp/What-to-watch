@@ -3,75 +3,81 @@ import PropTypes from 'prop-types';
 import Tabs from '../tabs/Tabs.jsx';
 import {withActiveTab} from '../../hocs/withActiveTab.jsx';
 import {connect} from 'react-redux';
-import {getFilteredFilms} from '../../reducer/app/selectors';
+import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import FilmCard from '../film-card/film-card.jsx';
-import {filmContent, reviews} from '../../mocks/films';
+import {reviews} from '../../mocks/mocks';
 import Details from './Details/Details.jsx';
 import Reviews from './Reviews/Reviews.jsx';
 import Overview from './Overview/Overview.jsx';
-import {ActionCreator} from '../../reducer/app/app';
-import {APP_PAGE} from '../../const/const';
+import {Link} from 'react-router-dom';
+import SignHeader from '../sign/Header/SignHeader.jsx';
+import {Operation} from '../../reducer/data/data';
 
-export const Movie = (props) => {
-  const {isActive, onTabClick, filteredGenreFilms, onCardClick, onPlayClick} = props;
+const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
+
+export const MoviePage = (props) => {
+  const {currentMovie, isActive, onTabClick, filteredGenreFilms, authorizationStatus, onViewListClick} = props;
+  const {title, genre, year, background, backgroundColor, posterImage} = currentMovie;
 
   const getComponentByFilter = (filter) => {
     switch (filter) {
       case `Details`:
-        return <Details filmContent={filmContent} />;
+        return <Details filmContent={currentMovie} />;
       case `Reviews`:
         return <Reviews reviews={reviews} />;
       default:
-        return <Overview filmContent={filmContent} />;
+        return <Overview filmContent={currentMovie} />;
     }
   };
 
-  return <React.Fragment><section className="movie-card movie-card--full">
+  return <React.Fragment><section
+    style={{backgroundColor}}
+    className="movie-card movie-card--full">
     <div className="movie-card__hero">
       <div className="movie-card__bg">
-        <img src={filmContent.background} alt={filmContent.name} />
+        <img src={background} alt={title} />
       </div>
 
       <h1 className="visually-hidden">WTW</h1>
 
       <header className="page-header movie-card__head">
         <div className="logo">
-          <a href="main.html" className="logo__link">
+          <Link to="/" className="logo__link">
             <span className="logo__letter logo__letter--1">W</span>
             <span className="logo__letter logo__letter--2">T</span>
             <span className="logo__letter logo__letter--3">W</span>
-          </a>
+          </Link>
         </div>
 
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
+        <SignHeader status={authorizationStatus} />
+
       </header>
 
       <div className="movie-card__wrap">
         <div className="movie-card__desc">
-          <h2 className="movie-card__title">{filmContent.title}</h2>
+          <h2 className="movie-card__title">{title}</h2>
           <p className="movie-card__meta">
-            <span className="movie-card__genre">{filmContent.genre}</span>
-            <span className="movie-card__year">{filmContent.year}</span>
+            <span className="movie-card__genre">{genre}</span>
+            <span className="movie-card__year">{year}</span>
           </p>
 
           <div className="movie-card__buttons">
+
+            <Link to={`/movies/${currentMovie.id}/player`}>
+              <button className="btn btn--play movie-card__button" type="button">
+                <svg viewBox="0 0 19 19" width="19" height="19">
+                  <use xlinkHref="#play-s"></use>
+                </svg>
+                <span>Play</span>
+              </button>
+            </Link>
+
             <button
-              onClick={onPlayClick}
-              className="btn btn--play movie-card__button"
-              type="button"
-            >
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"></use>
-              </svg>
-              <span>Play</span>
-            </button>
-            <button className="btn btn--list movie-card__button" type="button">
+              onClick={() => onViewListClick(currentMovie)}
+              className="btn btn--list movie-card__button" type="button">
               <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
+                <use xlinkHref={getIconForList(currentMovie.inFavorites)}></use>
               </svg>
               <span>My list</span>
             </button>
@@ -84,7 +90,7 @@ export const Movie = (props) => {
     <div className="movie-card__wrap movie-card__translate-top">
       <div className="movie-card__info">
         <div className="movie-card__poster movie-card__poster--big">
-          <img src={filmContent.posterImage} alt={filmContent.title + ` poster`} width="218" height="327" />
+          <img src={posterImage} alt={title + ` poster`} width="218" height="327" />
         </div>
 
         <div className="movie-card__desc">
@@ -110,7 +116,6 @@ export const Movie = (props) => {
           <FilmCard
             key={el.id}
             film={el}
-            onCardClick={onCardClick}
           />)
         )}
       </div>
@@ -118,37 +123,44 @@ export const Movie = (props) => {
 
     <footer className="page-footer">
       <div className="logo">
-        <a href="main.html" className="logo__link logo__link--light">
+        <Link to='/' className="logo__link logo__link--light">
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </a>
+        </Link>
       </div>
 
       <div className="copyright">
-        <p>© 2019 What to watch Ltd.</p>
+        <p>© 2020 What to watch Ltd.</p>
       </div>
     </footer>
   </div>
   </React.Fragment>;
 };
 
-const mapStateToProps = (state) => ({
-  filteredGenreFilms: getFilteredFilms(state).slice(0, 4),
-});
+const mapStateToProps = (state, props) => {
+  const currentMovie = getCurrentMovieById(state, props.match.params.id);
+
+  return {
+    currentMovie,
+    filteredGenreFilms: getFilteredGenreFilm(state, currentMovie),
+    authorizationStatus: getAuthorizationStatus(state),
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  onPlayClick() {
-    dispatch(ActionCreator.changeAppPage(APP_PAGE.PLAYER));
+  onViewListClick(movie) {
+    dispatch(Operation.changeFavorStatus(movie));
   }
 });
 
-Movie.propTypes = {
+MoviePage.propTypes = {
   onTabClick: PropTypes.func.isRequired,
   isActive: PropTypes.string.isRequired,
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onCardClick: PropTypes.func.isRequired,
-  onPlayClick: PropTypes.func.isRequired,
+  currentMovie: PropTypes.object.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  onViewListClick: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(Movie));
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(MoviePage));

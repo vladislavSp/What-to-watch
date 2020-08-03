@@ -1,5 +1,5 @@
 import NameSpace from '../name-space';
-import {genreFilter, MAX_GENRES_NUM, FILM_CARD} from '../../const/const';
+import {genreFilter, MAX_GENRES_NUM} from '../../const/const';
 import {getAllFilms} from '../data/selectors';
 import {createSelector} from 'reselect';
 
@@ -25,17 +25,6 @@ export const getFilteredFilms = createSelector(
         return allFilms;
       }
       return allFilms.filter((film) => film.genre === currentGenre);
-    }
-);
-
-export const getCurrentViewFilmCard = createSelector(
-    getViewFilmCard,
-    getFilteredFilms,
-    (lengthState, lengthFilms) => {
-      if (lengthFilms.length > lengthState) {
-        return lengthState + FILM_CARD.MAX_COUNT;
-      }
-      return lengthState;
     }
 );
 

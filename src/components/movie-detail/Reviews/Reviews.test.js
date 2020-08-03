@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Reviews from '../Reviews/Reviews.jsx';
-import {reviews} from '../../../mocks/films';
+import {reviews} from '../../../mocks/mocks';
 
 it(`VideoPlayer render correctly`, () => {
   const tree = renderer.create((

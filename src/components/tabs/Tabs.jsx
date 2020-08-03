@@ -8,7 +8,10 @@ const Tabs = ({onTabClick, isActive}) => {
     {tabs.map((element) => {
       return <li
         key={element}
-        onClick={() => onTabClick(element)}
+        onClick={(evt) => {
+          evt.preventDefault();
+          onTabClick(element);
+        }}
         className={`movie-nav__item ${element === isActive ? `movie-nav__item--active` : ``}`}>
         <a href="#" className="movie-nav__link">{element}</a>
       </li>;
