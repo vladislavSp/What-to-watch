@@ -20,7 +20,9 @@ describe(`GenresList e2e tests`, () => {
     );
 
     const filterLink = wrapper.find(`.catalog__genres-link`).at(0);
-    filterLink.simulate(`click`);
+    filterLink.simulate(`click`, {
+      preventDefault: () => {}
+    });
 
     expect(onFilterClick).toHaveBeenCalledTimes(1);
   });
