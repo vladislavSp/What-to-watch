@@ -17,3 +17,7 @@ export const getCurrentMovieById = (state, movieId) => {
 export const getFilteredGenreFilm = (state, currentMovie) => {
   return getAllFilms(state).filter((el) => el.id !== currentMovie.id && el.genre === currentMovie.genre).slice(0, 4);
 };
+
+export const getComments = (state) => {
+  return state[NAME_SPACE].comments;
+};

@@ -95,6 +95,7 @@ const Review = (props) => {
 
           <textarea
             onChange={onReviewChange}
+            disabled={isLoading}
             className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text">
           </textarea>
 

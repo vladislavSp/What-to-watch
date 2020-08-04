@@ -4,6 +4,11 @@ import {Operation} from '../reducer/data/data';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {getAllFilms} from '../reducer/data/selectors'; // getCurrentMovieById
+import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from '../const/const';
+
+const validateReview = (value) => {
+  return value.length >= MIN_REVIEW_LENGTH && value.length <= MAX_REVIEW_LENGTH;
+};
 
 export const withReviewState = (Component) => {
   class WithReviewState extends React.PureComponent {
@@ -24,26 +29,57 @@ export const withReviewState = (Component) => {
       this.handleSubmitForm = this.handleSubmitForm.bind(this);
     }
 
-    handleRatingChange() {
-      // console.log(1);
+    handleRatingChange(evt) {
+      const {value} = evt.target;
+
+      this.setState({
+        rating: value,
+        ratingIsValid: !!value,
+      });
     }
-    handleReviewChange() {
-      // console.log(2);
+
+    handleReviewChange(evt) {
+      const {value} = evt.target;
+
+      this.setState({
+        review: value,
+        reviewIsValid: validateReview(value),
+      });
     }
-    handleSubmitForm() {
-      // console.log(3);
+
+    handleSubmitForm(evt) {
+      evt.preventDefault();
+      const {onUploadReview, currentMovie} = this.props;
+      const {review, rating} = this.state;
+
+      this.setState((state) => ({
+        isLoading: !state.isLoading,
+      }));
+
+      onUploadReview(currentMovie, review, rating)
+        .then((response) => {
+          if (!response.data) {
+            this.setState({networkError: response.message});
+          } else {
+            this.setState({networkError: false});
+          }
+          this.setState((state) => ({
+            isLoading: !state.isLoading,
+          }));
+        });
     }
 
     render() {
-      const {networkError, handleSubmitForm, handleRatingChange, handleReviewChange, reviewIsValid, ratingIsValid, isLoading} = this.state;
+      const {networkError, reviewIsValid, ratingIsValid, isLoading} = this.state;
+      const {currentMovie} = this.props;
 
       return <Component
         {...this.props}
-        currentMovie={this.props.currentMovie}
+        currentMovie={currentMovie}
         networkError={networkError}
-        onSubmit={handleSubmitForm}
-        onRatingChange={handleRatingChange}
-        onReviewChange={handleReviewChange}
+        onSubmit={this.handleSubmitForm}
+        onRatingChange={this.handleRatingChange}
+        onReviewChange={this.handleReviewChange}
         reviewIsValid={reviewIsValid}
         ratingIsValid={ratingIsValid}
         isLoading={isLoading}
@@ -53,6 +89,7 @@ export const withReviewState = (Component) => {
 
   WithReviewState.propTypes = {
     currentMovie: PropTypes.object.isRequired,
+    onUploadReview: PropTypes.func,
   };
 
   return WithReviewState;
@@ -62,11 +99,9 @@ const mapStateToProps = (state) => ({
   currentMovie: getAllFilms(state)[2],
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onUploadReview() {
-    dispatch(Operation.uploadReview());
-  }
-});
+const mapDispatchToProps = {
+  onUploadReview: Operation.uploadReview,
+};
 
 export default compose(
     connect(mapStateToProps, mapDispatchToProps),
