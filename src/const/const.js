@@ -27,3 +27,5 @@ export const MAX_GENRES_NUM = 8;
 export const HUNDRED_PERCENT = 100;
 export const AVATAR_BASE_PATH = `https://4.react.pages.academy`;
 export const REGEX_MAIL = /\S+@\S+\.\S+/;
+export const MIN_REVIEW_LENGTH = 50;
+export const MAX_REVIEW_LENGTH = 400;
