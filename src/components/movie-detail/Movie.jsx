@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '../tabs/Tabs.jsx';
 import {withActiveTab} from '../../hocs/withActiveTab.jsx';
 import {connect} from 'react-redux';
-import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
+import {getCurrentMovieById, getFilteredGenreFilm, getComments} from '../../reducer/data/selectors';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import FilmCard from '../film-card/film-card.jsx';
 import {reviews} from '../../mocks/mocks';
@@ -145,6 +145,7 @@ const mapStateToProps = (state, props) => {
     currentMovie,
     filteredGenreFilms: getFilteredGenreFilm(state, currentMovie),
     authorizationStatus: getAuthorizationStatus(state),
+    comments: getComments(state),
   };
 };
 
@@ -161,6 +162,7 @@ MoviePage.propTypes = {
   currentMovie: PropTypes.object.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   onViewListClick: PropTypes.func,
+  comments: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(MoviePage));

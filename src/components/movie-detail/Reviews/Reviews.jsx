@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const Reviews = ({reviews}) => (<div className="movie-card__reviews-col">
   {reviews.map((el) => {
+
     return (<div key={el.id} className="review">
       <blockquote className="review__quote">
         <p className="review__text">{el.text}</p>
