@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 const authorizationStatus = `NO_AUTH`;
 
-const Review = (props) => {
+export const Review = (props) => {
   const {currentMovie, networkError, onSubmit, onRatingChange, onReviewChange, reviewIsValid, ratingIsValid, isLoading} = props;
   const {title, background, backgroundColor, posterImage} = currentMovie;
 

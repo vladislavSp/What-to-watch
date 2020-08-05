@@ -58,14 +58,17 @@ export const withReviewState = (Component) => {
 
       onUploadReview(currentMovie, review, rating)
         .then((response) => {
-          if (!response.data) {
-            this.setState({networkError: response.message});
+          if (response.status !== 200) {
+            this.setState((state) => ({
+              isLoading: !state.isLoading,
+              networkError: response.message
+            }));
           } else {
-            this.setState({networkError: false});
+            this.setState((state) => ({
+              isLoading: !state.isLoading,
+              networkError: false,
+            }));
           }
-          this.setState((state) => ({
-            isLoading: !state.isLoading,
-          }));
         });
     }
 
@@ -88,7 +91,7 @@ export const withReviewState = (Component) => {
   }
 
   WithReviewState.propTypes = {
-    currentMovie: PropTypes.object.isRequired,
+    currentMovie: PropTypes.object,
     onUploadReview: PropTypes.func,
   };
 
@@ -96,7 +99,7 @@ export const withReviewState = (Component) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentMovie: getAllFilms(state)[2],
+  currentMovie: getAllFilms(state)[2], // поменяю позже на поиск фильма по id
 });
 
 const mapDispatchToProps = {
