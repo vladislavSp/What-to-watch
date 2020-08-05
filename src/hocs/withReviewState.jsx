@@ -91,7 +91,7 @@ export const withReviewState = (Component) => {
   }
 
   WithReviewState.propTypes = {
-    currentMovie: PropTypes.object,
+    currentMovie: PropTypes.object.isRequired,
     onUploadReview: PropTypes.func,
   };
 
