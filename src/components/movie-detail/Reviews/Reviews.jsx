@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+
+const formatDate = (date) => moment(date).format(`MMMM DD, YYYY`);
 
 const Reviews = ({reviews}) => (<div className="movie-card__reviews-col">
   {reviews.map((el) => {
 
     return (<div key={el.id} className="review">
       <blockquote className="review__quote">
-        <p className="review__text">{el.text}</p>
+        <p className="review__text">{el.comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{el.author}</cite>
-          <time className="review__date" dateTime={el.date}>{el.date}</time>
+          <cite className="review__author">{el.user.name}</cite>
+          <time className="review__date" dateTime={formatDate(el.date)}>{formatDate(el.date)}</time>
         </footer>
       </blockquote>
 

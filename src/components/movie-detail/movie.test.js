@@ -11,6 +11,8 @@ import history from '../../history';
 const mockStore = configureStore([]);
 const filteredGenreFilms = films;
 
+jest.mock(`./movie-tabs/movie-tabs.jsx`, () => `MovieTabs`);
+
 it(`renders Movie correctly`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
@@ -33,8 +35,6 @@ it(`renders Movie correctly`, () => {
         <Provider store={store}>
           <MoviePage
             currentMovie={films[0]}
-            isActive={`Overview`}
-            onTabClick={() => {}}
             user = {{}}
             filteredGenreFilms={filteredGenreFilms}
             authorizationStatus={`NO_AUTH`}

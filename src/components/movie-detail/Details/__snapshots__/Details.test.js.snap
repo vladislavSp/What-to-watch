@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VideoPlayer render correctly 1`] = `
+exports[`Details render correctly 1`] = `
 <div
   className="movie-card__text movie-card__row"
 >
@@ -31,7 +31,19 @@ exports[`VideoPlayer render correctly 1`] = `
       </strong>
       <span
         className="movie-card__details-value"
-      />
+      >
+        Leonardo DiCaprio
+        <br />
+        Cameron Diaz
+        <br />
+        Daniel Day-Lewis
+        <br />
+        Jude Law
+        <br />
+        Willem Dafoe
+        <br />
+        Saoirse Ronan
+      </span>
     </p>
   </div>
   <div
@@ -47,7 +59,9 @@ exports[`VideoPlayer render correctly 1`] = `
       </strong>
       <span
         className="movie-card__details-value"
-      />
+      >
+        NaNh NaNm
+      </span>
     </p>
     <p
       className="movie-card__details-item"
