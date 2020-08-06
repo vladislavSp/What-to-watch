@@ -6,7 +6,7 @@ import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {ShowBtn} from '../show-btn/ShowBtn.jsx';
-import {getAuthorizationStatus, getAuthorizationError} from "../../reducer/user/selectors";
+import {getAuthorizationError} from "../../reducer/user/selectors";
 import {getPromoFilm} from '../../reducer/data/selectors';
 import {getFilteredFilms} from '../../reducer/app/selectors';
 import {getViewFilmCard} from '../../reducer/app/selectors';
@@ -15,7 +15,7 @@ import {Operation} from '../../reducer/data/data';
 
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
-export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLength, onViewBtnClick, onViewListClick}) => <React.Fragment>
+export const Main = ({promoFilm, filteredFilms, filmViewLength, onViewBtnClick, onViewListClick}) => <React.Fragment>
   <section className="movie-card">
     <div className="movie-card__bg">
       <img src={promoFilm.background} alt="The Grand Budapest Hotel" />
@@ -32,7 +32,7 @@ export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLen
         </a>
       </div>
 
-      <SignHeader status={authorizationStatus} />
+      <SignHeader />
 
     </header>
 
@@ -50,7 +50,7 @@ export const Main = ({promoFilm, filteredFilms, authorizationStatus, filmViewLen
           </p>
           <div className="movie-card__buttons">
 
-            <Link to={`/movies/${promoFilm.id}/player`}>
+            <Link to={`/films/${promoFilm.id}/player`}>
               <button className="btn btn--play movie-card__button" type="button">
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -105,7 +105,6 @@ const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
   filteredFilms: getFilteredFilms(state),
   filmViewLength: getViewFilmCard(state),
-  authorizationStatus: getAuthorizationStatus(state),
   authorizationError: getAuthorizationError(state),
 });
 
@@ -122,7 +121,6 @@ Main.propTypes = {
   promoFilm: PropTypes.object.isRequired,
   filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   filmViewLength: PropTypes.number.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   authorizationError: PropTypes.bool.isRequired,
   onViewBtnClick: PropTypes.func.isRequired,
   onViewListClick: PropTypes.func.isRequired,

@@ -22,7 +22,7 @@ const FilmCard = (props) => {
         />
       </div>
       <h3 className="small-movie-card__title">
-        <Link to={`/movies/${film.id}`} className="small-movie-card__link">{title}</Link>
+        <Link to={`/films/${film.id}`} className="small-movie-card__link">{title}</Link>
       </h3>
     </React.Fragment>
 

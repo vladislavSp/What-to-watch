@@ -19,7 +19,7 @@ export const getViewFilmCard = (state) => {
 
 export const getFavoritesMovies = (state) => {
   return state[NameSpace.DATA].allFilms
-  .filter(({isFavorites}) => isFavorites);
+  .filter(({inFavorites}) => inFavorites);
 };
 
 export const getFilteredFilms = createSelector(

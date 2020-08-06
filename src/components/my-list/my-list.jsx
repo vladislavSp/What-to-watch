@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-import {SignHeader} from '../sign/Header/SignHeader.jsx';
+import SignHeader from '../sign/Header/SignHeader.jsx';
 import FilmList from '../film-list/film-list.jsx';
 import {getFavoritesMovies} from '../../reducer/app/selectors';
 import {connect} from 'react-redux';
 
-export const MyList = ({favoritesMovies, authorizationStatus}) => {
+export const MyList = ({favoritesMovies}) => {
   return (<div className="user-page">
     <header className="page-header user-page__head">
       <div className="logo">
@@ -21,7 +21,7 @@ export const MyList = ({favoritesMovies, authorizationStatus}) => {
 
       <h1 className="page-title user-page__title">My list</h1>
 
-      <SignHeader status={authorizationStatus} />
+      <SignHeader />
 
     </header>
 
@@ -52,7 +52,6 @@ export const MyList = ({favoritesMovies, authorizationStatus}) => {
 
 MyList.propTypes = {
   favoritesMovies: PropTypes.arrayOf(PropTypes.object),
-  authorizationStatus: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({

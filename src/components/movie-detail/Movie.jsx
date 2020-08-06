@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import MovieTabs from './movie-tabs/movie-tabs.jsx';
 import {connect} from 'react-redux';
 import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import FilmCard from '../film-card/film-card.jsx';
 import {Link} from 'react-router-dom';
 import SignHeader from '../sign/Header/SignHeader.jsx';
@@ -12,7 +11,7 @@ import {Operation} from '../../reducer/data/data';
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
 export const MoviePage = (props) => {
-  const {currentMovie, filteredGenreFilms, authorizationStatus, onViewListClick} = props;
+  const {currentMovie, filteredGenreFilms, onViewListClick} = props;
   const {title, genre, year, background, backgroundColor, posterImage} = currentMovie;
 
   return <React.Fragment><section
@@ -34,7 +33,7 @@ export const MoviePage = (props) => {
           </Link>
         </div>
 
-        <SignHeader status={authorizationStatus} />
+        <SignHeader />
 
       </header>
 
@@ -48,7 +47,7 @@ export const MoviePage = (props) => {
 
           <div className="movie-card__buttons">
 
-            <Link to={`/movies/${currentMovie.id}/player`}>
+            <Link to={`/films/${currentMovie.id}/player`}>
               <button className="btn btn--play movie-card__button" type="button">
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -122,7 +121,6 @@ const mapStateToProps = (state, props) => {
   return {
     currentMovie,
     filteredGenreFilms: getFilteredGenreFilm(state, currentMovie),
-    authorizationStatus: getAuthorizationStatus(state),
   };
 };
 
@@ -135,7 +133,6 @@ const mapDispatchToProps = (dispatch) => ({
 MoviePage.propTypes = {
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentMovie: PropTypes.object.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   onViewListClick: PropTypes.func,
 };
 
