@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Link} from "react-router-dom";
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {ShowBtn} from '../show-btn/ShowBtn.jsx';
-import {getAuthorizationError} from "../../reducer/user/selectors";
+import {getAuthorizationError} from '../../reducer/user/selectors';
 import {getPromoFilm} from '../../reducer/data/selectors';
 import {getFilteredFilms} from '../../reducer/app/selectors';
 import {getViewFilmCard} from '../../reducer/app/selectors';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
 import {Operation} from '../../reducer/data/data';
+import history from '../../history';
 
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
@@ -50,14 +50,16 @@ export const Main = ({promoFilm, filteredFilms, filmViewLength, onViewBtnClick, 
           </p>
           <div className="movie-card__buttons">
 
-            <Link to={`/films/${promoFilm.id}/player`}>
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-            </Link>
+            <button
+              onClick={() => {
+                history.push(`/films/${promoFilm.id}/player`);
+              }}
+              className="btn btn--play movie-card__button" type="button">
+              <svg viewBox="0 0 19 19" width="19" height="19">
+                <use xlinkHref="#play-s"></use>
+              </svg>
+              <span>Play</span>
+            </button>
 
             <button
               onClick={() => onViewListClick(promoFilm)}
