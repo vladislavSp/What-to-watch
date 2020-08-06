@@ -4,8 +4,6 @@ import SignHeader from '../sign/Header/SignHeader.jsx';
 import withReviewState from '../../hocs/withReviewState.jsx';
 import {Link} from 'react-router-dom';
 
-const authorizationStatus = `NO_AUTH`;
-
 export const Review = (props) => {
   const {currentMovie, networkError, onSubmit, onRatingChange, onReviewChange, reviewIsValid, ratingIsValid, isLoading} = props;
   const {title, background, backgroundColor, posterImage} = currentMovie;
@@ -43,7 +41,7 @@ export const Review = (props) => {
           </ul>
         </nav>
 
-        <SignHeader status={authorizationStatus} />
+        <SignHeader />
 
       </header>
 
