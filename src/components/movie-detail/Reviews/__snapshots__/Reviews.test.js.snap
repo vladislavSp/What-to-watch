@@ -1,73 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`VideoPlayer render correctly 1`] = `
+exports[`Reviews render correctly 1`] = `
 <div
-  className="movie-card__reviews-col"
+  className="movie-card__reviews movie-card__row"
 >
   <div
-    className="review"
-  >
-    <blockquote
-      className="review__quote"
-    >
-      <p
-        className="review__text"
-      >
-        Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
-      </p>
-      <footer
-        className="review__details"
-      >
-        <cite
-          className="review__author"
-        >
-          Kate Muir
-        </cite>
-        <time
-          className="review__date"
-          dateTime="December 24, 2016"
-        >
-          December 24, 2016
-        </time>
-      </footer>
-    </blockquote>
-    <div
-      className="review__rating"
-    >
-      8,9
-    </div>
-  </div>
+    className="movie-card__reviews-col"
+  />
   <div
-    className="review"
+    className="movie-card__reviews-col"
   >
-    <blockquote
-      className="review__quote"
-    >
-      <p
-        className="review__text"
-      >
-        Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
-      </p>
-      <footer
-        className="review__details"
-      >
-        <cite
-          className="review__author"
-        >
-          Kate Muir
-        </cite>
-        <time
-          className="review__date"
-          dateTime="December 24, 2016"
-        >
-          December 24, 2016
-        </time>
-      </footer>
-    </blockquote>
     <div
-      className="review__rating"
+      className="review"
     >
-      8,9
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Two detectives, a rookie and a veteran, hunt a serial killer who uses
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Kate Mur
+          </cite>
+          <time
+            className="review__date"
+            dateTime="May 08, 2019"
+          >
+            May 08, 2019
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8.9
+      </div>
     </div>
   </div>
 </div>

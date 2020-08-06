@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tabs from '../tabs/Tabs.jsx';
-import {withActiveTab} from '../../hocs/withActiveTab.jsx';
+import MovieTabs from './movie-tabs/movie-tabs.jsx';
 import {connect} from 'react-redux';
 import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import FilmCard from '../film-card/film-card.jsx';
-import {reviews} from '../../mocks/mocks';
-import Details from './Details/Details.jsx';
-import Reviews from './Reviews/Reviews.jsx';
-import Overview from './Overview/Overview.jsx';
 import {Link} from 'react-router-dom';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {Operation} from '../../reducer/data/data';
@@ -17,19 +12,8 @@ import {Operation} from '../../reducer/data/data';
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
 export const MoviePage = (props) => {
-  const {currentMovie, isActive, onTabClick, filteredGenreFilms, authorizationStatus, onViewListClick} = props;
+  const {currentMovie, filteredGenreFilms, authorizationStatus, onViewListClick} = props;
   const {title, genre, year, background, backgroundColor, posterImage} = currentMovie;
-
-  const getComponentByFilter = (filter) => {
-    switch (filter) {
-      case `Details`:
-        return <Details filmContent={currentMovie} />;
-      case `Reviews`:
-        return <Reviews reviews={reviews} />;
-      default:
-        return <Overview filmContent={currentMovie} />;
-    }
-  };
 
   return <React.Fragment><section
     style={{backgroundColor}}
@@ -93,16 +77,8 @@ export const MoviePage = (props) => {
           <img src={posterImage} alt={title + ` poster`} width="218" height="327" />
         </div>
 
-        <div className="movie-card__desc">
-          <nav className="movie-nav movie-card__nav">
+        <MovieTabs movie={currentMovie}/>
 
-            <Tabs onTabClick={onTabClick} isActive={isActive}/>
-
-          </nav>
-
-          {getComponentByFilter(isActive)}
-
-        </div>
       </div>
     </div>
   </section>
@@ -112,12 +88,14 @@ export const MoviePage = (props) => {
       <h2 className="catalog__title">More like this</h2>
 
       <div className="catalog__movies-list">
+
         {filteredGenreFilms.map((el) => (
           <FilmCard
             key={el.id}
             film={el}
           />)
         )}
+
       </div>
     </section>
 
@@ -155,12 +133,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 MoviePage.propTypes = {
-  onTabClick: PropTypes.func.isRequired,
-  isActive: PropTypes.string.isRequired,
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentMovie: PropTypes.object.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   onViewListClick: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withActiveTab(MoviePage));
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

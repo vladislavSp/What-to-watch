@@ -25,4 +25,5 @@ Tabs.propTypes = {
   isActive: PropTypes.string.isRequired,
 };
 
+
 export default Tabs;

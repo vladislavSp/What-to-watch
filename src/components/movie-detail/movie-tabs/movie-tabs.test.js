@@ -1,8 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Reviews from '../Reviews/Reviews.jsx';
+import {MovieTabs} from '../movie-tabs/movie-tabs.jsx';
+import {films} from '../../../mocks/mocks';
 
-const reviews = [
+const comments = [
   {
     "id": 1,
     "user": {
@@ -15,16 +16,15 @@ const reviews = [
   }
 ];
 
-it(`Reviews render correctly`, () => {
+it(`MovieTabs render correctly`, () => {
   const tree = renderer.create((
-    <Reviews
-      reviews={reviews}
+    <MovieTabs
+      movie={films[0]}
+      comments={comments}
+      isActive={`Overview`}
+      onTabClick={()=>{}}
     />
-  ), {
-    createNodeMock: () => {
-      return {};
-    }
-  }).toJSON();
+  )).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
