@@ -7,11 +7,13 @@ import FilmCard from '../film-card/film-card.jsx';
 import {Link} from 'react-router-dom';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {Operation} from '../../reducer/data/data';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {AuthorizationStatus} from '../../reducer/user/user';
 
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
 export const MoviePage = (props) => {
-  const {currentMovie, filteredGenreFilms, onViewListClick} = props;
+  const {currentMovie, filteredGenreFilms, onViewListClick, authorizationStatus} = props;
   const {title, genre, year, background, backgroundColor, posterImage} = currentMovie;
 
   return <React.Fragment><section
@@ -64,7 +66,10 @@ export const MoviePage = (props) => {
               </svg>
               <span>My list</span>
             </button>
-            <a href="add-review.html" className="btn movie-card__button">Add review</a>
+
+            {authorizationStatus === AuthorizationStatus.AUTH ?
+              <Link to={`/films/${currentMovie.id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link> : ``}
+
           </div>
         </div>
       </div>
@@ -121,6 +126,7 @@ const mapStateToProps = (state, props) => {
   return {
     currentMovie,
     filteredGenreFilms: getFilteredGenreFilm(state, currentMovie),
+    authorizationStatus: getAuthorizationStatus(state),
   };
 };
 
@@ -134,6 +140,7 @@ MoviePage.propTypes = {
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentMovie: PropTypes.object.isRequired,
   onViewListClick: PropTypes.func,
+  authorizationStatus: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

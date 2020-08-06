@@ -8,6 +8,7 @@ import Review from '../review/review.jsx';
 import history from '../../history';
 import MyList from '../my-list/my-list.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
+import {AuthorizationStatus} from '../../reducer/user/user';
 
 export class App extends PureComponent {
   constructor(props) {
@@ -23,6 +24,8 @@ export class App extends PureComponent {
           <PrivateRoute
             exact
             path='/films/:id/review'
+            requiredAuthStatus={AuthorizationStatus.AUTH}
+            pathToRedirect={`/login`}
             render={(match) => {
               return <Review
                 match={match}
@@ -32,11 +35,21 @@ export class App extends PureComponent {
           <PrivateRoute
             exact
             path='/mylist'
+            requiredAuthStatus={AuthorizationStatus.AUTH}
+            pathToRedirect={`/login`}
             render={() => {
               return <MyList/>;
             }}
           />
-          <Route exact path="/login" component={SignIn} />
+          <PrivateRoute
+            exact
+            path="/login"
+            requiredAuthStatus={AuthorizationStatus.NO_AUTH}
+            pathToRedirect={`/`}
+            render={() => {
+              return <SignIn />;
+            }}
+          />
           <Route exact path='/' component={Main} />
         </Switch>
       </Router>

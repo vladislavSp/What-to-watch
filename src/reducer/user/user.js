@@ -52,8 +52,8 @@ const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
     .then((response) => {
-      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       if (response.data) {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUser(response.data));
       }
     })

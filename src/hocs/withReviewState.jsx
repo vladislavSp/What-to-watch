@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {compose} from 'redux';
 import {getAllFilms} from '../reducer/data/selectors'; // getCurrentMovieById
 import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from '../const/const';
+import history from '../history';
 
 const validateReview = (value) => {
   return value.length >= MIN_REVIEW_LENGTH && value.length <= MAX_REVIEW_LENGTH;
@@ -68,6 +69,7 @@ export const withReviewState = (Component) => {
               isLoading: !state.isLoading,
               networkError: false,
             }));
+            history.push(`/films/${currentMovie.id}`);
           }
         });
     }

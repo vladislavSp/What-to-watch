@@ -8,12 +8,7 @@ import thunk from "redux-thunk";
 import {createAPI} from './api.js';
 import {Operation as UserOperation} from './reducer/user/user.js';
 import {composeWithDevTools} from 'redux-devtools-extension';
-
 import {Operation as DataOperation} from './reducer/data/data.js';
-
-// const onUnauthorized = () => {
-//   store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
-// };
 
 const api = createAPI(() => {});
 
