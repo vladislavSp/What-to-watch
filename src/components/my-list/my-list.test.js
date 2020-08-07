@@ -10,7 +10,7 @@ import {films} from '../../mocks/mocks';
 const mockStore = configureStore([]);
 const store = mockStore({});
 
-jest.mock(`../sign/header/sign-header`, () => `SignHeader`);
+jest.mock(`../sign-in/header/sign-header`, () => `SignHeader`);
 jest.mock(`../film-list/film-list`, () => `FilmList`);
 
 it(`My list renders correctly`, () => {

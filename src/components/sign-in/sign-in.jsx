@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStateSignInScreen} from '../../hocs/withStateAuthScreen.jsx';
-import {ErrorLogin, ErrorPass} from './Error/Error.jsx';
+import {ErrorLogin, ErrorPass} from './error/error.jsx';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Operation} from '../../reducer/user/user';

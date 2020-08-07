@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
 import FilmCard from '../film-card/film-card.jsx';
 import {Link} from 'react-router-dom';
-import SignHeader from '../sign/header/sign-header.jsx';
+import SignHeader from '../sign-in/header/sign-header.jsx';
 import {Operation} from '../../reducer/data/data';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {AuthorizationStatus} from '../../reducer/user/user';

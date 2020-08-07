@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import FilmList from '../film-list/film-list.jsx';
 import GenreList from '../genrelist/genrelist.jsx';
-import SignHeader from '../sign/header/sign-header.jsx';
+import SignHeader from '../sign-in/header/sign-header.jsx';
 import {ShowBtn} from '../show-btn/show-btn.jsx';
 import {getAuthorizationError} from '../../reducer/user/selectors';
 import {getPromoFilm} from '../../reducer/data/selectors';
