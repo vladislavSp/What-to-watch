@@ -17,6 +17,11 @@ export const getViewFilmCard = (state) => {
   return state[NameSpace.APP].filmLength;
 };
 
+export const getFavoritesMovies = (state) => {
+  return state[NameSpace.DATA].allFilms
+  .filter(({inFavorites}) => inFavorites);
+};
+
 export const getFilteredFilms = createSelector(
     getAllFilms,
     getActiveGenre,

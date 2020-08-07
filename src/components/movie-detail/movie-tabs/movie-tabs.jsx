@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '../../tabs/Tabs.jsx';
-// import {reviews} from '../../../mocks/mocks';
 import Details from '../Details/Details.jsx';
 import Reviews from '../Reviews/Reviews.jsx';
 import Overview from '../Overview/Overview.jsx';

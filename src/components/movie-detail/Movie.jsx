@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import MovieTabs from './movie-tabs/movie-tabs.jsx';
 import {connect} from 'react-redux';
 import {getCurrentMovieById, getFilteredGenreFilm} from '../../reducer/data/selectors';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import FilmCard from '../film-card/film-card.jsx';
 import {Link} from 'react-router-dom';
 import SignHeader from '../sign/Header/SignHeader.jsx';
 import {Operation} from '../../reducer/data/data';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {AuthorizationStatus} from '../../reducer/user/user';
 
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 
 export const MoviePage = (props) => {
-  const {currentMovie, filteredGenreFilms, authorizationStatus, onViewListClick} = props;
+  const {currentMovie, filteredGenreFilms, onViewListClick, authorizationStatus} = props;
   const {title, genre, year, background, backgroundColor, posterImage} = currentMovie;
 
   return <React.Fragment><section
@@ -34,7 +35,7 @@ export const MoviePage = (props) => {
           </Link>
         </div>
 
-        <SignHeader status={authorizationStatus} />
+        <SignHeader />
 
       </header>
 
@@ -48,14 +49,18 @@ export const MoviePage = (props) => {
 
           <div className="movie-card__buttons">
 
-            <Link to={`/movies/${currentMovie.id}/player`}>
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
-                <span>Play</span>
-              </button>
-            </Link>
+            <button
+
+              onClick={() => {
+                history.push(`/films/${currentMovie.id}/player`);
+              }}
+
+              className="btn btn--play movie-card__button" type="button">
+              <svg viewBox="0 0 19 19" width="19" height="19">
+                <use xlinkHref="#play-s"></use>
+              </svg>
+              <span>Play</span>
+            </button>
 
             <button
               onClick={() => onViewListClick(currentMovie)}
@@ -65,7 +70,10 @@ export const MoviePage = (props) => {
               </svg>
               <span>My list</span>
             </button>
-            <a href="add-review.html" className="btn movie-card__button">Add review</a>
+
+            {authorizationStatus === AuthorizationStatus.AUTH ?
+              <Link to={`/films/${currentMovie.id}/review`} href="add-review.html" className="btn movie-card__button">Add review</Link> : ``}
+
           </div>
         </div>
       </div>
@@ -135,8 +143,8 @@ const mapDispatchToProps = (dispatch) => ({
 MoviePage.propTypes = {
   filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentMovie: PropTypes.object.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   onViewListClick: PropTypes.func,
+  authorizationStatus: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

@@ -21,7 +21,7 @@ exports[`renders correctly 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="/movies/0"
+      href="/films/0"
       onClick={[Function]}
     >
       Gangs of new york

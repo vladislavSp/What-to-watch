@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {AuthorizationStatus} from '../../../reducer/user/user';
-import {getUser} from '../../../reducer/user/selectors';
+import {getAuthorizationStatus, getUser} from '../../../reducer/user/selectors';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {AVATAR_BASE_PATH} from '../../../const/const';
@@ -29,6 +29,7 @@ export const SignHeader = ({status, user}) => {
 
 const mapStateToProps = (state) => ({
   user: getUser(state),
+  status: getAuthorizationStatus(state),
 });
 
 SignHeader.propTypes = {

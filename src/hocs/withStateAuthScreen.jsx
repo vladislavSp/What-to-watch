@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {REGEX_MAIL} from '../const/const';
+import history from '../history';
 
 export const withStateSignInScreen = (Component) => {
   class withSignInState extends PureComponent {
@@ -40,7 +41,7 @@ export const withStateSignInScreen = (Component) => {
     }
 
     handleSubmit(evt) {
-      const {login, history} = this.props;
+      const {login} = this.props;
       const {isValidLogin, isValidPassword} = this.state;
       evt.preventDefault();
 

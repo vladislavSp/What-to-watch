@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import {Operation} from '../reducer/data/data';
 import {connect} from 'react-redux';
 import {compose} from 'redux';
-import {getAllFilms} from '../reducer/data/selectors'; // getCurrentMovieById
+import {getCurrentMovieById} from '../reducer/data/selectors';
 import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from '../const/const';
+import history from '../history';
 
 const validateReview = (value) => {
   return value.length >= MIN_REVIEW_LENGTH && value.length <= MAX_REVIEW_LENGTH;
@@ -68,6 +69,7 @@ export const withReviewState = (Component) => {
               isLoading: !state.isLoading,
               networkError: false,
             }));
+            history.push(`/films/${currentMovie.id}`);
           }
         });
     }
@@ -98,8 +100,8 @@ export const withReviewState = (Component) => {
   return WithReviewState;
 };
 
-const mapStateToProps = (state) => ({
-  currentMovie: getAllFilms(state)[2], // поменяю позже на поиск фильма по id
+const mapStateToProps = (state, props) => ({
+  currentMovie: getCurrentMovieById(state, props.match.params.id),
 });
 
 const mapDispatchToProps = {

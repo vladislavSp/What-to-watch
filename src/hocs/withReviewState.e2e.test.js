@@ -14,7 +14,7 @@ describe(`State correctly changed by handleReviewChange`, () => {
   it(`Valid review should change reviewIsValid to true`, () => {
     const event = {
       target: {
-        value: `BlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBla`
+        value: `Valid text in textfield.Valid text in textfield.Valid text in textfield.Valid text in textfield. `
       }
     };
     wrapper.instance().handleReviewChange(event);
@@ -24,7 +24,7 @@ describe(`State correctly changed by handleReviewChange`, () => {
   it(`Invalid review should change reviewIsValid to false`, () => {
     const event = {
       target: {
-        value: `BlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBlaBla`
+        value: `Short text in textfield.`
       }
     };
     wrapper.instance().handleReviewChange(event);
