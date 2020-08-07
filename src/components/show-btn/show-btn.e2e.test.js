@@ -1,7 +1,7 @@
 import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ShowBtn from './ShowBtn.jsx';
+import ShowBtn from './show-btn.jsx';
 
 configure({adapter: new Adapter()});
 

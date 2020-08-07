@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SignHeader from '../sign/Header/SignHeader.jsx';
+import SignHeader from '../sign/header/sign-header.jsx';
 import withReviewState from '../../hocs/withReviewState.jsx';
 import {Link} from 'react-router-dom';
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Details from './Details.jsx';
 import {filmContent} from '../../../mocks/mocks';
+import Overview from './overview.jsx';
 
-it(`Details render correctly`, () => {
+it(`VideoPlayer render correctly`, () => {
   const tree = renderer.create((
-    <Details
+    <Overview
       filmContent={filmContent}
     />
   ), {

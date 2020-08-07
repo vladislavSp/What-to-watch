@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ShowBtn from './ShowBtn.jsx';
+import ShowBtn from './show-btn.jsx';
 
 const filmLength = 8;
 

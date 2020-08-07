@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import VideoPlayer from '../player/VideoPlayer.jsx';
+import VideoPlayer from '../player/player.jsx';
 import {withActiveCard} from '../../hocs/withActiveItem.jsx';
 import {Link} from 'react-router-dom';
 

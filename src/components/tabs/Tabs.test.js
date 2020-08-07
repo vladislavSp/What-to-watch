@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Tabs from './Tabs.jsx';
+import Tabs from './tabs.jsx';
 
 describe(`Tabs snapshot`, () => {
   it(`Tabs render correctly`, () => {

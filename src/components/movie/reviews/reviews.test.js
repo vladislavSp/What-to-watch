@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Reviews from '../Reviews/Reviews.jsx';
+import Reviews from './reviews.jsx';
 
 const reviews = [
   {

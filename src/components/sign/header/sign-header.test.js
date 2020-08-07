@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {SignHeader} from './SignHeader.jsx';
+import {SignHeader} from './sign-header.jsx';
 import {Router} from 'react-router-dom';
 import history from '../../../history';
 

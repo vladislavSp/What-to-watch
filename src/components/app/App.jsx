@@ -1,8 +1,8 @@
 import React from 'react';
 import {Router, Route, Switch} from 'react-router-dom';
-import Main from '../main/Main.jsx';
-import MoviePage from '../movie-detail/Movie.jsx';
-import SignIn from '../sign/SignIn.jsx';
+import Main from '../main/main.jsx';
+import MoviePage from '../movie/movie.jsx';
+import SignIn from '../sign/sign-in.jsx';
 import FullScreenPlayer from '../full-screen-player/full-screen-player.jsx';
 import Review from '../review/review.jsx';
 import history from '../../history';

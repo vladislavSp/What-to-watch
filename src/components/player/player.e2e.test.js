@@ -1,7 +1,7 @@
 import React from 'react';
 import {configure, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import VideoPlayer from './VideoPlayer';
+import VideoPlayer from './player.jsx';
 
 configure({adapter: new Adapter()});
 const srcVideo = `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`;
