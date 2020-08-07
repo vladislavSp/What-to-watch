@@ -9,6 +9,7 @@ import SignHeader from '../sign/Header/SignHeader.jsx';
 import {Operation} from '../../reducer/data/data';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {AuthorizationStatus} from '../../reducer/user/user';
+import history from '../../history';
 
 const getIconForList = (isFavor) => isFavor ? `#in-list` : `#add`;
 

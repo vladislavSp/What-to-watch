@@ -33,7 +33,7 @@ export const Review = (props) => {
           <ul className="breadcrumbs__list">
             {/* link on film */}
             <li className="breadcrumbs__item">
-              <a href="movie-page.html" className="breadcrumbs__link">{title}</a>
+              <Link to={`/films/${currentMovie.id}`} className="breadcrumbs__link">{title}</Link>
             </li>
             <li className="breadcrumbs__item">
               <a className="breadcrumbs__link">Add review</a>
