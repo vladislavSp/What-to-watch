@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
-import {App} from './app.jsx';
+import App from './app.jsx';
 import {genreFilter} from '../../const/const.js';
 import {films} from '../../mocks/mocks';
 import NameSpace from '../../reducer/name-space';
