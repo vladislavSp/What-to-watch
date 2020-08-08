@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {MovieTabs} from '../movie-tabs/movie-tabs.jsx';
+import {MovieTabs} from './movie-tabs.jsx';
 import {films} from '../../../mocks/mocks';
 
 const comments = [
