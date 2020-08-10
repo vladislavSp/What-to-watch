@@ -1,5 +1,5 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 
 export const withStatePlayer = (Component) => {
   class withActivePlayer extends PureComponent {
@@ -38,12 +38,7 @@ export const withStatePlayer = (Component) => {
     }
 
     render() {
-      return (
-        <Component
-          videoRef = {this.videoRef}
-          {...this.props}
-        />
-      );
+      return <Component videoRef={this.videoRef} {...this.props} />;
     }
   }
 
@@ -54,5 +49,3 @@ export const withStatePlayer = (Component) => {
 
   return withActivePlayer;
 };
-
-

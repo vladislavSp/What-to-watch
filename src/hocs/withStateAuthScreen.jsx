@@ -1,7 +1,7 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {REGEX_MAIL} from '../const/const';
-import history from '../history';
+import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+import {REGEX_MAIL} from "../const/const";
+import history from "../history";
 
 export const withStateSignInScreen = (Component) => {
   class withSignInState extends PureComponent {
@@ -22,7 +22,7 @@ export const withStateSignInScreen = (Component) => {
     handleLoginChange(evt) {
       const {value} = evt.target;
       this.setState({
-        isValidLogin: (REGEX_MAIL.test(value))
+        isValidLogin: REGEX_MAIL.test(value)
       });
     }
 
@@ -48,11 +48,10 @@ export const withStateSignInScreen = (Component) => {
       if (isValidLogin && isValidPassword) {
         login({
           login: this.loginRef.current.value,
-          password: this.passwordRef.current.value,
+          password: this.passwordRef.current.value
         });
         history.push(`/`);
       }
-
     }
 
     render() {
@@ -74,11 +73,10 @@ export const withStateSignInScreen = (Component) => {
     }
   }
 
-
   withSignInState.propTypes = {
     login: PropTypes.func.isRequired,
     history: PropTypes.object,
-    authorizationError: PropTypes.bool,
+    authorizationError: PropTypes.bool
   };
 
   return withSignInState;

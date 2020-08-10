@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const withVideoState = (Component) => {
   class WithVideoState extends React.PureComponent {
@@ -6,7 +6,7 @@ export const withVideoState = (Component) => {
       super(props);
 
       this.state = {
-        isPlaying: false,
+        isPlaying: false
       };
 
       this.video = React.createRef();

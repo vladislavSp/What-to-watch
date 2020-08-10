@@ -64,7 +64,8 @@ exports[`Review render correctly 1`] = `
           >
             <a
               className="breadcrumbs__link"
-              href="movie-page.html"
+              href="/films/0"
+              onClick={[Function]}
             >
               Gangs of new york
             </a>

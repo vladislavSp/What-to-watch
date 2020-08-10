@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
-import {Operation} from '../reducer/data/data';
+import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {Operation} from "../reducer/data/data";
 
 export const withActiveTab = (Component) => {
   class WithActiveTab extends PureComponent {
@@ -10,7 +10,7 @@ export const withActiveTab = (Component) => {
       super(props);
 
       this.state = {
-        isActive: `Overview`,
+        isActive: `Overview`
       };
 
       this.handleMouseClick = this.handleMouseClick.bind(this);
@@ -28,7 +28,7 @@ export const withActiveTab = (Component) => {
       return (
         <Component
           onTabClick={this.handleMouseClick}
-          isActive={ this.state.isActive }
+          isActive={this.state.isActive}
           {...this.props}
         />
       );
@@ -37,20 +37,16 @@ export const withActiveTab = (Component) => {
 
   WithActiveTab.propTypes = {
     movie: PropTypes.object.isRequired,
-    onLoadComments: PropTypes.func,
+    onLoadComments: PropTypes.func
   };
 
   return WithActiveTab;
 };
 
-
 const mapDispatchToProps = (dispatch) => ({
   onLoadComments(movie) {
     dispatch(Operation.loadComments(movie));
-  },
+  }
 });
 
-export default compose(
-    connect(null, mapDispatchToProps),
-    withActiveTab
-);
+export default compose(connect(null, mapDispatchToProps), withActiveTab);
