@@ -27,14 +27,14 @@ export const SignHeader = ({status, user}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: getUser(state),
-  status: getAuthorizationStatus(state),
-});
-
 SignHeader.propTypes = {
   status: PropTypes.string.isRequired,
   user: PropTypes.object,
 };
+
+const mapStateToProps = (state) => ({
+  user: getUser(state),
+  status: getAuthorizationStatus(state),
+});
 
 export default connect(mapStateToProps)(SignHeader);

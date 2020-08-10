@@ -64,13 +64,6 @@ export const SignIn = ({onSubmitForm, loginRef, passwordRef, onLoginChange, onPa
   </div>;
 };
 
-
-const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(Operation.login(authData));
-  },
-});
-
 SignIn.propTypes = {
   onSubmitForm: PropTypes.func.isRequired,
   loginRef: PropTypes.object,
@@ -80,5 +73,11 @@ SignIn.propTypes = {
   isValidLogin: PropTypes.bool,
   isValidPass: PropTypes.bool,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(Operation.login(authData));
+  },
+});
 
 export default connect(null, mapDispatchToProps)(withStateSignInScreen(SignIn));

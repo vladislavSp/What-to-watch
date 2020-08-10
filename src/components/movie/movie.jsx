@@ -125,6 +125,13 @@ export const MoviePage = (props) => {
   </React.Fragment>;
 };
 
+MoviePage.propTypes = {
+  filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentMovie: PropTypes.object.isRequired,
+  onViewListClick: PropTypes.func,
+  authorizationStatus: PropTypes.string,
+};
+
 const mapStateToProps = (state, props) => {
   const currentMovie = getCurrentMovieById(state, props.match.params.id);
 
@@ -140,12 +147,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(Operation.changeFavorStatus(movie));
   }
 });
-
-MoviePage.propTypes = {
-  filteredGenreFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentMovie: PropTypes.object.isRequired,
-  onViewListClick: PropTypes.func,
-  authorizationStatus: PropTypes.string,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

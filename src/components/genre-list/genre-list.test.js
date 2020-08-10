@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {GenreList} from './genrelist.jsx';
+import {GenreList} from './genre-list.jsx';
 
 const filtersTest = [`All`, `Comedy`, `Horror`, `Documentary`];
 

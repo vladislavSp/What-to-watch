@@ -58,10 +58,6 @@ export const FullScreenPlayer = (props) => {
   </div>);
 };
 
-const mapStateToProps = (state, props) => ({
-  currentMovie: getCurrentMovieById(state, props.match.params.id)
-});
-
 FullScreenPlayer.propTypes = {
   videoRef: PropTypes.object,
   currentMovie: PropTypes.object.isRequired,
@@ -70,5 +66,9 @@ FullScreenPlayer.propTypes = {
   onFullScreen: PropTypes.func.isRequired,
   history: PropTypes.object,
 };
+
+const mapStateToProps = (state, props) => ({
+  currentMovie: getCurrentMovieById(state, props.match.params.id)
+});
 
 export default connect(mapStateToProps)(withVideoState(FullScreenPlayer));

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import FilmList from '../film-list/film-list.jsx';
-import GenreList from '../genrelist/genrelist.jsx';
+import GenreList from '../genre-list/genre-list.jsx';
 import SignHeader from '../sign-in/header/sign-header.jsx';
 import {ShowBtn} from '../show-btn/show-btn.jsx';
 import {getAuthorizationError} from '../../reducer/user/selectors';
@@ -103,6 +103,15 @@ export const Main = ({promoFilm, filteredFilms, filmViewLength, onViewBtnClick, 
   </div>
 </React.Fragment>;
 
+Main.propTypes = {
+  promoFilm: PropTypes.object.isRequired,
+  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filmViewLength: PropTypes.number.isRequired,
+  authorizationError: PropTypes.bool.isRequired,
+  onViewBtnClick: PropTypes.func.isRequired,
+  onViewListClick: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
   filteredFilms: getFilteredFilms(state),
@@ -118,14 +127,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(Operation.changeFavorStatus(movie));
   }
 });
-
-Main.propTypes = {
-  promoFilm: PropTypes.object.isRequired,
-  filteredFilms: PropTypes.arrayOf(PropTypes.object).isRequired,
-  filmViewLength: PropTypes.number.isRequired,
-  authorizationError: PropTypes.bool.isRequired,
-  onViewBtnClick: PropTypes.func.isRequired,
-  onViewListClick: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main); // mapDispatchToProps

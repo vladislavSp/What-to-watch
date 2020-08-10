@@ -28,15 +28,15 @@ export const MovieTabs = ({movie, isActive, onTabClick, comments}) => {
   </div>;
 };
 
-const mapStateToProps = (state) => ({
-  comments: getComments(state),
-});
-
 MovieTabs.propTypes = {
   movie: PropTypes.object.isRequired,
   isActive: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
   comments: PropTypes.array,
 };
+
+const mapStateToProps = (state) => ({
+  comments: getComments(state),
+});
 
 export default connect(mapStateToProps)(withActiveTab(MovieTabs));
