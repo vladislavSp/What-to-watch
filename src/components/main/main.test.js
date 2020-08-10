@@ -4,7 +4,7 @@ import Main from './main.jsx';
 import {films} from '../../mocks/mocks';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {genreFilter} from '../../const/const.js';
+import {GenreFilter} from '../../const/const.js';
 import NameSpace from '../../reducer/name-space';
 import history from '../../history';
 import {Router} from 'react-router-dom';
@@ -19,7 +19,7 @@ it(`Main renders correctly`, () => {
       promoFilm: films[0],
     },
     [NameSpace.APP]: {
-      activeGenre: genreFilter.ALL,
+      activeGenre: GenreFilter.ALL,
       filmLength: 0
     },
     [NameSpace.USER]: {

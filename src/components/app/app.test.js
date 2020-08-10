@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import App from './app.jsx';
-import {genreFilter} from '../../const/const.js';
+import {GenreFilter} from '../../const/const.js';
 import {films} from '../../mocks/mocks';
 import NameSpace from '../../reducer/name-space';
 
@@ -17,7 +17,7 @@ describe(`App render component correctly`, () => {
         promoFilm: films[0],
       },
       [NameSpace.APP]: {
-        activeGenre: genreFilter.ALL,
+        activeGenre: GenreFilter.ALL,
         filmLength: 8
       },
       [NameSpace.USER]: {

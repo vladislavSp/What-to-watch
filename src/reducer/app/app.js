@@ -1,8 +1,8 @@
-import {genreFilter, FILM_CARD} from '../../const/const.js';
+import {GenreFilter, FILM_CARD} from '../../const/const.js';
 import {extend} from '../../utils/utils.js';
 
 const initialState = {
-  activeGenre: genreFilter.ALL,
+  activeGenre: GenreFilter.ALL,
   filmLength: FILM_CARD.VIEW_ITEM,
 };
 

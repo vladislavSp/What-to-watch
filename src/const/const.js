@@ -1,4 +1,12 @@
-export const genreFilter = {
+export const MAX_GENRES_NUM = 8;
+export const HUNDRED_PERCENT = 100;
+export const AVATAR_BASE_PATH = `https://4.react.pages.academy`;
+export const REGEX_MAIL = /\S+@\S+\.\S+/;
+export const MIN_REVIEW_LENGTH = 50;
+export const MAX_REVIEW_LENGTH = 400;
+
+
+export const GenreFilter = {
   ALL: `All genres`,
   COMEDY: `Comedies`,
   CRIME: `Crime`,
@@ -23,9 +31,18 @@ export const APP_PAGE = {
   PLAYER: `Player`,
 };
 
-export const MAX_GENRES_NUM = 8;
-export const HUNDRED_PERCENT = 100;
-export const AVATAR_BASE_PATH = `https://4.react.pages.academy`;
-export const REGEX_MAIL = /\S+@\S+\.\S+/;
-export const MIN_REVIEW_LENGTH = 50;
-export const MAX_REVIEW_LENGTH = 400;
+export const RatingForFilm = {
+  BAD: `Bad`,
+  NORMAL: `Normal`,
+  GOOD: `Good`,
+  VERY_GOOD: `Very good`,
+  AVESOME: `Avesome`,
+};
+
+export const RatingNum = {
+  AWESOME: 10,
+  VERY_GOOD: 8,
+  GOOD: 5,
+  NORMAL: 3,
+  BAD: 0,
+};

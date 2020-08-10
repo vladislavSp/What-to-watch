@@ -1,35 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const ratingForFilm = {
-  BAD: `Bad`,
-  NORMAL: `Normal`,
-  GOOD: `Good`,
-  VERY_GOOD: `Very good`,
-  AVESOME: `Avesome`,
-};
-
-const ratingNum = {
-  AWESOME: 10,
-  VERY_GOOD: 8,
-  GOOD: 5,
-  NORMAL: 3,
-  BAD: 0,
-};
+import {RatingForFilm, RatingNum} from '../../../const/const';
 
 const getMovieRate = (rating) => {
   let movieRate = ``;
 
-  if (rating === ratingNum.AVESOME) {
-    movieRate = ratingForFilm.AVESOME;
-  } else if (rating >= ratingNum.VERY_GOOD) {
-    movieRate = ratingForFilm.VERY_GOOD;
-  } else if (rating >= ratingNum.GOOD) {
-    movieRate = ratingForFilm.GOOD;
-  } else if (rating >= ratingNum.NORMAL) {
-    movieRate = ratingForFilm.NORMAL;
+  if (rating === RatingNum.AVESOME) {
+    movieRate = RatingForFilm.AVESOME;
+  } else if (rating >= RatingNum.VERY_GOOD) {
+    movieRate = RatingForFilm.VERY_GOOD;
+  } else if (rating >= RatingNum.GOOD) {
+    movieRate = RatingForFilm.GOOD;
+  } else if (rating >= RatingNum.NORMAL) {
+    movieRate = RatingForFilm.NORMAL;
   } else {
-    movieRate = ratingForFilm.BAD;
+    movieRate = RatingForFilm.BAD;
   }
   return movieRate;
 };
