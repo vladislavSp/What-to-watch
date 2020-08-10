@@ -1,12 +1,12 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {MoviePage} from './movie.jsx';
-import {films} from '../../mocks/mocks';
-import {Provider} from 'react-redux';
-import configureStore from 'redux-mock-store';
-import NameSpace from '../../reducer/name-space';
-import {Router} from 'react-router-dom';
-import history from '../../history';
+import React from "react";
+import renderer from "react-test-renderer";
+import {MoviePage} from "./movie.jsx";
+import {films} from "../../mocks/mocks";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import NameSpace from "../../reducer/name-space";
+import {Router} from "react-router-dom";
+import history from "../../history";
 
 const mockStore = configureStore([]);
 const filteredGenreFilms = films;
@@ -17,7 +17,7 @@ it(`renders Movie correctly`, () => {
   const store = mockStore({
     [NameSpace.DATA]: {
       allFilms: films,
-      promoFilm: films[0],
+      promoFilm: films[0]
     },
     [NameSpace.APP]: {
       activeGenre: `All genre`,
@@ -30,23 +30,25 @@ it(`renders Movie correctly`, () => {
     }
   });
 
-  const tree = renderer.create(
-      <Router history={history}>
-        <Provider store={store}>
-          <MoviePage
-            currentMovie={films[0]}
-            user = {{}}
-            filteredGenreFilms={filteredGenreFilms}
-            authorizationStatus={`NO_AUTH`}
-            onViewListClick={() => {}}
-          />
-        </Provider>
-      </Router>, {
-        createNodeMock: () => {
-          return {};
+  const tree = renderer
+    .create(
+        <Router history={history}>
+          <Provider store={store}>
+            <MoviePage
+              currentMovie={films[0]}
+              user={{}}
+              filteredGenreFilms={filteredGenreFilms}
+              authorizationStatus={`NO_AUTH`}
+              onViewListClick={() => {}}
+            />
+          </Provider>
+        </Router>,
+        {
+          createNodeMock: () => {
+            return {};
+          }
         }
-      }
-  )
-  .toJSON();
+    )
+    .toJSON();
   expect(tree).toMatchSnapshot();
 });

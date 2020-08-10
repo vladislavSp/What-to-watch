@@ -1,25 +1,22 @@
-import React from 'react';
-import {configure, shallow} from 'enzyme';
-import {withVideoState} from './withVideoState';
-import Adapter from 'enzyme-adapter-react-16';
+import React from "react";
+import {configure, shallow} from "enzyme";
+import {withVideoState} from "./withVideoState";
+import Adapter from "enzyme-adapter-react-16";
 
 configure({adapter: new Adapter()});
 
-const MockComponent = () => <div/>;
+const MockComponent = () => <div />;
 const WrappedMockComponent = withVideoState(MockComponent);
 
-
 describe(`withVideo tests`, () => {
-
-  const wrapper = shallow(<WrappedMockComponent/>);
+  const wrapper = shallow(<WrappedMockComponent />);
 
   beforeEach(() => {
-    wrapper.instance().video.current =
-      {
-        play: jest.fn(),
-        pause: jest.fn(),
-        requestFullscreen: jest.fn(),
-      };
+    wrapper.instance().video.current = {
+      play: jest.fn(),
+      pause: jest.fn(),
+      requestFullscreen: jest.fn()
+    };
   });
 
   test(`handlePlayPause correctly starts video playback`, () => {
@@ -41,6 +38,8 @@ describe(`withVideo tests`, () => {
 
   test(`handleFullScreen calls fullscreen mode correctly`, () => {
     wrapper.instance().handleFullScreen();
-    expect(wrapper.instance().video.current.requestFullscreen).toHaveBeenCalledTimes(1);
+    expect(
+        wrapper.instance().video.current.requestFullscreen
+    ).toHaveBeenCalledTimes(1);
   });
 });

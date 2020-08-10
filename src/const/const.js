@@ -5,7 +5,6 @@ export const REGEX_MAIL = /\S+@\S+\.\S+/;
 export const MIN_REVIEW_LENGTH = 50;
 export const MAX_REVIEW_LENGTH = 400;
 
-
 export const GenreFilter = {
   ALL: `All genres`,
   COMEDY: `Comedies`,
@@ -16,7 +15,7 @@ export const GenreFilter = {
   KIDS: `Kids & Family`,
   ROMANCE: `Romance`,
   SCI_FI: `Sci-Fi`,
-  THRILLER: `Thrillers`,
+  THRILLER: `Thrillers`
 };
 
 export const FILM_CARD = {
@@ -28,7 +27,7 @@ export const APP_PAGE = {
   MAIN_PAGE: `Main screen`,
   SIGN_IN: `Sign screen`,
   MOVIE: `Movie screen`,
-  PLAYER: `Player`,
+  PLAYER: `Player`
 };
 
 export const RatingForFilm = {
@@ -36,7 +35,7 @@ export const RatingForFilm = {
   NORMAL: `Normal`,
   GOOD: `Good`,
   VERY_GOOD: `Very good`,
-  AVESOME: `Avesome`,
+  AVESOME: `Avesome`
 };
 
 export const RatingNum = {
@@ -44,5 +43,5 @@ export const RatingNum = {
   VERY_GOOD: 8,
   GOOD: 5,
   NORMAL: 3,
-  BAD: 0,
+  BAD: 0
 };

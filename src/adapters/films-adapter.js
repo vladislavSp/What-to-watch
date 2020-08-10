@@ -16,7 +16,7 @@ export const parseFilm = (film) => {
     video: film[`video_link`],
     videoPreview: film[`preview_video_link`],
     background: film[`background_image`],
-    backgroundColor: film[`background_color`],
+    backgroundColor: film[`background_color`]
   };
 };
 

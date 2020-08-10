@@ -1,11 +1,11 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
-import {Provider} from 'react-redux';
-import App from './app.jsx';
-import {GenreFilter} from '../../const/const.js';
-import {films} from '../../mocks/mocks';
-import NameSpace from '../../reducer/name-space';
+import React from "react";
+import renderer from "react-test-renderer";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+import App from "./app.jsx";
+import {GenreFilter} from "../../const/const.js";
+import {films} from "../../mocks/mocks";
+import NameSpace from "../../reducer/name-space";
 
 const mockStore = configureStore([]);
 
@@ -14,7 +14,7 @@ describe(`App render component correctly`, () => {
     const store = mockStore({
       [NameSpace.DATA]: {
         allFilms: films,
-        promoFilm: films[0],
+        promoFilm: films[0]
       },
       [NameSpace.APP]: {
         activeGenre: GenreFilter.ALL,
@@ -28,14 +28,16 @@ describe(`App render component correctly`, () => {
     });
 
     const tree = renderer
-      .create((
-        <Provider store={store}>
-          <App />
-        </Provider>), {
-        createNodeMock: () => {
-          return {};
-        }
-      })
+      .create(
+          <Provider store={store}>
+            <App />
+          </Provider>,
+          {
+            createNodeMock: () => {
+              return {};
+            }
+          }
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

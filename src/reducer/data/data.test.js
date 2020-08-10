@@ -1,4 +1,4 @@
-import {reducer, ActionType, ActionCreator} from './data';
+import {reducer, ActionType, ActionCreator} from "./data";
 
 const films = [
   {
@@ -65,41 +65,51 @@ describe(`Reducer work correctly`, () => {
   it(`Reducer without add parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
       allFilms: [],
-      promoFilm: {},
+      promoFilm: {}
     });
   });
 
   it(`Reducer should update data store - All films from net`, () => {
-    expect(reducer({
-      allFilms: [],
-    }, {
-      type: ActionType.LOAD_FILMS,
-      payload: films,
-    })).toEqual({
-      allFilms: films,
+    expect(
+        reducer(
+            {
+              allFilms: []
+            },
+            {
+              type: ActionType.LOAD_FILMS,
+              payload: films
+            }
+        )
+    ).toEqual({
+      allFilms: films
     });
   });
 
   it(`Reducer should update data store - PromoFilm from net`, () => {
-    expect(reducer({
-      promoFilm: {}
-    }, {
-      type: ActionType.LOAD_PROMO,
-      payload: promoFilm,
-    })).toEqual({promoFilm});
+    expect(
+        reducer(
+            {
+              promoFilm: {}
+            },
+            {
+              type: ActionType.LOAD_PROMO,
+              payload: promoFilm
+            }
+        )
+    ).toEqual({promoFilm});
   });
 
   it(`Action creator - for getting films work correctly`, () => {
     expect(ActionCreator.loadFilms(films)).toEqual({
       type: ActionType.LOAD_FILMS,
-      payload: films,
+      payload: films
     });
   });
 
   it(`Action creator - for getting promo film work correctly`, () => {
     expect(ActionCreator.loadPromo(promoFilm)).toEqual({
       type: ActionType.LOAD_PROMO,
-      payload: promoFilm,
+      payload: promoFilm
     });
   });
 });

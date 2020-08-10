@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent} from "react";
 
 export const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
@@ -7,7 +7,7 @@ export const withActiveCard = (Component) => {
 
       this.state = {
         activeCard: null,
-        isActive: false,
+        isActive: false
       };
 
       this.handleMouseEnter = this.handleMouseEnter.bind(this);
@@ -25,7 +25,7 @@ export const withActiveCard = (Component) => {
     render() {
       return (
         <Component
-          isActive={ this.state.isActive }
+          isActive={this.state.isActive}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           {...this.props}

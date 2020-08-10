@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '../../tabs/tabs.jsx';
-import Details from '../details/details.jsx';
-import Reviews from '../reviews/reviews.jsx';
-import Overview from '../overview/overview.jsx';
-import withActiveTab from '../../../hocs/withActiveTab.jsx';
-import {connect} from 'react-redux';
-import {getComments} from '../../../reducer/data/selectors';
+import React from "react";
+import PropTypes from "prop-types";
+import Tabs from "../../tabs/tabs.jsx";
+import Details from "../details/details.jsx";
+import Reviews from "../reviews/reviews.jsx";
+import Overview from "../overview/overview.jsx";
+import withActiveTab from "../../../hocs/withActiveTab.jsx";
+import {connect} from "react-redux";
+import {getComments} from "../../../reducer/data/selectors";
 
 export const MovieTabs = ({movie, isActive, onTabClick, comments}) => {
   const getComponentByFilter = (filter) => {
@@ -20,23 +20,25 @@ export const MovieTabs = ({movie, isActive, onTabClick, comments}) => {
     }
   };
 
-  return <div className="movie-card__desc">
-    <nav className="movie-nav movie-card__nav">
-      <Tabs onTabClick={onTabClick} isActive={isActive}/>
-    </nav>
-    {getComponentByFilter(isActive)}
-  </div>;
+  return (
+    <div className="movie-card__desc">
+      <nav className="movie-nav movie-card__nav">
+        <Tabs onTabClick={onTabClick} isActive={isActive} />
+      </nav>
+      {getComponentByFilter(isActive)}
+    </div>
+  );
 };
 
 MovieTabs.propTypes = {
   movie: PropTypes.object.isRequired,
   isActive: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
-  comments: PropTypes.array,
+  comments: PropTypes.array
 };
 
 const mapStateToProps = (state) => ({
-  comments: getComments(state),
+  comments: getComments(state)
 });
 
 export default connect(mapStateToProps)(withActiveTab(MovieTabs));

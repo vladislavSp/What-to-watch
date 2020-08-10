@@ -1,8 +1,8 @@
-import React from 'react';
-import {configure, shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import FilmCard from './film-card';
-import {films} from '../../mocks/mocks';
+import React from "react";
+import {configure, shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import FilmCard from "./film-card";
+import {films} from "../../mocks/mocks";
 
 configure({adapter: new Adapter()});
 
@@ -14,8 +14,8 @@ describe(`FilmCard tests`, () => {
           isActive={true}
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
-        >
-        </FilmCard>);
+        ></FilmCard>
+    );
 
     card.simulate(`mouseenter`);
     expect(card.props().isActive).toBe(true);
@@ -28,8 +28,8 @@ describe(`FilmCard tests`, () => {
           isActive={false}
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
-        >
-        </FilmCard>);
+        ></FilmCard>
+    );
 
     card.simulate(`mouseleave`);
     expect(card.props().isActive).toBe(false);

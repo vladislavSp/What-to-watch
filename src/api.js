@@ -1,5 +1,5 @@
-import axios from 'axios';
-import history from './history';
+import axios from "axios";
+import history from "./history";
 
 const Error = {
   UNAUTHORIZED: 401
@@ -9,12 +9,11 @@ const BASE_URL = `https://4.react.pages.academy/wtw`;
 const TIMEOUT = 5000;
 const FAVORITE_PATH = `favorite`;
 
-
 export const createAPI = () => {
   const api = axios.create({
     baseURL: BASE_URL,
     timeout: TIMEOUT,
-    withCredentials: true,
+    withCredentials: true
   });
 
   const onSuccess = (response) => {
@@ -24,8 +23,10 @@ export const createAPI = () => {
   const onFail = (err) => {
     const {response} = err;
 
-    if (response.status === Error.UNAUTHORIZED
-    && response.config.url.includes(FAVORITE_PATH)) {
+    if (
+      response.status === Error.UNAUTHORIZED &&
+      response.config.url.includes(FAVORITE_PATH)
+    ) {
       history.push(`/login`);
 
       // Бросаем ошибку, потому что нам важно прервать цепочку промисов после запроса авторизации.

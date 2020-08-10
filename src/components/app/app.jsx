@@ -1,14 +1,14 @@
-import React from 'react';
-import {Router, Route, Switch} from 'react-router-dom';
-import Main from '../main/main.jsx';
-import MoviePage from '../movie/movie.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
-import FullScreenPlayer from '../full-screen-player/full-screen-player.jsx';
-import Review from '../review/review.jsx';
-import history from '../../history';
-import MyList from '../my-list/my-list.jsx';
-import PrivateRoute from '../private-route/private-route.jsx';
-import {AuthorizationStatus} from '../../reducer/user/user';
+import React from "react";
+import {Router, Route, Switch} from "react-router-dom";
+import Main from "../main/main.jsx";
+import MoviePage from "../movie/movie.jsx";
+import SignIn from "../sign-in/sign-in.jsx";
+import FullScreenPlayer from "../full-screen-player/full-screen-player.jsx";
+import Review from "../review/review.jsx";
+import history from "../../history";
+import MyList from "../my-list/my-list.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
 export const App = () => {
   return (
@@ -18,22 +18,20 @@ export const App = () => {
         <Route exact path="/films/:id/player" component={FullScreenPlayer} />
         <PrivateRoute
           exact
-          path='/films/:id/review'
+          path="/films/:id/review"
           requiredAuthStatus={AuthorizationStatus.AUTH}
           pathToRedirect={`/login`}
           render={(match) => {
-            return <Review
-              match={match}
-            />;
+            return <Review match={match} />;
           }}
         />
         <PrivateRoute
           exact
-          path='/mylist'
+          path="/mylist"
           requiredAuthStatus={AuthorizationStatus.AUTH}
           pathToRedirect={`/login`}
           render={() => {
-            return <MyList/>;
+            return <MyList />;
           }}
         />
         <PrivateRoute
@@ -45,7 +43,7 @@ export const App = () => {
             return <SignIn />;
           }}
         />
-        <Route exact path='/' component={Main} />
+        <Route exact path="/" component={Main} />
       </Switch>
     </Router>
   );

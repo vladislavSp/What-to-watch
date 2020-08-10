@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {Operation} from '../reducer/data/data';
-import {connect} from 'react-redux';
-import {compose} from 'redux';
-import {getCurrentMovieById} from '../reducer/data/selectors';
-import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from '../const/const';
-import history from '../history';
+import React from "react";
+import PropTypes from "prop-types";
+import {Operation} from "../reducer/data/data";
+import {connect} from "react-redux";
+import {compose} from "redux";
+import {getCurrentMovieById} from "../reducer/data/selectors";
+import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from "../const/const";
+import history from "../history";
 
 const validateReview = (value) => {
   return value.length >= MIN_REVIEW_LENGTH && value.length <= MAX_REVIEW_LENGTH;
@@ -22,7 +22,7 @@ export const withReviewState = (Component) => {
         reviewIsValid: false,
         ratingIsValid: true,
         isLoading: false,
-        networkError: false,
+        networkError: false
       };
 
       this.handleRatingChange = this.handleRatingChange.bind(this);
@@ -35,7 +35,7 @@ export const withReviewState = (Component) => {
 
       this.setState({
         rating: value,
-        ratingIsValid: !!value,
+        ratingIsValid: !!value
       });
     }
 
@@ -44,7 +44,7 @@ export const withReviewState = (Component) => {
 
       this.setState({
         review: value,
-        reviewIsValid: validateReview(value),
+        reviewIsValid: validateReview(value)
       });
     }
 
@@ -54,58 +54,64 @@ export const withReviewState = (Component) => {
       const {review, rating} = this.state;
 
       this.setState((state) => ({
-        isLoading: !state.isLoading,
+        isLoading: !state.isLoading
       }));
 
-      onUploadReview(currentMovie, review, rating)
-        .then((response) => {
-          if (response.status !== 200) {
-            this.setState((state) => ({
-              isLoading: !state.isLoading,
-              networkError: response.message
-            }));
-          } else {
-            this.setState((state) => ({
-              isLoading: !state.isLoading,
-              networkError: false,
-            }));
-            history.push(`/films/${currentMovie.id}`);
-          }
-        });
+      onUploadReview(currentMovie, review, rating).then((response) => {
+        if (response.status !== 200) {
+          this.setState((state) => ({
+            isLoading: !state.isLoading,
+            networkError: response.message
+          }));
+        } else {
+          this.setState((state) => ({
+            isLoading: !state.isLoading,
+            networkError: false
+          }));
+          history.push(`/films/${currentMovie.id}`);
+        }
+      });
     }
 
     render() {
-      const {networkError, reviewIsValid, ratingIsValid, isLoading} = this.state;
+      const {
+        networkError,
+        reviewIsValid,
+        ratingIsValid,
+        isLoading
+      } = this.state;
       const {currentMovie} = this.props;
 
-      return <Component
-        {...this.props}
-        currentMovie={currentMovie}
-        networkError={networkError}
-        onSubmit={this.handleSubmitForm}
-        onRatingChange={this.handleRatingChange}
-        onReviewChange={this.handleReviewChange}
-        reviewIsValid={reviewIsValid}
-        ratingIsValid={ratingIsValid}
-        isLoading={isLoading}
-      />;
+      return (
+        <Component
+          {...this.props}
+          currentMovie={currentMovie}
+          networkError={networkError}
+          onSubmit={this.handleSubmitForm}
+          onRatingChange={this.handleRatingChange}
+          onReviewChange={this.handleReviewChange}
+          reviewIsValid={reviewIsValid}
+          ratingIsValid={ratingIsValid}
+          isLoading={isLoading}
+        />
+      );
     }
   }
 
   WithReviewState.propTypes = {
     currentMovie: PropTypes.object.isRequired,
-    onUploadReview: PropTypes.func,
+    onUploadReview: PropTypes.func
   };
 
   return WithReviewState;
 };
 
 const mapStateToProps = (state, props) => ({
-  currentMovie: getCurrentMovieById(state, props.match.params.id),
+  currentMovie: getCurrentMovieById(state, props.match.params.id)
 });
 
 const mapDispatchToProps = {
-  onUploadReview: Operation.uploadReview,
+  onUploadReview: Operation.uploadReview
 };
 
 export default compose(

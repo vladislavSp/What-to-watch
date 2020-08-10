@@ -1,10 +1,10 @@
-import React from 'react';
-import {configure, shallow} from 'enzyme';
-import {withReviewState} from './withReviewState.jsx';
-import Adapter from 'enzyme-adapter-react-16';
-import {films} from '../mocks/mocks';
+import React from "react";
+import {configure, shallow} from "enzyme";
+import {withReviewState} from "./withReviewState.jsx";
+import Adapter from "enzyme-adapter-react-16";
+import {films} from "../mocks/mocks";
 
-const MockComponent = () => <div/>;
+const MockComponent = () => <div />;
 const WrappedMockComponent = withReviewState(MockComponent);
 configure({adapter: new Adapter()});
 
@@ -58,8 +58,15 @@ describe(`State correctly changed by handleRatingChange`, () => {
 it(`onUploadReview called by handleSubmitForm`, () => {
   const event = {preventDefault: () => {}};
 
-  const onUploadReview = jest.fn().mockImplementationOnce(() => Promise.resolve(``));
-  const wrapper = shallow(<WrappedMockComponent currentMovie={films[0]} onUploadReview={onUploadReview}/>);
+  const onUploadReview = jest
+    .fn()
+    .mockImplementationOnce(() => Promise.resolve(``));
+  const wrapper = shallow(
+      <WrappedMockComponent
+        currentMovie={films[0]}
+        onUploadReview={onUploadReview}
+      />
+  );
 
   wrapper.instance().handleSubmitForm(event);
   expect(onUploadReview).toHaveBeenCalledTimes(1);

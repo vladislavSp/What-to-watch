@@ -1,18 +1,17 @@
-import React from 'react';
-import {configure, shallow} from 'enzyme';
-import {withActiveTab} from './withActiveTab.jsx';
-import Adapter from 'enzyme-adapter-react-16';
-import {films} from '../mocks/mocks';
+import React from "react";
+import {configure, shallow} from "enzyme";
+import {withActiveTab} from "./withActiveTab.jsx";
+import Adapter from "enzyme-adapter-react-16";
+import {films} from "../mocks/mocks";
 
-const MockComponent = () => <div/>;
+const MockComponent = () => <div />;
 const WrappedMockComponent = withActiveTab(MockComponent);
 configure({adapter: new Adapter()});
 
 describe(`withActiveTab component correctly changed state`, () => {
-  const wrapper = shallow(<WrappedMockComponent
-    onLoadComments={() => {}}
-    movie={films[0]}
-  />);
+  const wrapper = shallow(
+      <WrappedMockComponent onLoadComments={() => {}} movie={films[0]} />
+  );
 
   it(`State init`, () => {
     expect(wrapper.state().isActive).toEqual(`Overview`);
