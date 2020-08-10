@@ -14,13 +14,15 @@ const FilmCard = (props) => {
     onMouseLeave={onMouseLeave}>
 
     <React.Fragment>
-      <div className="small-movie-card__image">
-        <VideoPlayer
-          srcVideo={videoPreview}
-          poster={previewImage}
-          isPlaying={ isActive }
-        />
-      </div>
+      <Link to={`/films/${film.id}`}>
+        <div className="small-movie-card__image">
+          <VideoPlayer
+            srcVideo={videoPreview}
+            poster={previewImage}
+            isPlaying={ isActive }
+          />
+        </div>
+      </Link>
       <h3 className="small-movie-card__title">
         <Link to={`/films/${film.id}`} className="small-movie-card__link">{title}</Link>
       </h3>

@@ -25,7 +25,7 @@ export const createAPI = () => {
     const {response} = err;
 
     if (response.status === Error.UNAUTHORIZED
-    && !response.config.url.includes(FAVORITE_PATH)) {
+    && response.config.url.includes(FAVORITE_PATH)) {
       history.push(`/login`);
 
       // Бросаем ошибку, потому что нам важно прервать цепочку промисов после запроса авторизации.
