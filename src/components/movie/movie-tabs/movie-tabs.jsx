@@ -4,7 +4,7 @@ import Tabs from "../../tabs/tabs.jsx";
 import Details from "../details/details.jsx";
 import Reviews from "../reviews/reviews.jsx";
 import Overview from "../overview/overview.jsx";
-import withActiveTab from "../../../hocs/withActiveTab.jsx";
+import withActiveTab from "../../../hocs/with-active-tab.jsx";
 import {connect} from "react-redux";
 import {getComments} from "../../../reducer/data/selectors";
 

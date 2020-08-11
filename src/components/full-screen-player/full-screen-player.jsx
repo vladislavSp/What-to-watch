@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import PlayerControls from "../player-controls/player-controls.jsx";
-import {withVideoState} from "../../hocs/withVideoState.jsx";
+import {withVideoState} from "../../hocs/with-video-state.jsx";
 import {getCurrentMovieById} from "../../reducer/data/selectors";
 
 export const FullScreenPlayer = (props) => {
@@ -41,6 +41,7 @@ export const FullScreenPlayer = (props) => {
   return (
     <div className="player">
       <video
+        autoPlay={true}
         src={videoPreview}
         ref={videoRef}
         className="player__video"

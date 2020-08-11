@@ -60,8 +60,10 @@ const Operation = {
           dispatch(ActionCreator.setUser(response.data));
         }
       })
-      .catch((err) => {
-        throw err;
+      .catch(() => {
+        dispatch(
+            ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)
+        );
       });
   },
 

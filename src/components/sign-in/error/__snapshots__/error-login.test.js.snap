@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorLogin render correctly 1`] = `
+<div
+  className="sign-in__message"
+>
+  <p>
+    Please enter a valid email address
+  </p>
+</div>
+`;

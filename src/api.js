@@ -23,7 +23,9 @@ export const createAPI = () => {
   const onFail = (err) => {
     const {response} = err;
 
-    if (
+    if (!response) {
+      throw err;
+    } else if (
       response.status === Error.UNAUTHORIZED &&
       response.config.url.includes(FAVORITE_PATH)
     ) {

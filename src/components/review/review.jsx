@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SignHeader from "../sign-in/header/sign-header.jsx";
-import withReviewState from "../../hocs/withReviewState.jsx";
+import withReviewState from "../../hocs/with-review-state.jsx";
 import {Link} from "react-router-dom";
 
 export const Review = (props) => {

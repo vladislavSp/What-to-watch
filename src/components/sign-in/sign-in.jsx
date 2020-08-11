@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStateSignInScreen} from "../../hocs/withStateAuthScreen.jsx";
+import {withStateAuthScreen} from "../../hocs/with-state-auth-screen.jsx";
 import {ErrorLogin, ErrorPass} from "./error/error.jsx";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
@@ -119,4 +119,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(withStateSignInScreen(SignIn));
+export default connect(null, mapDispatchToProps)(withStateAuthScreen(SignIn));

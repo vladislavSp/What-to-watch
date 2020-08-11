@@ -1,6 +1,6 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
-import {withReviewState} from "./withReviewState.jsx";
+import {withReviewState} from "./with-review-state";
 import Adapter from "enzyme-adapter-react-16";
 import {films} from "../mocks/mocks";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStatePlayer} from "../../hocs/withStatePlayer.jsx";
+import {withStatePlayer} from "../../hocs/with-state-player.jsx";
 
 const VideoPlayer = (props) => {
   const {poster, videoRef} = props;

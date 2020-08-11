@@ -1,5 +1,5 @@
 import React from "react";
-import {withStateProgress} from "./withStateProgress";
+import {withStateProgress} from "./with-state-progress.jsx";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 

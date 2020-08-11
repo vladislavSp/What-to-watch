@@ -6,7 +6,7 @@ export const withVideoState = (Component) => {
       super(props);
 
       this.state = {
-        isPlaying: false
+        isPlaying: true
       };
 
       this.video = React.createRef();

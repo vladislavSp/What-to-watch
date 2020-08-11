@@ -1,6 +1,6 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
-import {withActiveTab} from "./withActiveTab.jsx";
+import {withActiveTab} from "./with-active-tab.jsx";
 import Adapter from "enzyme-adapter-react-16";
 import {films} from "../mocks/mocks";
 

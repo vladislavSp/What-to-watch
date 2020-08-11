@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {withStateProgress} from "../../hocs/withStateProgress.jsx";
+import {withStateProgress} from "../../hocs/with-state-progress.jsx";
 
 export const PlayerControls = (props) => {
   const {remainingTime, progress} = props;

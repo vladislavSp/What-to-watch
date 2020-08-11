@@ -23,13 +23,6 @@ export const FILM_CARD = {
   VIEW_ITEM: 8
 };
 
-export const APP_PAGE = {
-  MAIN_PAGE: `Main screen`,
-  SIGN_IN: `Sign screen`,
-  MOVIE: `Movie screen`,
-  PLAYER: `Player`
-};
-
 export const RatingForFilm = {
   BAD: `Bad`,
   NORMAL: `Normal`,

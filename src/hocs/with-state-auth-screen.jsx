@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import {REGEX_MAIL} from "../const/const";
 import history from "../history";
 
-export const withStateSignInScreen = (Component) => {
-  class withSignInState extends PureComponent {
+export const withStateAuthScreen = (Component) => {
+  class WithStateAuthScreen extends PureComponent {
     constructor(props) {
       super(props);
       this.loginRef = React.createRef();
@@ -73,11 +73,11 @@ export const withStateSignInScreen = (Component) => {
     }
   }
 
-  withSignInState.propTypes = {
+  WithStateAuthScreen.propTypes = {
     login: PropTypes.func.isRequired,
     history: PropTypes.object,
     authorizationError: PropTypes.bool
   };
 
-  return withSignInState;
+  return WithStateAuthScreen;
 };

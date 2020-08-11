@@ -1,9 +1,10 @@
 import React from "react";
-import {withActiveCard} from "./withActiveItem";
+import {withActiveCard} from "./with-active-item.jsx";
 import {shallow, configure} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 
 configure({adapter: new Adapter()});
+
 const MockComponent = () => <div />;
 const WrappedMockComponent = withActiveCard(MockComponent);
 

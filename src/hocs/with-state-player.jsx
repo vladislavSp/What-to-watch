@@ -15,6 +15,7 @@ export const withStatePlayer = (Component) => {
     }
 
     componentWillUnmount() {
+      clearTimeout(this.delayVideoTimer);
       const video = this.videoRef.current;
       video.src = ``;
     }

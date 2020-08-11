@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import VideoPlayer from "../player/player.jsx";
-import {withActiveCard} from "../../hocs/withActiveItem.jsx";
+import {withActiveCard} from "../../hocs/with-active-item.jsx";
 import {Link} from "react-router-dom";
 
 const FilmCard = (props) => {

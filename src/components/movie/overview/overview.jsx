@@ -16,6 +16,7 @@ const getMovieRate = (rating) => {
   } else {
     movieRate = RatingForFilm.BAD;
   }
+
   return movieRate;
 };
 
