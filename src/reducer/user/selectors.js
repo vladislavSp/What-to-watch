@@ -7,9 +7,13 @@ export const getAuthorizationStatus = (state) => {
 };
 
 export const getAuthorizationError = (state) => {
-  return state[NameSpace.USER].authorizationError;
+  return state[NAME_SPACE].authorizationError;
 };
 
 export const getUser = (state) => {
-  return state[NameSpace.USER].user;
+  return state[NAME_SPACE].user;
+};
+
+export const getLoadingAuthStatus = (state) => {
+  return state[NAME_SPACE].isAuthorizationLoading;
 };

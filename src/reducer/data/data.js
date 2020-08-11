@@ -3,14 +3,18 @@ import {extend, replaceMovie, replacePromo} from "../../utils/utils.js";
 
 const initialState = {
   allFilms: [],
-  promoFilm: {}
+  promoFilm: {},
+  isFilmsLoading: true,
+  isPromoLoading: true,
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO: `LOAD_PROMO`,
   UPDATE_MOVIE: `UPDATE_MOVIE`,
-  SET_COMMENT: `SET_COMMENT`
+  SET_COMMENT: `SET_COMMENT`,
+  SET_LOADING_FILMS: `SET_LOADING_FILMS`,
+  SET_LOADING_PROMO: `SET_LOADING_PROMO`,
 };
 
 const ActionCreator = {
@@ -32,19 +36,31 @@ const ActionCreator = {
   setComments: (comments) => ({
     type: ActionType.SET_COMMENT,
     payload: comments
-  })
+  }),
+
+  setLoadingFilms: (flag) => ({
+    type: ActionType.SET_LOADING_FILMS,
+    payload: flag
+  }),
+
+  setLoadingPromo: (flag) => ({
+    type: ActionType.SET_LOADING_PROMO,
+    payload: flag
+  }),
 };
 
 const Operation = {
   loadFilms: () => (dispatch, getState, api) => {
     return api.get(`/films`).then((response) => {
       dispatch(ActionCreator.loadFilms(parseFilms(response.data)));
+      dispatch(ActionCreator.setLoadingFilms(false));
     });
   },
 
   loadPromo: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`).then((response) => {
       dispatch(ActionCreator.loadPromo(parseFilm(response.data)));
+      dispatch(ActionCreator.setLoadingPromo(false));
     });
   },
 
@@ -88,6 +104,10 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SET_COMMENT:
       return extend(state, {comments: action.payload});
+    case ActionType.SET_LOADING_FILMS:
+      return extend(state, {isFilmsLoading: action.payload});
+    case ActionType.SET_LOADING_PROMO:
+      return extend(state, {isPromoLoading: action.payload});
   }
 
   return state;

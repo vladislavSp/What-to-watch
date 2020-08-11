@@ -65,7 +65,9 @@ describe(`Reducer work correctly`, () => {
   it(`Reducer without add parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
       allFilms: [],
-      promoFilm: {}
+      promoFilm: {},
+      isFilmsLoading: true,
+      isPromoLoading: true,
     });
   });
 

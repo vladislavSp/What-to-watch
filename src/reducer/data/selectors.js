@@ -10,6 +10,14 @@ export const getPromoFilm = (state) => {
   return state[NAME_SPACE].promoFilm;
 };
 
+export const getLoadingFilmsStatus = (state) => {
+  return state[NAME_SPACE].isFilmsLoading;
+};
+
+export const getLoadingPromoStatus = (state) => {
+  return state[NAME_SPACE].isPromoLoading;
+};
+
 export const getCurrentMovieById = (state, movieId) => {
   return state[NAME_SPACE].allFilms.find((movie) => movie.id === movieId);
 };

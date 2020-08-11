@@ -9,13 +9,15 @@ const AuthorizationStatus = {
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   authorizationError: false,
-  user: {}
+  user: {},
+  isAuthorizationLoading: true,
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   CHANGE_AUTHORIZATION_ERROR: `CHANGE_AUTHORIZATION_ERROR`,
-  SET_USER: `SET_USER`
+  SET_USER: `SET_USER`,
+  SET_AUTH_LOADING: `SET_AUTH_LOADING`,
 };
 
 const ActionCreator = {
@@ -32,7 +34,12 @@ const ActionCreator = {
   setUser: (user) => ({
     type: ActionType.SET_USER,
     payload: user
-  })
+  }),
+
+  setAuthLoading: (flag) => ({
+    type: ActionType.SET_AUTH_LOADING,
+    payload: flag
+  }),
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,6 +50,8 @@ const reducer = (state = initialState, action) => {
       return extend(state, {authorizationError: action.payload});
     case ActionType.SET_USER:
       return extend(state, {user: adaptedUser(action.payload)});
+    case ActionType.SET_AUTH_LOADING:
+      return extend(state, {isAuthorizationLoading: action.payload});
   }
 
   return state;
@@ -58,6 +67,7 @@ const Operation = {
               ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)
           );
           dispatch(ActionCreator.setUser(response.data));
+          dispatch(ActionCreator.setAuthLoading(false));
         }
       })
       .catch(() => {
