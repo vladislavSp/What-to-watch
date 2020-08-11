@@ -17,15 +17,13 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
 
-const init = () => {
-  ReactDOM.render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      document.getElementById(`root`)
-  );
-};
+ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById(`root`)
+);
 
 store.dispatch(DataOperation.loadPromo());
-store.dispatch(DataOperation.loadFilms()).then(init);
+store.dispatch(DataOperation.loadFilms());
 store.dispatch(UserOperation.checkAuth());
