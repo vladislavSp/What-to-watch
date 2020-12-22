@@ -58,6 +58,7 @@ const reducer = (state = initialState, action) => {
 };
 
 const Operation = {
+  // api - приходит из applyMiddleware
   checkAuth: () => (dispatch, getState, api) => {
     return api
       .get(`/login`)
